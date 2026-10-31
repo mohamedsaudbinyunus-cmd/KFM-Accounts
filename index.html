@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#12241b"><title>Kangaroo FreshMart Accounts</title>
+<meta name="theme-color" content="#0f3d3e"><title>Kangaroo FreshMart Accounts</title>
 <style>
 :root{--bg:#f3f6f2;--surface:#fff;--surface2:#f8faf7;--text:#17251c;--muted:#718075;--line:#e2e9e1;--brand:#187344;--brand2:#e1f5e8;--red:#c44747;--redbg:#fff0ee;--gold:#9c6b14;--shadow:0 8px 30px #193b2410}
 [data-theme="dark"]{--bg:#101812;--surface:#19241c;--surface2:#202d23;--text:#edf5ee;--muted:#a2b1a4;--line:#304033;--brand:#58d18a;--brand2:#203e2b;--red:#ff8278;--redbg:#432321;--gold:#f4c46d;--shadow:0 8px 30px #0003;color-scheme:dark}
@@ -364,11 +364,426 @@ header button,.topbar button,.app-header button,.main-header button{
  #authGate .lg-lang button{padding:7px 10px;font-size:11px}
 }
 
+
+
+/* KFM PREMIUM OLIVE / SAGE / CREAM THEME
+   #0F1F17 #1E3A2E #3E5A3F #6B7F67 #C7CBB8 #3D4337 */
+:root{--bg:#eef0e8!important;--surface:#fbfcf6!important;--surface2:#e5e9dc!important;--text:#18251d!important;--muted:#687468!important;--line:#d0d6c8!important;--brand:#1e3a2e!important;--brand2:#6b7f67!important;--red:#a84d45!important;--redbg:#f7e9e5!important;--gold:#b49a5a!important;--shadow:0 14px 38px rgba(15,31,23,.10)!important;color-scheme:light}
+[data-theme="dark"]{--bg:#0f1f17!important;--surface:#172a20!important;--surface2:#1e3a2e!important;--text:#edf1e8!important;--muted:#b0bbaa!important;--line:#344b3c!important;--brand:#c7cbb8!important;--brand2:#6b7f67!important;--red:#e28a7e!important;--redbg:#452b28!important;--gold:#d4bd7c!important;--shadow:0 16px 42px rgba(0,0,0,.28)!important;color-scheme:dark}
+html,body{background:var(--bg)!important;color:var(--text)!important}
+body{background-image:radial-gradient(ellipse at 8% 5%,rgba(107,127,103,.13),transparent 32%),radial-gradient(ellipse at 92% 16%,rgba(199,203,184,.24),transparent 28%)!important}
+.topbar,.sidebar,.panel,.metric-card,.dash-hero,.dash-hero-pro,.command-tile,.pro-stat,.harmony-insight,.lg-card{border-color:var(--line)!important;box-shadow:var(--shadow)!important}
+.topbar,.panel,.metric-card,.command-tile,.pro-stat,.harmony-insight{background:var(--surface)!important;color:var(--text)!important}
+.sidebar{background:linear-gradient(180deg,#0f1f17,#1e3a2e 58%,#3d4337)!important;color:#f3f3e9!important}
+.sidebar .nav-btn,.sidebar button,.sidebar a{color:#e9eee4!important}
+.sidebar .nav-btn.active,.sidebar .nav-btn[aria-current="page"]{background:linear-gradient(110deg,#6b7f67,#3e5a3f)!important;color:#fff!important;border-color:rgba(199,203,184,.45)!important}
+.topbar{background:rgba(251,252,246,.93)!important;backdrop-filter:blur(16px)}
+[data-theme="dark"] .topbar{background:rgba(15,31,23,.93)!important}
+.btn.primary,.lg-btn,button.primary{background:linear-gradient(135deg,#1e3a2e,#3e5a3f)!important;color:#fff!important;border:1px solid #6b7f67!important;box-shadow:0 8px 20px rgba(30,58,46,.20)!important}
+.btn.primary:hover,.lg-btn:hover,button.primary:hover{background:linear-gradient(135deg,#3e5a3f,#6b7f67)!important;transform:translateY(-1px)}
+input,select,textarea,.lg-in{background:var(--surface)!important;color:var(--text)!important;border-color:var(--line)!important}
+input:focus,select:focus,textarea:focus,.lg-in:focus{outline:2px solid rgba(107,127,103,.38)!important;border-color:#6b7f67!important}
+.dash-hero,.dash-hero-pro{background:linear-gradient(125deg,#0f1f17,#1e3a2e 48%,#3e5a3f)!important;color:#f5f5eb!important;border:1px solid rgba(199,203,184,.35)!important}
+.dash-hero *,.dash-hero-pro *{color:inherit}
+.metric-card:nth-child(6n+1){border-top:3px solid #1e3a2e!important}.metric-card:nth-child(6n+2){border-top:3px solid #3e5a3f!important}.metric-card:nth-child(6n+3){border-top:3px solid #6b7f67!important}.metric-card:nth-child(6n+4){border-top:3px solid #c7cbb8!important}.metric-card:nth-child(6n+5){border-top:3px solid #b49a5a!important}.metric-card:nth-child(6n){border-top:3px solid #3d4337!important}
+.command-tile:hover,.metric-card:hover,.panel:hover{border-color:#8d9b83!important;box-shadow:0 18px 42px rgba(15,31,23,.14)!important}
+.lg-wrap{background:radial-gradient(ellipse at 15% 18%,rgba(199,203,184,.55),transparent 36%),radial-gradient(ellipse at 85% 80%,rgba(107,127,103,.34),transparent 38%),linear-gradient(145deg,#0f1f17,#1e3a2e 58%,#3d4337)!important}
+.lg-card{background:rgba(251,252,246,.97)!important;color:#18251d!important;border:1px solid rgba(199,203,184,.9)!important}
+.lg-card h2,.lg-sub,.lg-l,.lg-note,.lg-foot{color:#26372b!important}.lg-brand{color:#f5f5eb!important}
+.lg-google,.lg-guest{background:#e5e9dc!important;color:#1e3a2e!important;border-color:#c7cbb8!important}
+.auth-status{border-color:#6b7f67!important}a{color:#3e5a3f}[data-theme="dark"] a{color:#c7cbb8}::selection{background:#c7cbb8;color:#0f1f17}
+
+
+/* KFM EXECUTIVE TEAL — selected premium palette 6
+   #0A0F14 #0F3D3E #2E6F73 #7FB3B8 #EADCC8 #C6601F */
+:root {
+  --bg: #f3f5f2 !important;
+  --surface: #ffffff !important;
+  --surface2: #e8f0ee !important;
+  --text: #172526 !important;
+  --muted: #657779 !important;
+  --line: #d5e1df !important;
+  --brand: #0f3d3e !important;
+  --brand2: #e1eeec !important;
+  --red: #b94f35 !important;
+  --redbg: #f9e9e2 !important;
+  --gold: #c6601f !important;
+  --shadow: 0 14px 38px rgba(10,15,20,.09) !important;
+  color-scheme: light;
+  --kfm-ink: #0a0f14;
+  --kfm-teal: #0f3d3e;
+  --kfm-ocean: #2e6f73;
+  --kfm-mist: #7fb3b8;
+  --kfm-cream: #eadcc8;
+  --kfm-orange: #c6601f;
+}
+[data-theme="dark"] {
+  --bg: #0a0f14 !important;
+  --surface: #111c21 !important;
+  --surface2: #162a2d !important;
+  --text: #edf4f2 !important;
+  --muted: #a9bcbb !important;
+  --line: #294447 !important;
+  --brand: #7fb3b8 !important;
+  --brand2: #17383c !important;
+  --red: #f08a69 !important;
+  --redbg: #3b211b !important;
+  --gold: #e18a4d !important;
+  --shadow: 0 18px 44px rgba(0,0,0,.30) !important;
+  color-scheme: dark;
+}
+html, body { background: var(--bg) !important; color: var(--text) !important; }
+body {
+  background-image:
+    radial-gradient(ellipse at 4% 8%, rgba(127,179,184,.16), transparent 32%),
+    radial-gradient(ellipse at 96% 16%, rgba(198,96,31,.10), transparent 28%) !important;
+  -webkit-font-smoothing: antialiased;
+}
+.topbar {
+  background: rgba(255,255,255,.91) !important;
+  border-bottom: 1px solid var(--line) !important;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 8px 28px rgba(10,15,20,.055) !important;
+}
+[data-theme="dark"] .topbar { background: rgba(10,15,20,.92) !important; }
+.sidebar {
+  background: linear-gradient(180deg,#0a0f14 0%,#0f3d3e 58%,#2e6f73 100%) !important;
+  color: #f2f7f5 !important;
+  box-shadow: 12px 0 38px rgba(10,15,20,.16) !important;
+}
+.sidebar .nav-btn, .sidebar button, .sidebar a { color: #eaf2f0 !important; }
+.sidebar .nav-btn {
+  border: 1px solid transparent !important;
+  border-radius: 13px !important;
+  transition: all .22s ease !important;
+}
+.sidebar .nav-btn:hover {
+  background: rgba(127,179,184,.14) !important;
+  transform: translateX(3px);
+}
+.sidebar .nav-btn.active, .sidebar .nav-btn[aria-current="page"] {
+  background: linear-gradient(110deg,#2e6f73,#7fb3b8) !important;
+  color: #071719 !important;
+  border-color: rgba(234,220,200,.45) !important;
+  box-shadow: inset 3px 0 0 #eadcc8, 0 7px 18px rgba(0,0,0,.13) !important;
+}
+.panel, .metric-card, .command-tile, .pro-stat, .harmony-insight, .lg-card {
+  border: 1px solid var(--line) !important;
+  box-shadow: var(--shadow) !important;
+}
+.panel, .metric-card, .command-tile, .pro-stat, .harmony-insight {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-radius: 18px !important;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease !important;
+}
+.metric-card:hover, .command-tile:hover, .pro-stat:hover {
+  transform: translateY(-3px);
+  border-color: #7fb3b8 !important;
+  box-shadow: 0 18px 38px rgba(10,15,20,.12) !important;
+}
+.dash-hero, .dash-hero-pro {
+  background: linear-gradient(125deg,#0a0f14 0%,#0f3d3e 52%,#2e6f73 100%) !important;
+  color: #f4f7f5 !important;
+  border: 1px solid rgba(127,179,184,.38) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 20px 48px rgba(10,15,20,.20) !important;
+  position: relative;
+  overflow: hidden;
+}
+.dash-hero::after, .dash-hero-pro::after {
+  content: "";
+  position: absolute;
+  width: 270px; height: 270px;
+  right: -90px; top: -145px;
+  border: 1px solid rgba(234,220,200,.25);
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px rgba(127,179,184,.06), 0 0 0 58px rgba(127,179,184,.035);
+  pointer-events: none;
+}
+.dash-hero *, .dash-hero-pro * { color: inherit; }
+.btn.primary, .lg-btn, button.primary {
+  background: linear-gradient(135deg,#0f3d3e,#2e6f73) !important;
+  color: #fff !important;
+  border: 1px solid #7fb3b8 !important;
+  box-shadow: 0 8px 20px rgba(15,61,62,.20) !important;
+  border-radius: 12px !important;
+}
+.btn.primary:hover, .lg-btn:hover, button.primary:hover {
+  background: linear-gradient(135deg,#2e6f73,#7fb3b8) !important;
+  color: #071719 !important;
+  transform: translateY(-1px);
+}
+.btn, button { border-radius: 11px; transition: all .2s ease; }
+input, select, textarea, .lg-in {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 11px !important;
+}
+input:focus, select:focus, textarea:focus, .lg-in:focus {
+  outline: 2px solid rgba(127,179,184,.42) !important;
+  border-color: #2e6f73 !important;
+  box-shadow: 0 0 0 4px rgba(127,179,184,.13) !important;
+}
+.metric-card:nth-child(6n+1) { border-top: 3px solid #0f3d3e !important; }
+.metric-card:nth-child(6n+2) { border-top: 3px solid #2e6f73 !important; }
+.metric-card:nth-child(6n+3) { border-top: 3px solid #7fb3b8 !important; }
+.metric-card:nth-child(6n+4) { border-top: 3px solid #eadcc8 !important; }
+.metric-card:nth-child(6n+5) { border-top: 3px solid #c6601f !important; }
+.metric-card:nth-child(6n) { border-top: 3px solid #3a4a46 !important; }
+.lg-wrap {
+  background:
+    radial-gradient(ellipse at 12% 18%,rgba(127,179,184,.34),transparent 36%),
+    radial-gradient(ellipse at 88% 78%,rgba(198,96,31,.22),transparent 34%),
+    linear-gradient(145deg,#0a0f14,#0f3d3e 58%,#2e6f73) !important;
+}
+.lg-card {
+  background: rgba(255,255,255,.96) !important;
+  color: #172526 !important;
+  border: 1px solid rgba(234,220,200,.85) !important;
+  border-radius: 23px !important;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 28px 75px rgba(0,0,0,.23) !important;
+}
+.lg-card h2, .lg-sub, .lg-l, .lg-note, .lg-foot { color: #263b3b !important; }
+.lg-brand { color: #f4f7f5 !important; }
+.lg-google, .lg-guest {
+  background: #e8f0ee !important;
+  color: #0f3d3e !important;
+  border-color: #c9dcda !important;
+}
+.auth-status { border-color: #7fb3b8 !important; }
+th { background: #e8f0ee !important; color: #0f3d3e !important; }
+td, th { border-color: var(--line) !important; }
+tr:hover td { background: rgba(127,179,184,.10); }
+a { color: #2e6f73; }
+[data-theme="dark"] a { color: #7fb3b8; }
+::selection { background: #7fb3b8; color: #0a0f14; }
+@media (max-width:760px) {
+  .panel, .metric-card, .command-tile, .pro-stat, .harmony-insight { border-radius: 15px !important; }
+  .dash-hero, .dash-hero-pro { border-radius: 18px !important; }
+  .lg-card { margin-inline: 14px; border-radius: 20px !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; }
+}
+
+
+/* ================= KFM EXECUTIVE — ADVANCED THEME LAYER =================
+   Gradient tokens (--g1..--g4) drive topbar, sidebar, hero, buttons.
+   The Accent setting (Settings → Appearance) now re-colours the whole app. */
+:root{--g1:#0a0f14;--g2:#0f3d3e;--g3:#2e6f73;--g4:#7fb3b8;--ease:cubic-bezier(.2,.7,.2,1)}
+:root[data-accent="violet"]{--g2:#2f2566;--g3:#5b47c2;--g4:#b4a0ff;--brand:#4b3aa8!important;--brand2:#eeeaff!important}
+:root[data-accent="ocean"]{--g2:#0c3c5c;--g3:#1478b8;--g4:#75c9ff;--brand:#0f5f93!important;--brand2:#e2f2ff!important}
+:root[data-accent="sunset"]{--g2:#6b2d12;--g3:#c65d2e;--g4:#ffad82;--brand:#a8481f!important;--brand2:#fff0e6!important}
+:root[data-accent="rose"]{--g2:#5e1d3a;--g3:#c04478;--g4:#ff9bc5;--brand:#a63465!important;--brand2:#ffebf3!important}
+[data-theme="dark"][data-accent="violet"]{--brand:#b4a0ff!important;--brand2:#2a2250!important}
+[data-theme="dark"][data-accent="ocean"]{--brand:#75c9ff!important;--brand2:#143a52!important}
+[data-theme="dark"][data-accent="sunset"]{--brand:#ffad82!important;--brand2:#4b2c20!important}
+[data-theme="dark"][data-accent="rose"]{--brand:#ff9bc5!important;--brand2:#4a2638!important}
+
+/* Top bar: dark executive band, white text (fixes unreadable light bar) */
+.topbar{background:linear-gradient(115deg,var(--g1) 0%,var(--g2) 58%,var(--g3) 100%)!important;color:#fff!important;border-bottom:1px solid rgba(255,255,255,.14)!important;box-shadow:0 10px 30px rgba(10,15,20,.22)!important;position:sticky;top:0;z-index:30;backdrop-filter:blur(14px)}
+.topbar .brand h1,.topbar .brand p{color:#fff!important}.topbar .brand p{opacity:.72}
+.topbar .btn:not(.primary){background:rgba(255,255,255,.10)!important;color:#fff!important;border:1px solid rgba(255,255,255,.22)!important}
+.topbar .btn:not(.primary):hover{background:rgba(255,255,255,.2)!important}
+.logo{background:rgba(255,255,255,.12)!important;border-color:rgba(255,255,255,.25)!important}
+
+/* Sidebar */
+.sidebar{top:96px!important;max-height:calc(100vh - 110px);overflow:auto}
+@media(max-width:1000px){.sidebar{top:auto!important;max-height:none}.topbar{position:static}}
+.sidebar{background:linear-gradient(185deg,var(--g1) 0%,var(--g2) 60%,var(--g3) 100%)!important;border-color:rgba(255,255,255,.08)!important}
+.sidebar .nav-label{color:var(--g4)!important;opacity:.9}
+.sidebar .nav-btn{color:#dfeceb!important;font-weight:600}
+.sidebar .nav-btn .ico{opacity:.9}
+.sidebar .nav-btn.active,.sidebar .nav-btn[aria-current="page"]{background:linear-gradient(110deg,var(--g3),var(--g4))!important;color:#06181a!important;font-weight:750}
+.sidebar::-webkit-scrollbar{width:6px}.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:9px}
+
+/* Hero + primary buttons use accent tokens */
+.dash-hero,.dash-hero-pro{background:linear-gradient(125deg,var(--g1) 0%,var(--g2) 52%,var(--g3) 100%)!important}
+.btn.primary,.lg-btn,button.primary{background:linear-gradient(135deg,var(--g2),var(--g3))!important;border:1px solid var(--g4)!important}
+.btn.primary:hover,.lg-btn:hover,button.primary:hover{background:linear-gradient(135deg,var(--g3),var(--g4))!important;color:#06181a!important}
+.lg-wrap{background:radial-gradient(ellipse at 12% 18%,rgba(255,255,255,.18),transparent 36%),linear-gradient(145deg,var(--g1),var(--g2) 58%,var(--g3))!important}
+
+/* Type, numbers, motion */
+body{letter-spacing:.005em;font-feature-settings:"cv11","ss01"}
+.num,td.num,th.num,.metric-card b,.balance-row b{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.pagehead h2{font-weight:800;letter-spacing:-.02em;background:linear-gradient(90deg,var(--text),var(--brand));-webkit-background-clip:text;background-clip:text;color:transparent}
+[data-theme="dark"] .pagehead h2{background:linear-gradient(90deg,#fff,var(--brand));-webkit-background-clip:text;background-clip:text}
+.page:not(.hide){animation:kfmIn .38s var(--ease)}
+@keyframes kfmIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* Pills, notice, toast */
+.pill{background:var(--brand2)!important;color:var(--brand)!important;border:1px solid color-mix(in srgb,var(--brand) 22%,transparent)}
+.pill.red{background:var(--redbg)!important;color:var(--red)!important}
+.notice{background:linear-gradient(100deg,#fbf3e6,#f6e8d2)!important;border:1px solid #e6cfa7!important;color:#6b4513!important;border-left:4px solid #c6601f!important}
+[data-theme="dark"] .notice{background:linear-gradient(100deg,#2c2118,#33261a)!important;border-color:#5a4126!important;color:#f0d3ad!important}
+.toast{background:linear-gradient(120deg,var(--g1),var(--g2))!important;border:1px solid var(--g4);color:#fff!important;border-radius:14px!important}
+
+/* Tables */
+.table-wrap{border:1px solid var(--line);border-radius:14px;overflow:auto;background:var(--surface)}
+.table-wrap table{border-collapse:separate;border-spacing:0}
+th{position:sticky;top:0;z-index:1;font-size:11px;letter-spacing:.07em;text-transform:uppercase}
+tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--surface2) 45%,transparent)}
+tr:hover td{background:color-mix(in srgb,var(--g4) 16%,transparent)!important}
+.btn.small{border-radius:9px!important}
+.btn:focus-visible,input:focus-visible,select:focus-visible,.nav-btn:focus-visible{outline:2px solid var(--g4)!important;outline-offset:2px}
+.panel{position:relative}
+.panel-head h3{letter-spacing:-.01em}
+
+/* Bottom nav (mobile) */
+.bottomnav{background:rgba(10,15,20,.93)!important;backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.12)!important}
+.bottomnav button{color:#a9bcbb!important}.bottomnav button.active{color:var(--g4)!important}
+
+/* Scrollbars */
+*{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--g3) 55%,transparent) transparent}
+
+/* Quick-adjust components */
+.qa-panel{border-top:3px solid var(--g3)!important}
+.qa-panel:nth-of-type(2n){border-top-color:#c6601f!important}
+.qa-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;margin-bottom:12px}
+.qa-bar .field{min-width:170px}
+.qa-in{width:130px;max-width:100%;padding:8px 10px}
+.qa-in.qa-sm{width:78px}
+.qa-act{white-space:nowrap}.qa-act .qa-in{margin-left:6px;width:84px;padding:5px 8px}
+.qa-panel td .small{font-size:11px}
+@media(max-width:600px){.qa-in{width:100%}.qa-in.qa-sm{width:64px}.qa-bar .btn{flex:1 1 140px}}
+
+@media print{.topbar{position:static;box-shadow:none}.page:not(.hide){animation:none}}
+
+/* Secondary buttons: always readable (light surface, dark text) */
+.main .btn:not(.primary):not(.danger):not(.ghost),.page-actions .btn:not(.primary):not(.danger){background:var(--surface)!important;color:var(--text)!important;border:1px solid var(--line)!important;box-shadow:none!important}
+.main .btn:not(.primary):not(.danger):not(.ghost):hover,.page-actions .btn:not(.primary):not(.danger):hover{background:var(--surface2)!important;border-color:var(--g3)!important;transform:translateY(-1px)}
+.main .btn.danger{background:var(--redbg)!important;color:var(--red)!important;border:1px solid transparent!important}
+.main .btn.primary,.page-actions .btn.primary{color:#fff!important}
+.qa-bar .btn.primary{color:#fff!important}
+
+/* Dark-mode corrections */
+[data-theme="dark"] .btn.primary,[data-theme="dark"] .main .btn.primary,[data-theme="dark"] button.primary{background:linear-gradient(135deg,var(--g2),var(--g3))!important;color:#fff!important;border:1px solid var(--g4)!important}
+[data-theme="dark"] .btn.primary:hover,[data-theme="dark"] button.primary:hover{background:linear-gradient(135deg,var(--g3),var(--g4))!important;color:#06181a!important}
+[data-theme="dark"] th{background:var(--surface2)!important;color:var(--g4)!important}
+[data-theme="dark"] .table-wrap{background:var(--surface)}
+
+/* ================= Textbook-format pages (পাঠ্যবই ছক) ================= */
+.tb-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tb-tabs .btn.on{background:linear-gradient(135deg,var(--g2),var(--g3))!important;color:#fff!important;border-color:var(--g4)!important}
+.tbk-sheet{background:#fff;color:#111;border:1px solid #2a2a2a;border-radius:6px;padding:20px 22px;box-shadow:var(--shadow);margin-bottom:14px}
+.tbk-title{text-align:center;font-weight:800;font-size:17px;line-height:1.55;margin-bottom:10px;color:#111}
+.tbk-title small{display:block;font-weight:600;font-size:14px}
+.tbpage table.tbk{width:100%;border-collapse:collapse;font-size:14px;background:#fff;color:#111}
+.tbpage table.tbk th,.tbpage table.tbk td{border:1px solid #2a2a2a!important;padding:5px 9px;vertical-align:top;background:#fff!important;color:#111!important;text-transform:none;letter-spacing:0;font-size:14px;position:static}
+.tbpage table.tbk th{text-align:center;font-weight:700;line-height:1.35}
+.tbpage table.tbk tr:hover td{background:#fff!important}
+.tbpage table.tbk td.num{text-align:right;white-space:nowrap}
+.tbpage table.tbk .tbk-c{text-align:center}
+.tbpage table.tbk .empty{text-align:center;color:#666!important}
+table.tbk.tbk-j td{border-top:0!important;border-bottom:0!important}
+table.tbk.tbk-j tr.tbk-top td,table.tbk.tbk-j tr.tbk-yr td{border-top:1px solid #2a2a2a!important}
+table.tbk.tbk-j tr.tbk-yr td{border-bottom:0!important;padding-bottom:0}
+table.tbk.tbk-j tr.tbk-tot td{border-top:1px solid #2a2a2a!important;border-bottom:1px solid #2a2a2a!important}
+.tbk-ac{display:flex;justify-content:space-between;gap:14px}.tbk-ac em{font-style:normal;min-width:48px;text-align:left}.tbk-ac.tbk-cr{padding-left:34px}
+.tbk-nar{padding-left:34px!important;font-size:13px}
+.tbk-sub{font-size:12px;color:#555}
+.tbk-dbl{display:inline-block;min-width:70px;border-bottom:4px double #111;font-weight:700;text-align:right}
+.tbk-u{display:inline-block;min-width:60px;border-bottom:1px solid #111}
+table.tbk-eq th,table.tbk-eq td{font-size:13px!important;padding:4px 7px}
+.tbk-op{text-align:center;width:22px;padding:0 4px!important}
+.tbk-rem{font-size:12px;min-width:110px}
+table.tbk-eq tr.tbk-sum td{font-weight:700;border-top:1.5px solid #111!important}
+table.tbk-eq tr.tbk-tot td{font-weight:700;border-top:1.5px solid #111!important}
+.tbk-warn{color:#b00020;font-weight:700;margin:8px 0 0}
+/* memo */
+.tbk-memo{position:relative;border:1px solid #2a2a2a;padding:14px 18px;background:#fff;color:#111;font-size:14px;max-width:780px;margin:0 auto;border-radius:3px}
+.tbk-copy{position:absolute;top:-1px;right:-1px;font-size:11px;border:1px solid #2a2a2a;padding:2px 8px;background:#f3f3f3}
+.tbk-mh{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:10px;align-items:start}.tbk-mt{text-align:center;font-size:13px}.tbk-mt b{display:block;font-size:20px;line-height:1.3}.tbk-md{text-align:right}
+.tbk-mtype{text-align:center;margin:8px 0}.tbk-mtype span{display:inline-block;border:1.5px solid #2a2a2a;padding:5px 38px;font-weight:800;font-size:16px}
+.tbk-mb{margin:8px 0;line-height:1.7}
+.tbk-words{margin-top:6px;font-size:13px}
+.tbk-mf{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-top:22px;font-size:13px;line-height:1.7}
+/* equation + capital */
+.tbk-sol{font-size:15px;line-height:1.9;color:#111}
+.tbk-row{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:10px;margin:8px 0}
+.tbk-res{margin-top:10px;font-weight:800;font-size:17px;color:#0b6b3a}.tbk-res.loss{color:#b00020}
+.tbk-note{font-size:13px;color:#444;margin-top:12px;border-top:1px dashed #999;padding-top:8px}
+/* tree */
+.tbt-wrap{padding:10px}.tbt-svg{width:100%;max-width:760px;height:auto;display:block;margin:0 auto;font-family:inherit}
+.tbt-box{fill:#fff;stroke:#2a2a2a;stroke-width:1.2}.tbt-root{fill:var(--g2);stroke:var(--g2)}.tbt-grp{fill:#e8f0ee}
+.tbt-t{fill:#111;font-size:15px;font-weight:600}.tbt-w{fill:#fff;font-weight:800}.tbt-n{fill:var(--g3);font-size:13px;font-weight:700}
+.tbt-ln{stroke:#2a2a2a;stroke-width:1.2}.tbt-leaf{cursor:pointer}.tbt-leaf:hover .tbt-box{fill:#dcebea;stroke:var(--g3)}
+@media(max-width:600px){.tbk-sheet{padding:12px 10px}.tbk-mh{grid-template-columns:1fr}.tbk-md{text-align:left}.tbk-row{grid-template-columns:1fr}.tbt-t{font-size:17px}}
+@media print{.tbk-sheet{box-shadow:none;border:0;padding:0}.tbpage .panel{display:none!important}}
+
+/* Command palette + quick tiles */
+.kcmd{position:fixed;inset:0;z-index:200;background:rgba(6,16,18,.55);backdrop-filter:blur(6px);display:flex;align-items:flex-start;justify-content:center;padding-top:12vh}
+.kcmd.hide{display:none}
+.kcmd-box{width:min(620px,92vw);background:var(--surface);border:1px solid var(--g3);border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.45);overflow:hidden;animation:kfmIn .2s var(--ease)}
+.kcmd-box input{width:100%;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;padding:16px 18px;font-size:16px;background:transparent!important;outline:none!important;box-shadow:none!important}
+#kcmdList{max-height:50vh;overflow:auto;padding:6px}
+.kcmd-it{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;cursor:pointer}
+.kcmd-it.on,.kcmd-it:hover{background:linear-gradient(110deg,var(--g3),var(--g4));color:#06181a}
+.kcmd-ic{width:22px;text-align:center}.kcmd-t{flex:1;font-weight:600}.kcmd-it em{font-style:normal;font-size:12px;opacity:.7}
+.kcmd-empty{padding:18px;text-align:center;color:var(--muted)}
+kbd{font:600 10px/1 inherit;border:1px solid rgba(255,255,255,.35);border-radius:5px;padding:2px 5px;margin-left:4px;opacity:.85}
+.tb-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.tb-tile{display:flex;align-items:center;gap:10px;padding:14px;border-radius:14px;border:1px solid var(--line);background:linear-gradient(145deg,var(--surface),var(--surface2));color:var(--text);cursor:pointer;text-align:left;transition:transform .18s var(--ease),box-shadow .18s,border-color .18s}
+.tb-tile span{font-size:22px;width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:linear-gradient(135deg,var(--g2),var(--g3));color:#fff}
+.tb-tile b{font-size:13.5px;line-height:1.3}
+.tb-tile:hover{transform:translateY(-3px);border-color:var(--g3);box-shadow:0 14px 28px rgba(15,61,62,.18)}
+@media(max-width:700px){#kcmdBtn kbd{display:none}}
+
+/* App-like layer */
+#kfmSplash{position:fixed;inset:0;z-index:999;background:radial-gradient(ellipse at 30% 20%,var(--g3),var(--g2) 45%,var(--g1));display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;transition:opacity .45s,transform .45s}
+#kfmSplash.out{opacity:0;transform:scale(1.04);pointer-events:none}
+.sp-logo{width:84px;height:84px;border-radius:24px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-size:44px;font-weight:800;animation:spPop .7s var(--ease)}
+.sp-t{margin-top:16px;font-size:24px;font-weight:800;letter-spacing:-.01em}.sp-s{opacity:.7;font-size:13px;margin-top:4px}
+.sp-bar{width:140px;height:3px;border-radius:9px;background:rgba(255,255,255,.2);margin-top:22px;overflow:hidden}.sp-bar i{display:block;height:100%;width:40%;background:var(--g4);border-radius:9px;animation:spBar 1s ease-in-out infinite}
+@keyframes spPop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}@keyframes spBar{from{transform:translateX(-100%)}to{transform:translateX(350%)}}
+.kfm-chip{font-size:12px;font-weight:700;padding:6px 11px;border-radius:99px;background:rgba(127,179,184,.18);border:1px solid rgba(127,179,184,.4);color:#bfe3e6;white-space:nowrap}
+.kfm-chip.off{background:rgba(255,160,90,.18);border-color:rgba(255,160,90,.5);color:#ffd2ad}
+.kfm-modal{position:fixed;inset:0;z-index:300;background:rgba(6,16,18,.6);backdrop-filter:blur(6px);display:grid;place-items:center;padding:16px}
+.kfm-card{width:min(440px,94vw);background:var(--surface);color:var(--text);border:1px solid var(--g3);border-radius:20px;padding:26px;box-shadow:0 30px 80px rgba(0,0,0,.45);animation:kfmIn .25s var(--ease)}
+.kfm-card h3{margin:6px 0 8px;font-size:20px}.kfm-card p{color:var(--muted);line-height:1.6;margin:0 0 14px}
+.tour-ic{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;font-size:28px;background:linear-gradient(135deg,var(--g2),var(--g3));color:#fff}
+.tour-dots{display:flex;gap:6px;margin:6px 0 16px}.tour-dots i{width:8px;height:8px;border-radius:9px;background:var(--line)}.tour-dots i.on{width:24px;background:var(--g3)}
+.sc-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}.sc-row kbd{background:var(--surface2);color:var(--text);border-color:var(--line)}
+@media print{#kfmSplash,.kfm-chip,.kfm-modal{display:none!important}}
+
+/* Numbered, grouped, collapsible sidebar */
+.sidebar{counter-reset:nv}
+.nav-grp{display:block}
+.nav-grp .nav-label{cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;margin-top:6px}
+.nav-grp .nav-label::after{content:"▾";font-size:11px;transition:transform .2s var(--ease)}
+.nav-grp.shut .nav-label::after{transform:rotate(-90deg)}
+.nav-grp.shut .nav-items{display:none}
+.sidebar .nav-btn{display:flex;align-items:center;gap:8px}
+.sidebar .nav-btn::before{counter-increment:nv;content:counter(nv);flex:0 0 22px;height:22px;border-radius:7px;display:grid;place-items:center;font-size:11px;font-weight:800;background:rgba(255,255,255,.1);color:var(--g4)}
+.sidebar .nav-btn.active::before{background:rgba(6,24,26,.2);color:#06181a}
+.sidebar .nav-btn[data-count]::after{content:attr(data-count);margin-left:auto;font-size:10.5px;font-weight:800;padding:2px 7px;border-radius:99px;background:rgba(127,179,184,.22);color:#cfeaec}
+.sidebar .nav-btn.active[data-count]::after{background:rgba(6,24,26,.18);color:#06181a}
+@media(max-width:1000px){.nav-grp,.nav-items{display:contents!important}.nav-grp.shut .nav-items{display:contents!important}.sidebar .nav-btn::before,.sidebar .nav-btn::after{display:none}.nav-grp .nav-label{display:none}}
+
+/* Compact, non-sticky top bar */
+.topbar{position:static!important}
+.sidebar{top:12px!important;max-height:calc(100vh - 24px)!important}
+.topbar .btn,.kfm-chip{padding:7px 11px;font-size:13px}
+@media(max-width:1000px){.sidebar{top:auto!important;max-height:none!important}}
+
+/* Documents hub + ledger */
+.tb-docstrip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:14px;padding:10px 12px;border-radius:14px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.tb-docstrip b{margin-right:6px}
+.tb-docstrip .btn.on{background:linear-gradient(135deg,var(--g2),var(--g3))!important;color:#fff!important;border-color:var(--g4)!important}
+.tbk-chip{display:inline-block;margin-bottom:10px;padding:7px 14px;border-radius:99px;background:var(--brand2);color:var(--brand);font-size:13px}
+table.tbk-ledger td.sep,table.tbk-ledger th.sep{border-right:2px solid #111!important}
+table.tbk-ledger tr.tbk-bd td{border-bottom:1px solid #2a2a2a!important}
+.tbk-lgpage{margin-bottom:18px}
+@media print{.tbk-lgpage{page-break-after:always;break-inside:avoid}.tb-docstrip{display:none!important}}
+
 </style>
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
-<meta name="theme-color" content="#187344">
+<meta name="theme-color" content="#0f3d3e">
 <meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Kangaroo Accounts">
-</head>
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="KFM Accounts"></head>
 <body>
 <div id="authGate" class="auth-gate" aria-live="polite">
  <div class="lg-wrap">
@@ -404,40 +819,12 @@ header button,.topbar button,.app-header button,.main-header button{
  </div>
 </header>
 <div class="layout">
- <aside class="sidebar" id="sidebar">
-  <div class="nav-label">Workspace</div>
-  <button class="nav-btn" data-page="intro"><span class="ico">▣</span>Introduction / পরিচিতি</button>
-  <button class="nav-btn active" data-page="dashboard"><span class="ico">⌂</span>Dashboard</button>
-  <button class="nav-btn" data-page="cycle"><span class="ico">↻</span>Accounting cycle</button>
-  <button class="nav-btn" data-page="entry"><span class="ico">＋</span>New entry</button>
-  <button class="nav-btn" data-page="ledger"><span class="ico">▤</span>Ledger</button>
-  <button class="nav-btn" data-page="accounts"><span class="ico">⇄</span>T-chart</button>
-  <button class="nav-btn" data-page="chartofaccounts"><span class="ico">▦</span>Chart of accounts</button>
-  <button class="nav-btn" data-page="journal"><span class="ico">✎</span>Journal</button>
-  <button class="nav-btn" data-page="adjusting"><span class="ico">⚖</span>Adjusting entries</button>
-  <button class="nav-btn" data-page="cashjournal"><span class="ico">⇅</span>Cash in/out journal</button>
-  <button class="nav-btn" data-page="cashbook"><span class="ico">☰</span>Cash book</button>
-  <button class="nav-btn" data-page="trialbalance"><span class="ico">⚖</span><span data-en="Trial balance" data-bn="রেওয়ামিল">Trial balance</span></button>
-  <button class="nav-btn" data-page="balance"><span class="ico">▤</span><span data-en="Balance sheet" data-bn="স্থিতিপত্র">Balance sheet</span></button>
-  <button class="nav-btn" data-page="gl"><span class="ico">▥</span>General ledger</button>
-  <button class="nav-btn" data-page="statements"><span class="ico">§</span>Financial statements</button>
-  <button class="nav-btn" data-page="caprev"><span class="ico">◐</span>Capital & revenue</button>
-  <div class="nav-label">Management</div>
-  <button class="nav-btn" data-page="debtors"><span class="ico">♧</span>Debtors</button>
-  <button class="nav-btn" data-page="creditors"><span class="ico">♤</span>Creditors</button>
-  <button class="nav-btn" data-page="inventory"><span class="ico">▦</span>Inventory</button>
-  <button class="nav-btn" data-page="receipts"><span class="ico">▧</span>Receipts</button>
-  <button class="nav-btn" data-page="vouchers"><span class="ico">❖</span>Vouchers</button>
-  <button class="nav-btn" data-page="operators"><span class="ico">☺</span>Operators</button>
-  <button class="nav-btn" data-page="reports"><span class="ico">▥</span>Reports</button>
-  <div class="nav-label">App</div>
-  <button class="nav-btn" data-page="settings"><span class="ico">⚙</span>Settings</button>
- </aside>
+ <aside class="sidebar" id="sidebar"><div class="nav-grp" data-g="ws"><div class="nav-label"><span data-en="Workspace" data-bn="ওয়ার্কস্পেস">Workspace</span></div><div class="nav-items"><button class="nav-btn" data-page="intro"><span class="ico">▣</span><span data-en="Introduction" data-bn="পরিচিতি">Introduction</span></button><button class="nav-btn active" data-page="dashboard"><span class="ico">⌂</span><span data-en="Dashboard" data-bn="ড্যাশবোর্ড">Dashboard</span></button><button class="nav-btn" data-page="entry"><span class="ico">＋</span><span data-en="New entry" data-bn="নতুন দাখিলা">New entry</span></button></div></div><div class="nav-grp" data-g="jr"><div class="nav-label"><span data-en="Journals" data-bn="জাবেদা">Journals</span></div><div class="nav-items"><button class="nav-btn" data-page="journal"><span class="ico">✎</span><span data-en="Journal" data-bn="জাবেদা">Journal</span></button><button class="nav-btn" data-page="tbjournal"><span class="ico">▤</span><span data-en="General journal (textbook)" data-bn="সাধারণ জাবেদা (ছক)">General journal (textbook)</span></button><button class="nav-btn" data-page="tbspecial"><span class="ico">❖</span><span data-en="Special journals" data-bn="বিশেষ জাবেদা">Special journals</span></button><button class="nav-btn" data-page="cashjournal"><span class="ico">⇅</span><span data-en="Cash in/out journal" data-bn="নগদ জমা/খরচ জাবেদা">Cash in/out journal</span></button><button class="nav-btn" data-page="adjusting"><span class="ico">⚖</span><span data-en="Adjusting entries" data-bn="সমন্বয় দাখিলা">Adjusting entries</span></button><button class="nav-btn" data-page="tbtree"><span class="ico">⌥</span><span data-en="Journal classification" data-bn="জাবেদার শ্রেণিবিভাগ">Journal classification</span></button></div></div><div class="nav-grp" data-g="lg"><div class="nav-label"><span data-en="Ledgers" data-bn="খতিয়ান">Ledgers</span></div><div class="nav-items"><button class="nav-btn" data-page="ledger"><span class="ico">▤</span><span data-en="Ledger" data-bn="খতিয়ান">Ledger</span></button><button class="nav-btn" data-page="tbledger"><span class="ico">▥</span><span data-en="Ledger (textbook)" data-bn="খতিয়ান (ছক)">Ledger (textbook)</span></button><button class="nav-btn" data-page="accounts"><span class="ico">⇄</span><span data-en="T-chart" data-bn="টি-চার্ট">T-chart</span></button><button class="nav-btn" data-page="gl"><span class="ico">▥</span><span data-en="General ledger" data-bn="সাধারণ খতিয়ান">General ledger</span></button><button class="nav-btn" data-page="cashbook"><span class="ico">☰</span><span data-en="Cash book" data-bn="নগদান বই">Cash book</span></button><button class="nav-btn" data-page="chartofaccounts"><span class="ico">▦</span><span data-en="Chart of accounts" data-bn="হিসাবের তালিকা">Chart of accounts</span></button></div></div><div class="nav-grp" data-g="st"><div class="nav-label"><span data-en="Statements" data-bn="বিবরণী">Statements</span></div><div class="nav-items"><button class="nav-btn" data-page="tbeq"><span class="ico">▦</span><span data-en="Accounting equation" data-bn="হিসাব সমীকরণ">Accounting equation</span></button><button class="nav-btn" data-page="trialbalance"><span class="ico">⚖</span><span data-en="Trial balance" data-bn="রেওয়ামিল">Trial balance</span></button><button class="nav-btn" data-page="balance"><span class="ico">▤</span><span data-en="Balance sheet" data-bn="স্থিতিপত্র">Balance sheet</span></button><button class="nav-btn" data-page="statements"><span class="ico">§</span><span data-en="Financial statements" data-bn="আর্থিক বিবরণী">Financial statements</span></button><button class="nav-btn" data-page="tbfs"><span class="ico">▥</span><span data-en="Statements (textbook)" data-bn="তালিকা ও বিবরণী (ছক)">Statements (textbook)</span></button><button class="nav-btn" data-page="tbcap"><span class="ico">⚖</span><span data-en="Profit / loss from capital" data-bn="লাভ/ক্ষতি নির্ণয়">Profit / loss from capital</span></button><button class="nav-btn" data-page="caprev"><span class="ico">◐</span><span data-en="Capital & revenue" data-bn="মূলধন ও আয়">Capital & revenue</span></button><button class="nav-btn" data-page="cycle"><span class="ico">↻</span><span data-en="Accounting cycle" data-bn="হিসাবচক্র">Accounting cycle</span></button></div></div><div class="nav-grp" data-g="dc"><div class="nav-label"><span data-en="Documents" data-bn="নথি">Documents</span></div><div class="nav-items"><button class="nav-btn" data-page="vouchers"><span class="ico">❖</span><span data-en="Vouchers & documents" data-bn="ভাউচার ও নথি">Vouchers & documents</span></button></div></div><div class="nav-grp" data-g="mg"><div class="nav-label"><span data-en="Management" data-bn="ব্যবস্থাপনা">Management</span></div><div class="nav-items"><button class="nav-btn" data-page="debtors"><span class="ico">♧</span><span data-en="Debtors" data-bn="দেনাদার">Debtors</span></button><button class="nav-btn" data-page="creditors"><span class="ico">♤</span><span data-en="Creditors" data-bn="পাওনাদার">Creditors</span></button><button class="nav-btn" data-page="inventory"><span class="ico">▦</span><span data-en="Inventory" data-bn="মজুত পণ্য">Inventory</span></button><button class="nav-btn" data-page="operators"><span class="ico">☺</span><span data-en="Operators" data-bn="অপারেটর">Operators</span></button><button class="nav-btn" data-page="reports"><span class="ico">▥</span><span data-en="Reports" data-bn="প্রতিবেদন">Reports</span></button></div></div><div class="nav-grp" data-g="ap"><div class="nav-label"><span data-en="App" data-bn="অ্যাপ">App</span></div><div class="nav-items"><button class="nav-btn" data-page="settings"><span class="ico">⚙</span><span data-en="Settings" data-bn="সেটিংস">Settings</span></button></div></div></aside>
  <main class="main" id="main">
   <section class="page hide" id="intro"></section><section class="page" id="dashboard"></section><section class="page hide" id="entry"></section><section class="page hide" id="ledger"></section>
   <section class="page hide" id="accounts"></section><section class="page hide" id="chartofaccounts"></section><section class="page hide" id="debtors"></section><section class="page hide" id="creditors"></section><section class="page hide" id="inventory"></section>
   <section class="page hide" id="receipts"></section><section class="page hide" id="reports"></section><section class="page hide" id="journal"></section><section class="page hide" id="cashbook"></section><section class="page hide" id="trialbalance"></section><section class="page hide" id="balance"></section><section class="page hide" id="vouchers"></section><section class="page hide" id="gl"></section><section class="page hide" id="statements"></section><section class="page hide" id="caprev"></section><section class="page hide" id="cycle"></section><section class="page hide" id="adjusting"></section><section class="page hide" id="cashjournal"></section><section class="page hide" id="operators"></section><section class="page hide" id="settings"></section>
- </main>
+ <section class="page hide tbpagewrap" id="tbeq"></section><section class="page hide tbpagewrap" id="tbjournal"></section><section class="page hide tbpagewrap" id="tbspecial"></section><section class="page hide tbpagewrap" id="tbtree"></section><section class="page hide tbpagewrap" id="tbmemo"></section><section class="page hide tbpagewrap" id="tbcap"></section><section class="page hide tbpagewrap" id="tbfs"></section><section class="page hide tbpagewrap" id="tbledger"></section></main>
 </div>
 <div class="bottomnav" id="bottomnav">
  <button data-page="dashboard" class="active"><span>⌂</span>Home</button><button data-page="entry"><span>＋</span>Add</button><button data-page="ledger"><span>▤</span>Ledger</button><button data-page="reports"><span>▥</span>Reports</button><button data-page="settings"><span>⚙</span>More</button>
@@ -1089,11 +1476,388 @@ function postingEntry(date,desc,debit,credit,amount,note=''){
 function renderAdjusting(){
  const accountOpts=ALL.map(([k,n])=>`<option value="${k}">${n}</option>`).join('');
  $('adjusting').innerHTML=pageHead('Adjusting entries','Record accruals, prepayments, depreciation, inventory corrections and other period-end adjustments','<button class="btn" data-goto="entry">＋ Open New entry →</button><button class="btn" data-print="adjusting">⎙ Print</button>')+
- `<div class="notice">Adjusting entries use double-entry bookkeeping. Choose the debit and credit accounts carefully; the same amount is posted to both sides.</div><div class="panel"><div class="panel-head"><h3>New adjusting journal entry</h3><span class="pill">Debit = Credit</span></div><form id="adjustForm"><div class="grid-form"><div class="field"><label>Date</label><input name="date" type="date" required value="${today()}"></div><div class="field"><label>Adjustment type</label><select name="kind"><option>Accrued expense</option><option>Accrued income</option><option>Prepaid expense</option><option>Unearned income</option><option>Depreciation</option><option>Bad debt</option><option>Inventory adjustment</option><option>Correction / other</option></select></div><div class="field"><label>Amount (৳)</label><input name="amount" type="number" min="0.01" step="0.01" required placeholder="0.00"></div><div class="field"><label>Debit account</label><select name="debit">${accountOpts}</select></div><div class="field"><label>Credit account</label><select name="credit">${accountOpts}</select></div><div class="field"><label>Reference (optional)</label><input name="ref" placeholder="Month-end / document no."></div><div class="field full"><label>Explanation / particulars</label><input name="desc" required maxlength="180" placeholder="Explain why this adjustment is needed"></div></div><div class="actions"><button class="btn primary" type="submit">Save adjusting entry</button><button class="btn" type="reset">Clear</button></div></form></div><div class="panel"><div class="panel-head"><h3>Adjusting entries history</h3><input id="adjustSearch" class="search" placeholder="Search adjustments…"></div><div id="adjustRows"></div></div>`;
+ qaHtml()+`<div class="notice">Adjusting entries use double-entry bookkeeping. Choose the debit and credit accounts carefully; the same amount is posted to both sides.</div><div class="panel"><div class="panel-head"><h3>New adjusting journal entry</h3><span class="pill">Debit = Credit</span></div><form id="adjustForm"><div class="grid-form"><div class="field"><label>Date</label><input name="date" type="date" required value="${today()}"></div><div class="field"><label>Adjustment type</label><select name="kind"><option>Accrued expense</option><option>Accrued income</option><option>Prepaid expense</option><option>Unearned income</option><option>Depreciation</option><option>Bad debt</option><option>Inventory adjustment</option><option>Correction / other</option></select></div><div class="field"><label>Amount (৳)</label><input name="amount" type="number" min="0.01" step="0.01" required placeholder="0.00"></div><div class="field"><label>Debit account</label><select name="debit">${accountOpts}</select></div><div class="field"><label>Credit account</label><select name="credit">${accountOpts}</select></div><div class="field"><label>Reference (optional)</label><input name="ref" placeholder="Month-end / document no."></div><div class="field full"><label>Explanation / particulars</label><input name="desc" required maxlength="180" placeholder="Explain why this adjustment is needed"></div></div><div class="actions"><button class="btn primary" type="submit">Save adjusting entry</button><button class="btn" type="reset">Clear</button></div></form></div><div class="panel"><div class="panel-head"><h3>Adjusting entries history</h3><input id="adjustSearch" class="search" placeholder="Search adjustments…"></div><div id="adjustRows"></div></div>`;
  const f=$('adjustForm'); f.debit.value='eq'; f.credit.value='ca';
  f.addEventListener('submit',e=>{e.preventDefault();const d=f.debit.value,c=f.credit.value,a=Number(f.amount.value);if(d===c){toast('Choose two different accounts.');return}if(!(a>0)){toast('Enter an amount greater than zero.');return}const desc=`[Adjusting] ${f.kind.value}: ${f.desc.value.trim()}${f.ref.value.trim()?' · '+f.ref.value.trim():''}`;entries.push(postingEntry(f.date.value,desc,d,c,a,'Adjusting'));save();go('adjusting');toast('Adjusting entry saved.')});
- const fill=(q='')=>{const rows=entries.filter(e=>e.desc.startsWith('[Adjusting]')).filter(e=>(e.desc+' '+e.date).toLowerCase().includes(q.toLowerCase())).sort((a,b)=>b.date.localeCompare(a.date));$('adjustRows').innerHTML=table(['Date','Particulars','Debit','Credit','num:Amount'],rows.map(e=>{const dc=Object.entries(e.v||{}).filter(([k,v])=>v).map(([k,v])=>({name:(ALL.find(a=>a[0]===k)||[k,k])[1],v}));const dr=dc.find(x=>ASSET.some(a=>a[0]===x.name)||false);const {dr:debits,cr:credits}=jLines(e);return `<tr><td>${fmtDate(e.date)}</td><td>${esc(e.desc.replace('[Adjusting] ',''))}</td><td>${esc(debits.map(x=>x[0]).join(', ')||'—')}</td><td>${esc(credits.map(x=>x[0]).join(', ')||'—')}</td><td class="num">${money(Math.max(...dc.map(x=>Math.abs(x.v)),0))}</td></tr>`}).join(''),'No adjusting entries yet.')};fill();$('adjustSearch').addEventListener('input',e=>fill(e.target.value));
+ const fill=(q='')=>{const rows=entries.filter(e=>e.desc.startsWith('[Adjusting]')).filter(e=>(e.desc+' '+e.date).toLowerCase().includes(q.toLowerCase())).sort((a,b)=>b.date.localeCompare(a.date));$('adjustRows').innerHTML=table(['Date','Particulars','Debit','Credit','num:Amount',''],rows.map(e=>{const dc=Object.entries(e.v||{}).filter(([k,v])=>v).map(([k,v])=>({name:(ALL.find(a=>a[0]===k)||[k,k])[1],v}));const dr=dc.find(x=>ASSET.some(a=>a[0]===x.name)||false);const {dr:debits,cr:credits}=jLines(e);return `<tr><td>${fmtDate(e.date)}</td><td>${esc(e.desc.replace('[Adjusting] ',''))}</td><td>${esc(debits.map(x=>x[0]).join(', ')||'—')}</td><td>${esc(credits.map(x=>x[0]).join(', ')||'—')}</td><td class="num">${money(Math.max(...dc.map(x=>Math.abs(x.v)),0))}</td><td><button class="btn danger small" data-qa-del="${esc(String(e.id))}">✕</button></td></tr>`}).join(''),'No adjusting entries yet.')};fill();$('adjustSearch').addEventListener('input',e=>fill(e.target.value));qaBind();
 }
+/* ===== One-click adjustments from existing ledger data (সমন্বয় দাখিলা) ===== */
+function qaR2(n){return Math.round(Number(n||0)*100)/100}
+function qaPush(date,desc,v,note){entries.push({id:'u'+Date.now()+Math.random().toString(36).slice(2,8),date:date||today(),desc:'[Adjusting] '+desc,note:note||'Adjusting',v})}
+function qaTemplates(){
+ const T=T7;
+ return [
+  {id:'depEq',ic:'⚙',n:T('Depreciation — Equipment','অবচয় — যন্ত্রপাতি'),acct:'eqp',rate:10,dr:T('Depreciation (expense)','অবচয় (ব্যয়)'),cr:T('Equipment','যন্ত্রপাতি'),d:'Depreciation on equipment',build:x=>({v:{eqp:-x,eq:-x},note:'Expenses'})},
+  {id:'depFu',ic:'🪑',n:T('Depreciation — Furniture','অবচয় — আসবাবপত্র'),acct:'fur',rate:10,dr:T('Depreciation (expense)','অবচয় (ব্যয়)'),cr:T('Furniture','আসবাবপত্র'),d:'Depreciation on furniture',build:x=>({v:{fur:-x,eq:-x},note:'Expenses'})},
+  {id:'bad',ic:'⚠',n:T('Bad debts','অনাদায়ী পাওনা'),acct:'db',rate:5,dr:T('Bad debts (expense)','অনাদায়ী পাওনা (ব্যয়)'),cr:T('Debtors','দেনাদার'),d:'Bad debts written off',build:x=>({v:{db:-x,eq:-x},note:'Expenses'})},
+  {id:'pre',ic:'📦',n:T('Prepaid expense used up','অগ্রিম ব্যয় ব্যবহৃত'),acct:'pe',rate:null,full:true,dr:T('Expense','ব্যয়'),cr:T('Prepaid expenses','অগ্রিম ব্যয়'),d:'Prepaid expense consumed',build:x=>({v:{pe:-x,eq:-x},note:'Expenses'})},
+  {id:'unr',ic:'✓',n:T('Unearned revenue now earned','অর্জিত অগ্রিম আয়'),acct:'ur',rate:null,full:true,dr:T('Unearned revenue','অগ্রিম আয় (দায়)'),cr:T('Revenue','আয়'),d:'Unearned revenue earned',build:x=>({v:{ur:-x,eq:x},note:'Revenue'})},
+  {id:'acc',ic:'⏳',n:T('Accrued expense (utilities)','বকেয়া ব্যয় (ইউটিলিটি)'),acct:null,rate:null,dr:T('Expense','ব্যয়'),cr:T('Utilities payable','বকেয়া ইউটিলিটি'),d:'Accrued utilities expense',build:x=>({v:{upay:x,eq:-x},note:'Expenses'})},
+  {id:'int',ic:'％',n:T('Accrued interest','বকেয়া সুদ'),acct:null,rate:null,dr:T('Interest expense','সুদ ব্যয়'),cr:T('Interest payable','সুদ প্রদেয়'),d:'Accrued interest expense',build:x=>({v:{ip:x,eq:-x},note:'Expenses'})},
+  {id:'stk',ic:'▦',n:T('Inventory — physical count','মজুত পণ্য — বাস্তব গণনা'),acct:'in',count:true,dr:T('Loss / gain','ক্ষতি / লাভ'),cr:T('Inventory','মজুত পণ্য'),d:'Inventory count adjustment'}
+ ];
+}
+function qaBase(t){return t.acct?Math.max(0,qaR2(total(t.acct))):0}
+function qaHtml(){
+ const T=T7,tp=qaTemplates();
+ const rows=tp.map(t=>{const base=qaBase(t);const amt=t.rate!=null?qaR2(base*t.rate/100):(t.full?base:'');
+  const mid=t.count?`<input class="qa-in" type="number" step="0.01" min="0" data-qa-count placeholder="${T('Counted stock ৳','গণনাকৃত মজুত ৳')}">`:(t.rate!=null?`<input class="qa-in qa-sm" type="number" step="0.01" min="0" max="100" data-qa-rate value="${t.rate}"> %`:'<span class="muted">—</span>');
+  return `<tr data-qa-row="${t.id}" data-base="${base}"><td><b>${t.ic} ${t.n}</b><div class="muted small">${T('Dr','ডেবিট')} ${t.dr} · ${T('Cr','ক্রেডিট')} ${t.cr}</div></td><td class="num">${t.acct?money(base):'<span class="muted">—</span>'}</td><td>${mid}<div class="muted small" data-qa-tag></div></td><td><input class="qa-in" type="number" step="0.01" min="0" data-qa-amt value="${amt}" placeholder="0.00" ${t.count?'readonly':''}></td><td><button class="btn primary small" data-qa-post="${t.id}">${T('Post','পোস্ট')}</button></td></tr>`}).join('');
+ const accs=ASSET.concat(LIABILITY);
+ const accOpt=accs.map(([k,n])=>`<option value="${k}">${esc(n)}</option>`).join('');
+ const ctr=`<option value="EXP">${T('Expenses (loss)','ব্যয় (ক্ষতি)')}</option><option value="REV">${T('Revenue (gain)','আয় (লাভ)')}</option><option value="CAP">${T('Owner’s capital','মালিকের মূলধন')}</option>`+accs.map(([k,n])=>`<option value="${k}">${esc(n)}</option>`).join('');
+ return `<div class="panel qa-panel"><div class="panel-head"><div><h3>⚡ ${T('Quick adjust from your ledger','খতিয়ানের তথ্য থেকে দ্রুত সমন্বয়')}</h3><small class="muted">${T('Amounts are pre-filled from your current ledger balances. Edit if needed, then post with one click.','বর্তমান খতিয়ান জের থেকে অঙ্ক আগেই বসানো আছে। দরকারে বদলান, তারপর এক ক্লিকে পোস্ট করুন।')}</small></div><span class="pill">${T('1 click','১ ক্লিক')}</span></div>
+ <div class="qa-bar"><div class="field"><label>${T('Adjustment date','সমন্বয়ের তারিখ')}</label><input id="qaDate" type="date" value="${today()}"></div><button class="btn small" type="button" data-qa-month>${T('Month-end','মাস শেষ')}</button><button class="btn primary" type="button" data-qa-all>⚡ ${T('Post all filled rows','ভরা সব সারি পোস্ট')}</button></div>
+ ${table([T('Adjustment','সমন্বয়'),'num:'+T('Ledger balance','খতিয়ান জের'),T('Rate / count','হার / গণনা'),T('Amount (৳)','অঙ্ক (৳)'),''],rows)}</div>
+ <div class="panel qa-panel"><div class="panel-head"><div><h3>⚖ ${T('Fix a ledger balance','খতিয়ানের জের ঠিক করুন')}</h3><small class="muted">${T('Type the correct balance — the difference is posted automatically.','সঠিক জের লিখুন — পার্থক্য নিজে থেকেই পোস্ট হবে।')}</small></div></div>
+ <div class="grid-form"><div class="field"><label>${T('Ledger account','খতিয়ান হিসাব')}</label><select id="qaAcct">${accOpt}</select></div><div class="field"><label>${T('Current balance','বর্তমান জের')}</label><input id="qaCur" readonly></div><div class="field"><label>${T('Correct balance (৳)','সঠিক জের (৳)')}</label><input id="qaTarget" type="number" step="0.01" placeholder="0.00"></div><div class="field"><label>${T('Difference goes to','পার্থক্য যাবে')}</label><select id="qaCounter">${ctr}</select></div><div class="field full"><label>${T('Reason (optional)','কারণ (ঐচ্ছিক)')}</label><input id="qaWhy" maxlength="120" placeholder="${T('e.g. stock-take, bank statement','যেমন: স্টক গণনা, ব্যাংক বিবরণী')}"></div></div>
+ <div class="actions"><button class="btn primary" type="button" id="qaLedgerGo">⚖ ${T('Adjust balance now','এখনই জের সমন্বয় করুন')}</button></div></div>
+ <div class="panel qa-panel"><div class="panel-head"><div><h3>↺ ${T('Adjust from previous entries','আগের দাখিলা থেকে সমন্বয়')}</h3><small class="muted">${T('Reverse a wrong entry, or correct its amount, in one click.','ভুল দাখিলা উল্টে দিন বা অঙ্ক ঠিক করুন, এক ক্লিকে।')}</small></div><input id="qaSearch" class="search" placeholder="${T('Search past entries…','আগের দাখিলা খুঁজুন…')}"></div><div id="qaPrev"></div></div>`
+}
+function qaFillPrev(q=''){
+ const T=T7,s=String(q).toLowerCase();
+ const list=entries.map((e,i)=>({e,i})).filter(x=>(x.e.desc+' '+x.e.date).toLowerCase().includes(s)).sort((a,b)=>b.e.date.localeCompare(a.e.date)||b.i-a.i).slice(0,12);
+ const rows=list.map(({e})=>{const {dr,cr}=jLines(e);const amt=qaR2(Math.max(0,...Object.values(e.v||{}).map(x=>Math.abs(Number(x)||0))));const d0=e.desc.replace(/^\[Adjusting\]\s*/,'');const d=d0.length>80?d0.slice(0,78)+'…':d0;
+  return `<tr><td>${fmtDate(e.date)}</td><td>${esc(d)}<div class="muted small">${esc(dr.map(x=>x[0]).join(', ')||'—')} → ${esc(cr.map(x=>x[0]).join(', ')||'—')}</div></td><td class="num">${money(amt)}</td><td class="qa-act"><button class="btn small" type="button" data-qa-rev="${esc(String(e.id))}">↺ ${T('Reverse','উল্টে দিন')}</button> <input class="qa-in qa-sm" type="number" step="0.01" min="0" placeholder="${T('New ৳','নতুন ৳')}" data-qa-fixin="${esc(String(e.id))}"><button class="btn small" type="button" data-qa-fix="${esc(String(e.id))}">✎ ${T('Correct','ঠিক করুন')}</button></td></tr>`}).join('');
+ $('qaPrev').innerHTML=table([T('Date','তারিখ'),T('Particulars  (Dr → Cr)','বিবরণ (ডেবিট → ক্রেডিট)'),'num:'+T('Amount','অঙ্ক'),''],rows,T('No matching entries.','কোনো দাখিলা মেলেনি।'));
+}
+function qaBind(){
+ const root=$('adjusting');if(!root||!$('qaPrev'))return;const T=T7,tp=qaTemplates();
+ const dateV=()=>($('qaDate')&&$('qaDate').value)||today();
+ const recalc=row=>{const t=tp.find(x=>x.id===row.dataset.qaRow),base=Number(row.dataset.base)||0,amt=row.querySelector('[data-qa-amt]'),tag=row.querySelector('[data-qa-tag]');
+  if(t.count){const c=row.querySelector('[data-qa-count]').value;if(c===''){amt.value='';tag.textContent='';return}const diff=qaR2(Number(c)-base);amt.value=Math.abs(diff)||'';tag.textContent=diff<0?T('Shortage → loss','ঘাটতি → ক্ষতি'):diff>0?T('Surplus → gain','উদ্বৃত্ত → লাভ'):T('Matches ledger','খতিয়ানের সাথে মিলেছে')}
+  else if(t.rate!=null){const r=Number(row.querySelector('[data-qa-rate]').value)||0;amt.value=qaR2(base*r/100)}};
+ const rowPost=row=>{const t=tp.find(x=>x.id===row.dataset.qaRow),base=Number(row.dataset.base)||0;let x=qaR2(row.querySelector('[data-qa-amt]').value);if(!(x>0))return false;
+  let b,desc;
+  if(t.count){const diff=qaR2(Number(row.querySelector('[data-qa-count]').value)-base);if(!diff)return false;b=diff<0?{v:{in:-x,eq:-x},note:'Expenses'}:{v:{in:x,eq:x},note:'Revenue'};desc=(diff<0?'Inventory shortage':'Inventory surplus')+` (count ${money(Number(row.querySelector('[data-qa-count]').value))} vs ledger ${money(base)})`}
+  else{b=t.build(x);const r=t.rate!=null?Number(row.querySelector('[data-qa-rate]').value):null;desc=t.d+(r!=null?` (${r}% of ${money(base)})`:'')}
+  qaPush(dateV(),desc,b.v,b.note);return true};
+ qaFillPrev('');root.querySelectorAll('[data-qa-row]').forEach(recalc);
+ const cur=()=>{const k=$('qaAcct').value;$('qaCur').value=money(total(k));$('qaTarget').placeholder=String(qaR2(total(k)))};cur();
+ root.oninput=e=>{const r=e.target.closest&&e.target.closest('[data-qa-row]');if(r&&!e.target.hasAttribute('data-qa-amt'))recalc(r);if(e.target.id==='qaAcct')cur();if(e.target.id==='qaSearch')qaFillPrev(e.target.value)};
+ root.onclick=e=>{const b=e.target.closest&&e.target.closest('button');if(!b)return;
+  if(b.hasAttribute('data-qa-month')){const d=new Date(dateV()+'T00:00:00'),m=new Date(d.getFullYear(),d.getMonth()+1,0),p=n=>String(n).padStart(2,'0');$('qaDate').value=`${m.getFullYear()}-${p(m.getMonth()+1)}-${p(m.getDate())}`;return}
+  if(b.dataset.qaPost){const row=b.closest('[data-qa-row]');if(rowPost(row)){save();toast(T('Adjusting entry posted.','সমন্বয় দাখিলা পোস্ট হয়েছে।'))}else toast(T('Enter an amount greater than zero.','শূন্যের বেশি অঙ্ক দিন।'));return}
+  if(b.hasAttribute('data-qa-all')){const rs=[...root.querySelectorAll('[data-qa-row]')].filter(r=>qaR2(r.querySelector('[data-qa-amt]').value)>0);if(!rs.length){toast(T('Nothing to post yet.','পোস্ট করার মতো কিছু নেই।'));return}if(!confirm(T(`Post ${rs.length} adjusting entries?`,`${rs.length}টি সমন্বয় দাখিলা পোস্ট করবেন?`)))return;let n=0;rs.forEach(r=>{if(rowPost(r))n++});save();toast(T(`${n} adjusting entries posted.`,`${n}টি সমন্বয় দাখিলা পোস্ট হয়েছে।`));return}
+  if(b.id==='qaLedgerGo'){const k=$('qaAcct').value,c=$('qaCounter').value,tv=$('qaTarget').value,curv=qaR2(total(k));if(tv===''){toast(T('Enter the correct balance.','সঠিক জের লিখুন।'));return}const diff=qaR2(Number(tv)-curv);if(!diff){toast(T('Balance already matches.','জের আগেই মিলে আছে।'));return}if(c===k){toast(T('Choose a different account for the difference.','পার্থক্যের জন্য আলাদা হিসাব বাছুন।'));return}
+   const imb=isA(k)?diff:-diff,v={};v[k]=diff;let note='Adjusting';
+   if(c==='EXP'||c==='REV'||c==='CAP'){v.eq=imb;note={EXP:'Expenses',REV:'Revenue',CAP:'Capital'}[c]}else{v[c]=isA(c)?-imb:imb}
+   const nm=(ALL.find(a=>a[0]===k)||[k,k])[1],why=$('qaWhy').value.trim();qaPush(dateV(),`Ledger balance adjusted — ${nm}: ${money(curv)} → ${money(Number(tv))}${why?' · '+why:''}`,v,note);save();toast(T('Ledger balance adjusted.','খতিয়ানের জের সমন্বয় হয়েছে।'));return}
+  if(b.dataset.qaRev){const e0=entries.find(x=>String(x.id)===b.dataset.qaRev);if(!e0)return;const v={};Object.entries(e0.v||{}).forEach(([k,x])=>{if(Number(x))v[k]=-Number(x)});qaPush(dateV(),'Reversal of: '+e0.desc.replace(/^\[Adjusting\]\s*/,'').slice(0,110),v,e0.note);save();toast(T('Entry reversed.','দাখিলা উল্টে দেওয়া হয়েছে।'));return}
+  if(b.dataset.qaFix){const id=b.dataset.qaFix,e0=entries.find(x=>String(x.id)===id);if(!e0)return;const inp=[...root.querySelectorAll('[data-qa-fixin]')].find(i=>i.dataset.qaFixin===id),nv=qaR2(inp&&inp.value),old=qaR2(Math.max(0,...Object.values(e0.v||{}).map(x=>Math.abs(Number(x)||0))));
+   if(!(nv>=0)||inp.value===''){toast(T('Type the new amount first.','আগে নতুন অঙ্ক লিখুন।'));return}if(!old||nv===old){toast(T('New amount is the same.','নতুন অঙ্ক একই।'));return}const r=nv/old-1,v={};Object.entries(e0.v||{}).forEach(([k,x])=>{const d=qaR2(Number(x)*r);if(d)v[k]=d});
+   qaPush(dateV(),`Correction (${money(old)} → ${money(nv)}): `+e0.desc.replace(/^\[Adjusting\]\s*/,'').slice(0,100),v,e0.note);save();toast(T('Amount corrected.','অঙ্ক ঠিক করা হয়েছে।'));return}
+  if(b.dataset.qaDel){if(!confirm(T('Delete this adjusting entry?','এই সমন্বয় দাখিলা মুছবেন?')))return;const i=entries.findIndex(x=>String(x.id)===b.dataset.qaDel);if(i>=0){entries.splice(i,1);save();toast(T('Adjusting entry deleted.','সমন্বয় দাখিলা মুছে ফেলা হয়েছে।'))}return}
+ };
+}
+
+/* ===== Textbook formats (পাঠ্যবই ছক) — equation table, journals, challan/cash memo, profit-from-capital ===== */
+const TB={sj:{tab:'sales'},eqM:'',jM:'',jQ:'',sjM:'',memo:null,cap:null};
+const TBBN={ca:'নগদান',ba:'ব্যাংক',bk:'বিকাশ',ng:'নগদ (মোবাইল)',db:'প্রাপ্য',in:'মজুদ পণ্য',pe:'অগ্রিম ব্যয়',eqp:'যন্ত্রপাতি',fur:'আসবাবপত্র',sv:'সঞ্চয়',ot:'অন্যান্য সম্পদ',cd:'প্রদেয়',ln:'ব্যাংক ঋণ',rl:'রিচার্জ ঋণ',tp:'প্রদেয় কর',upay:'প্রদেয় ইউটিলিটি',ip:'প্রদেয় সুদ',ur:'অগ্রিম আয়',o2:'অন্যান্য দায়',eq:'মালিকানা স্বত্ব',drw:'উত্তোলন'};
+const TB_PAGES=[['tbeq','▦',['Accounting equation','হিসাব সমীকরণ']],['tbjournal','▤',['General journal','সাধারণ জাবেদা']],['tbspecial','❖',['Special journals','বিশেষ জাবেদা']],['tbtree','⌥',['Journal classification','জাবেদার শ্রেণিবিভাগ']],['tbledger','▥',['Ledger (textbook)','খতিয়ান (ছক)']],['tbmemo','🧾',['Cash memo / Challan','ক্যাশমেমো / চালান']],['tbcap','⚖',['Profit / loss from capital','লাভ/ক্ষতি নির্ণয়']],['tbfs','▥',['Statements (textbook)','তালিকা ও বিবরণী']]];
+const tbBn=()=>typeof extra.tbBn==='boolean'?extra.tbBn:isBn();
+const tL=(en,bn)=>tbBn()?bn:en;
+const tbD=s=>{s=String(s);return tbBn()?s.replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]):s};
+const tbN=(n,paren)=>{n=Math.round(Number(n||0)*100)/100;const t=tbD(Math.abs(n).toLocaleString('en-IN',{maximumFractionDigits:2}));return n<0?(paren?`(${t})`:'-'+t):t};
+const tbLoc=()=>tbBn()?'bn-BD':'en-GB';
+const tbMD=s=>new Date(s+'T00:00:00').toLocaleDateString(tbLoc(),{day:'numeric',month:'short'});
+const tbFull=s=>new Date(s+'T00:00:00').toLocaleDateString(tbLoc(),{day:'numeric',month:'long',year:'numeric'});
+const tbMon=m=>new Date(m+'-01T00:00:00').toLocaleDateString(tbLoc(),{month:'long',year:'numeric'});
+const tbBiz=()=>esc((extra.profile&&extra.profile.org)||settings.title||'Business');
+const tbClean=d=>String(d||'').replace(/^(\[[^\]]*\]\s*)+/,'');
+const tbSum=(list,k)=>list.reduce((s,e)=>s+Number((e.v||{})[k]||0),0);
+const tbMonths=()=>[...new Set(entries.map(e=>e.date.slice(0,7)))].sort().reverse();
+const tbMonthSel=(id,val)=>`<select id="${id}"><option value="">${tL('All months','সব মাস')}</option>${tbMonths().map(m=>`<option value="${m}"${m===val?' selected':''}>${tbMon(m)}</option>`).join('')}</select>`;
+function tbHead(id,t,s){return pageHead(tL(...t),tL(...s),`<button class="btn" data-tb-lang>বাংলা ⇄ EN</button><button class="btn" data-print="${id}">⎙ ${tL('Print','প্রিন্ট')}</button>`)}
+function tbNav(){const sb=$('sidebar');if(!sb)return;
+ let shut=[];try{shut=JSON.parse(localStorage.getItem('kfm_navshut')||'[]')}catch(x){}
+ sb.querySelectorAll('.nav-grp').forEach(g=>{const has=g.querySelector(`.nav-btn[data-page="${currentPage}"]`);g.classList.toggle('shut',shut.includes(g.dataset.g)&&!has)});
+ const cp=({tbmemo:'vouchers',receipts:'vouchers'})[currentPage]||currentPage;sb.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===cp));
+ const cnt={journal:entries.length,tbjournal:entries.length,adjusting:entries.filter(e=>String(e.desc).startsWith('[Adjusting]')).length,tbspecial:entries.filter(e=>e.sj).length,debtors:(extra.debtors||[]).length,inventory:(extra.products||[]).length,receipts:(extra.receipts||[]).length,vouchers:(extra.vouchers||[]).length,tbmemo:(extra.memos||[]).length};
+ sb.querySelectorAll('.nav-btn').forEach(b=>{const n=cnt[b.dataset.page];if(n)b.setAttribute('data-count',n>99?'99+':n);else b.removeAttribute('data-count')});
+ if(!window.__navBound){window.__navBound=true;sb.addEventListener('click',e=>{const l=e.target.closest('.nav-label');if(!l)return;const g=l.parentElement;g.classList.toggle('shut');let arr=[];try{arr=JSON.parse(localStorage.getItem('kfm_navshut')||'[]')}catch(x){}arr=arr.filter(k=>k!==g.dataset.g);if(g.classList.contains('shut'))arr.push(g.dataset.g);try{localStorage.setItem('kfm_navshut',JSON.stringify(arr))}catch(x){}})}
+ if(!$('kcmdBtn')){const f=document.querySelector('.topbar .btn');if(f){f.parentElement.insertAdjacentHTML('afterbegin','<button class="btn" id="kcmdBtn" type="button"></button>');$('kcmdBtn').onclick=tbPalOpen}}
+ if($('kcmdBtn'))$('kcmdBtn').innerHTML='⌕ '+tL('Search','খুঁজুন')+' <kbd>Ctrl K</kbd>'}
+/* lines of an entry with account keys, names and ledger page */
+function tbLines(e){const dr=[],cr=[],sj=e.sj;ASSET.concat(LIABILITY,[['eq','']]).forEach(([k,n])=>{const d=Number((e.v||{})[k]||0);if(!d)return;
+  let en=k==='eq'?(EQN[e.note]||'Owner’s equity'):n,bn=k==='eq'?({Revenue:sj?'বিক্রয়':'আয়',Expenses:'ব্যয়',Capital:'মূলধন',Drawing:'উত্তোলন'}[e.note]||'মালিকানা স্বত্ব'):(TBBN[k]||n);const lp=lpOf(k==='eq'?(EQN[e.note]||'Owner’s equity'):n);
+  if(k==='in'&&sj&&/purchase|preturn/.test(sj.t)){en='Purchases';bn='ক্রয়'}if(k==='eq'&&sj&&e.note==='Revenue')en='Sales';
+  const name=tbBn()?bn+' হিসাব':en+' A/c';((isA(k)?d>0:d<0)?dr:cr).push({k,name,a:Math.abs(d),lp})});return{dr,cr}}
+/* ---------- 1. Accounting equation statement ---------- */
+function tbRenderEq(){const el=$('tbeq');if(!el)return;const m=TB.eqM,all=asc(),list=all.filter(e=>!m||e.date.startsWith(m)),before=m?all.filter(e=>e.date.slice(0,7)<m):[];
+ const used=new Set();list.concat(before).forEach(e=>Object.keys(e.v||{}).forEach(k=>{if(Number(e.v[k]))used.add(k)}));
+ const A=ASSET.filter(a=>used.has(a[0])),L=LIABILITY.filter(a=>used.has(a[0])),nm=(k,n)=>tbBn()?(TBBN[k]||n):n;
+ const nA=Math.max(A.length,1),nL=Math.max(L.length,1),cell=v=>Number(v)?tbN(v,true):'';
+ const rowOf=(label,src,cls)=>`<tr class="${cls||''}"><td>${label}</td>${A.map(([k])=>`<td class="num">${cell(tbSum(src,k))}</td>`).join('')||'<td></td>'}<td class="tbk-op">=</td>${L.map(([k])=>`<td class="num">${cell(tbSum(src,k))}</td>`).join('')||'<td></td>'}<td class="tbk-op">+</td><td class="num">${cell(tbSum(src,'eq'))}</td><td></td></tr>`;
+ let body=m?rowOf(tL('Opening balance','প্রারম্ভিক জের'),before,'tbk-sum'):'';
+ list.forEach(e=>{body+=`<tr><td>${tbD(tbMD(e.date))}</td>${A.map(([k])=>`<td class="num">${cell((e.v||{})[k])}</td>`).join('')||'<td></td>'}<td class="tbk-op">=</td>${L.map(([k])=>`<td class="num">${cell((e.v||{})[k])}</td>`).join('')||'<td></td>'}<td class="tbk-op">+</td><td class="num">${cell((e.v||{}).eq)}</td><td class="tbk-rem">${esc(tbClean(e.desc))}</td></tr>`});
+ const upto=before.concat(list),ta=A.reduce((s,[k])=>s+tbSum(upto,k),0),tl=L.reduce((s,[k])=>s+tbSum(upto,k),0),te=tbSum(upto,'eq');
+ body+=rowOf(tL('Balance','উদ্বৃত্ত'),upto,'tbk-sum');
+ body+=`<tr class="tbk-tot"><td>${tL('Total','মোট')}</td><td class="num" colspan="${nA}"><span class="tbk-dbl">${tbN(ta)}</span></td><td class="tbk-op">=</td><td class="num" colspan="${nL+2}"><span class="tbk-dbl">${tbN(tl+te)}</span></td><td></td></tr>`;
+ el.innerHTML=tbHead('tbeq',['Accounting equation statement','হিসাব সমীকরণ ছক'],['Effect of each transaction on assets = liabilities + owner’s equity','প্রতিটি লেনদেনের প্রভাব: সম্পদ = দায় + মালিকানা স্বত্ব'])+`<div class="tbpage"><div class="panel no-print"><div class="panel-head filters"><div class="field"><label>${tL('Month','মাস')}</label>${tbMonthSel('tbEqM',m)}</div></div></div><div class="tbk-sheet"><div class="tbk-title">${tbBiz()}${tL('’s','-এর')}<small>${m?tL('Effect of the transactions of ','')+tbD(tbMon(m))+tL('',' মাসের')+' ':''}${tL('transactions on the accounting equation','লেনদেনসমূহের প্রভাব হিসাব সমীকরণে দেখানো হলো')}</small></div><div style="overflow-x:auto"><table class="tbk tbk-eq"><thead><tr><th rowspan="2">${tL('Date','তারিখ')}</th><th colspan="${nA}">${tL('Assets','সম্পদ')}</th><th rowspan="2" class="tbk-op">=</th><th colspan="${nL}">${tL('Liabilities','দায়')}</th><th rowspan="2" class="tbk-op">+</th><th rowspan="2">${tL('Owner’s equity','মালিকানা স্বত্ব')}</th><th rowspan="2">${tL('Remarks','মন্তব্য')}</th></tr><tr>${A.map(([k,n])=>`<th>${esc(nm(k,n))}</th>`).join('')||'<th></th>'}${L.map(([k,n])=>`<th>${esc(nm(k,n))}</th>`).join('')||'<th></th>'}</tr></thead><tbody>${body}</tbody></table></div>${Math.abs(ta-tl-te)>.004?`<p class="tbk-warn">${tL('Equation not balanced — check entries.','সমীকরণ মিলছে না — দাখিলাগুলো যাচাই করুন।')}</p>`:''}</div></div>`}
+/* ---------- 2. General journal (textbook ruling) ---------- */
+function tbRenderJ(){const el=$('tbjournal');if(!el)return;const m=TB.jM,q=TB.jQ.toLowerCase();
+ const L=asc().filter(e=>(!m||e.date.startsWith(m))&&(!q||(e.desc+' '+(e.note||'')).toLowerCase().includes(q)));let td=0,tc=0,h='',yr='';
+ L.forEach(e=>{const {dr,cr}=tbLines(e);if(!dr.length&&!cr.length)return;const y=e.date.slice(0,4);if(y!==yr){yr=y;h+=`<tr class="tbk-yr"><td><b>${tbD(y)}</b></td><td></td><td></td><td></td><td></td></tr>`}
+  let first=true;const row=(a,lab,cl)=>{const r=`<tr class="${first?'tbk-top':''}"><td class="tbk-d">${first?tbD(tbMD(e.date)):''}</td><td><div class="tbk-ac ${cl}"><span>${esc(a.name)}</span><em>${lab}</em></div></td><td class="tbk-c">${tbD(a.lp==null?'':a.lp)}</td><td class="num">${cl?'':tbN(a.a)}</td><td class="num">${cl?tbN(a.a):''}</td></tr>`;first=false;return r};
+  dr.forEach(a=>{h+=row(a,tL('Dr.','ডেবিট'),'');td+=a.a});cr.forEach(a=>{h+=row(a,tL('Cr.','ক্রেডিট'),'tbk-cr');tc+=a.a});
+  h+=`<tr><td></td><td class="tbk-nar">(${esc(tbClean(e.desc))})</td><td></td><td></td><td></td></tr>`});
+ el.innerHTML=tbHead('tbjournal',['General journal','সাধারণ জাবেদা'],['Journal in the textbook two-column ruling · L.P = Ledger Page','পাঠ্যবইয়ের দুই তরফা দাখিলা পদ্ধতির ছক · খ.পৃ. = খতিয়ান পৃষ্ঠা'])+`<div class="tbpage"><div class="panel no-print"><div class="panel-head filters"><input id="tbJQ" class="search" placeholder="${tL('Search particulars…','বিবরণ খুঁজুন…')}" value="${esc(TB.jQ)}">${tbMonthSel('tbJM',m)}</div></div><div class="tbk-sheet"><div class="tbk-title">${tbBiz()}<small>${tL('General journal','সাধারণ জাবেদা')}${m?' · '+tbD(tbMon(m)):''}</small></div><div style="overflow-x:auto"><table class="tbk tbk-j"><thead><tr><th style="width:92px">${tL('Date','তারিখ')}</th><th>${tL('Account name & narration','হিসাবের নাম ও ব্যাখ্যা')}</th><th style="width:60px">${tL('L.P.','খ.পৃ.')}</th><th style="width:130px">${tL('Debit (৳)','ডেবিট টাকা')}</th><th style="width:130px">${tL('Credit (৳)','ক্রেডিট টাকা')}</th></tr></thead><tbody>${h||`<tr><td colspan="5" class="empty">${tL('No entries.','কোনো দাখিলা নেই।')}</td></tr>`}<tr class="tbk-tot"><td></td><td class="num"><b>${tL('Total','মোট')}</b></td><td></td><td class="num"><span class="tbk-dbl">${tbN(td)}</span></td><td class="num"><span class="tbk-dbl">${tbN(tc)}</span></td></tr></tbody></table></div></div></div>`}
+/* ---------- 3. Special journals ---------- */
+const SJT={
+ sales:{en:'Sales journal',bn:'বিক্রয় জাবেদা',pl:['Debit account (customer)','ডেবিট হিসাবখাত (ক্রেতা)'],ref:['Challan no.','চালান নম্বর'],amt:['Receivable Dr.\nSales Cr.','প্রাপ্য হিসাব ডেবিট\nবিক্রয় হিসাব ক্রেডিট'],dr:'db',cr:'REV'},
+ purchase:{en:'Purchase journal',bn:'ক্রয় জাবেদা',pl:['Credit account (supplier)','ক্রেডিট হিসাবখাত (সরবরাহকারী)'],ref:['Invoice no.','চালান নম্বর'],amt:['Purchases Dr.\nPayable Cr.','ক্রয় হিসাব ডেবিট\nপ্রদেয় হিসাব ক্রেডিট'],dr:'in',cr:'cd',note:'Inventory purchase'},
+ sreturn:{en:'Sales return journal',bn:'বিক্রয় ফেরত জাবেদা',pl:['Customer','ক্রেতা'],ref:['Credit note no.','ক্রেডিট নোট নং'],amt:['Sales return Dr.\nReceivable Cr.','বিক্রয় ফেরত ডেবিট\nপ্রাপ্য হিসাব ক্রেডিট'],dr:'REV',cr:'db'},
+ preturn:{en:'Purchase return journal',bn:'ক্রয় ফেরত জাবেদা',pl:['Supplier','সরবরাহকারী'],ref:['Debit note no.','ডেবিট নোট নং'],amt:['Payable Dr.\nPurchase return Cr.','প্রদেয় হিসাব ডেবিট\nক্রয় ফেরত ক্রেডিট'],dr:'cd',cr:'in',note:'Purchase return'},
+ cin:{en:'Cash receipt journal',bn:'নগদ প্রাপ্তি জাবেদা',pl:['Received from / particulars','যার নিকট হতে প্রাপ্ত / বিবরণ'],ref:['Voucher no.','ভাউচার নং'],amt:['Cash Dr.','নগদান হিসাব ডেবিট'],cash:'in'},
+ cout:{en:'Cash payment journal',bn:'নগদ প্রদান জাবেদা',pl:['Paid to / particulars','যাকে প্রদান / বিবরণ'],ref:['Voucher no.','ভাউচার নং'],amt:['Cash Cr.','নগদান হিসাব ক্রেডিট'],cash:'out'}
+};
+const SJ_CTR={in:[['db','Debtors (receivable)','প্রাপ্য (দেনাদার)'],['REV','Sales / service income','বিক্রয় / সেবা আয়'],['CAP','Owner’s capital','মালিকের মূলধন'],['ln','Bank loan','ব্যাংক ঋণ'],['ot','Other assets','অন্যান্য সম্পদ']],out:[['cd','Creditors (payable)','প্রদেয় (পাওনাদার)'],['EXP','Expense','ব্যয়'],['DRW','Owner’s drawings','মালিকের উত্তোলন'],['ln','Loan repayment','ঋণ পরিশোধ'],['in','Cash purchase of goods','নগদে পণ্য ক্রয়'],['eqp','Equipment','যন্ত্রপাতি'],['fur','Furniture','আসবাবপত্র']]};
+function tbJ(dr,cr,x,noteOverride){const v={};let note='';const add=(k,d)=>{v[k]=qaR2((v[k]||0)+d)};
+ const side=(key,debit)=>{const ps={REV:'Revenue',EXP:'Expenses',CAP:'Capital',DRW:'Drawing'};if(ps[key]){add('eq',debit?-x:x);note=ps[key];return}add(key,isA(key)?(debit?x:-x):(debit?-x:x))};
+ side(dr,true);side(cr,false);return{v,note:noteOverride||note||'Cash movement'}}
+function tbRenderSJ(){const el=$('tbspecial');if(!el)return;const tab=SJT[TB.sj.tab]?TB.sj.tab:'sales',T=SJT[tab],m=TB.sjM;
+ const list=entries.map((e,i)=>({e,i})).filter(x=>x.e.sj&&x.e.sj.t===tab&&(!m||x.e.date.startsWith(m))).sort((a,b)=>a.e.date.localeCompare(b.e.date)||a.i-b.i).map(x=>x.e);
+ const parties=[...new Set(entries.filter(e=>e.sj&&e.sj.party).map(e=>e.sj.party))];
+ const cashOpts=[['ca','Cash','নগদ'],['ba','Bank Account','ব্যাংক'],['bk','bKash','বিকাশ'],['ng','Nagad','নগদ (মোবাইল)']].map(([k,en,bn])=>`<option value="${k}">${tL(en,bn)}</option>`).join('');
+ const ctrOpts=T.cash?SJ_CTR[T.cash].map(([k,en,bn])=>`<option value="${k}">${tL(en,bn)}</option>`).join(''):'';
+ const tabs=Object.keys(SJT).map(k=>`<button class="btn small ${k===tab?'on':''}" type="button" data-tb-tab="${k}">${tL(SJT[k].en,SJT[k].bn)}</button>`).join('');
+ let yr='',tot=0,rows='';list.forEach(e=>{const y=e.date.slice(0,4);if(y!==yr){yr=y;rows+=`<tr class="tbk-yr"><td><b>${tbD(y)}</b></td><td></td><td></td><td></td><td></td><td class="no-print"></td></tr>`}tot+=e.sj.amt;
+  const ctr=T.cash?(SJ_CTR[T.cash].find(c=>c[0]===e.sj.ctr)||[0,e.sj.ctr,e.sj.ctr]):null;
+  rows+=`<tr><td class="tbk-d">${tbD(tbMD(e.date))}</td><td>${esc(e.sj.party||'')}${ctr?`<div class="tbk-sub">${tL(ctr[1],ctr[2])}${e.sj.nar?' · '+esc(e.sj.nar):''}</div>`:(e.sj.nar?`<div class="tbk-sub">${esc(e.sj.nar)}</div>`:'')}</td><td class="tbk-c">${esc(e.sj.no||'')}</td><td class="tbk-c">✓</td><td class="num">${tbN(e.sj.amt)}</td><td class="no-print"><button class="btn danger small" type="button" data-tb-sjdel="${esc(String(e.id))}">✕</button></td></tr>`});
+ el.innerHTML=tbHead('tbspecial',['Special journals','বিশেষ জাবেদা'],['Purchase, sales, returns, cash receipt and cash payment journals — each posts a balanced double entry','ক্রয়, বিক্রয়, ফেরত, নগদ প্রাপ্তি ও নগদ প্রদান জাবেদা — প্রতিটি দাখিলা দুই তরফা পদ্ধতিতে পোস্ট হয়'])+
+ `<div class="tbpage"><div class="panel no-print"><div class="tb-tabs">${tabs}</div></div><div class="panel no-print qa-panel"><div class="panel-head"><h3>＋ ${tL(T.en,T.bn)}</h3><span class="pill">${tL('Debit = Credit','ডেবিট = ক্রেডিট')}</span></div><div class="grid-form"><div class="field"><label>${tL('Date','তারিখ')}</label><input id="sjDate" type="date" value="${today()}"></div><div class="field"><label>${tL(...T.pl)}</label><input id="sjParty" list="sjParties" maxlength="80"><datalist id="sjParties">${parties.map(p=>`<option value="${esc(p)}">`).join('')}</datalist></div><div class="field"><label>${tL(...T.ref)}</label><input id="sjNo" maxlength="30"></div><div class="field"><label>${tL('Amount (৳)','টাকার পরিমাণ (৳)')}</label><input id="sjAmt" type="number" min="0.01" step="0.01"></div>${T.cash?`<div class="field"><label>${tL('Cash / bank / wallet','নগদ / ব্যাংক / ওয়ালেট')}</label><select id="sjCash">${cashOpts}</select></div><div class="field"><label>${T.cash==='in'?tL('Credit account','ক্রেডিট হিসাব'):tL('Debit account','ডেবিট হিসাব')}</label><select id="sjCtr">${ctrOpts}</select></div>`:''}<div class="field full"><label>${tL('Narration (optional)','ব্যাখ্যা (ঐচ্ছিক)')}</label><input id="sjNar" maxlength="120"></div></div><div class="actions"><button class="btn primary" type="button" data-tb-sjpost>${tL('Post to journal','জাবেদায় পোস্ট করুন')}</button></div></div>
+ <div class="panel no-print"><div class="panel-head filters"><div class="field"><label>${tL('Month','মাস')}</label>${tbMonthSel('tbSJM',m)}</div></div></div>
+ <div class="tbk-sheet"><div class="tbk-title">${tbBiz()}<small>${tL(T.en,T.bn)}${m?' · '+tbD(tbMon(m)):''}</small></div><div style="overflow-x:auto"><table class="tbk"><thead><tr><th style="width:92px">${tL('Date','তারিখ')}</th><th>${tL(...T.pl)}</th><th style="width:110px">${tL(...T.ref)}</th><th style="width:60px">${tL('Ref.','সূত্র')}</th><th style="width:170px">${tL(...T.amt).split('\n').join('<br>')}</th><th class="no-print" style="width:46px"></th></tr></thead><tbody>${rows||`<tr><td colspan="6" class="empty">${tL('No entries yet.','এখনো কোনো দাখিলা নেই।')}</td></tr>`}<tr class="tbk-tot"><td></td><td class="num" colspan="3"><b>${tL('Total','মোট')}</b></td><td class="num"><span class="tbk-dbl">${tbN(tot)}</span></td><td class="no-print"></td></tr></tbody></table></div></div></div>`}
+function tbSJPost(){const tab=SJT[TB.sj.tab]?TB.sj.tab:'sales',T=SJT[tab],g=id=>$(id)?$(id).value.trim():'';const date=g('sjDate')||today(),party=g('sjParty'),no=g('sjNo'),nar=g('sjNar'),amt=qaR2(g('sjAmt'));
+ if(!party&&!nar){toast(tL('Enter the party / particulars.','বিবরণ / পক্ষের নাম লিখুন।'));return}if(!(amt>0)){toast(tL('Enter an amount greater than zero.','শূন্যের বেশি অঙ্ক দিন।'));return}
+ let dr=T.dr,cr=T.cr,ctr=null,cash=null,note=T.note;
+ if(T.cash){cash=g('sjCash')||'ca';ctr=g('sjCtr');if(T.cash==='in'){dr=cash;cr=ctr}else{dr=ctr;cr=cash}note=ctr==='in'?'Inventory purchase':undefined}
+ const J=tbJ(dr,cr,amt,note);entries.push({id:'u'+Date.now()+Math.random().toString(36).slice(2,7),date,desc:`${T.en}: ${party||nar}${no?' · '+no:''}`,note:J.note,v:J.v,sj:{t:tab,party,no,nar,amt,cash,ctr}});save();toast(tL('Posted to journal.','জাবেদায় পোস্ট হয়েছে।'))}
+/* ---------- 4. Journal classification tree ---------- */
+function tbRenderTree(){const el=$('tbtree');if(!el)return;const cnt=t=>entries.filter(e=>e.sj&&e.sj.t===t).length,adj=entries.filter(e=>String(e.desc).startsWith('[Adjusting]')).length;
+ const sp=[['purchase','Purchase journal','ক্রয় জাবেদা'],['sales','Sales journal','বিক্রয় জাবেদা'],['preturn','Purchase return journal','ক্রয় ফেরত জাবেদা'],['sreturn','Sales return journal','বিক্রয় ফেরত জাবেদা'],['cin','Cash receipt journal','নগদ প্রাপ্তি জাবেদা'],['cout','Cash payment journal','নগদ প্রদান জাবেদা']];
+ const gn=[['cashjournal','Correction journal','সংশোধনী জাবেদা',null],['adjusting','Adjusting journal','সমন্বয় জাবেদা',adj],['cycle','Closing journal','সমাপনী জাবেদা',null],['cashjournal','Opening journal','প্রারম্ভিক জাবেদা',null],['tbjournal','Other journals','অন্যান্য জাবেদা',null]];
+ const box=(x,y,w,h,txt,attr,n)=>`<g class="tbt-leaf" ${attr||''}><rect class="tbt-box" x="${x}" y="${y}" width="${w}" height="${h}" rx="3"/><text class="tbt-t" x="${x+w/2}" y="${y+h/2+5}" text-anchor="middle">${esc(txt)}</text>${n!=null?`<text class="tbt-n" x="${x+w-8}" y="${y+13}" text-anchor="end">${tbD(n)}</text>`:''}</g>`;
+ let s=`<svg viewBox="0 0 760 620" class="tbt-svg" role="img" aria-label="${tL('Journal classification','জাবেদার শ্রেণিবিভাগ')}">`;
+ const sy=i=>16+i*54,gy=i=>350+i*54;const spc=sy(2)+45,gnc=gy(2)+18;
+ s+=`<line class="tbt-ln" x1="130" y1="322" x2="200" y2="${spc}"/><line class="tbt-ln" x1="130" y1="322" x2="200" y2="${gnc}"/>`;
+ sp.forEach((_,i)=>{s+=`<line class="tbt-ln" x1="350" y1="${spc}" x2="470" y2="${sy(i)+18}"/>`});gn.forEach((_,i)=>{s+=`<line class="tbt-ln" x1="350" y1="${gnc}" x2="470" y2="${gy(i)+18}"/>`});
+ s+=`<g><rect class="tbt-box tbt-root" x="20" y="300" width="110" height="44" rx="3"/><text class="tbt-t tbt-w" x="75" y="327" text-anchor="middle">${tL('Journal','জাবেদা')}</text></g>`;
+ s+=`<g><rect class="tbt-box tbt-grp" x="200" y="${spc-22}" width="150" height="44" rx="3"/><text class="tbt-t" x="275" y="${spc+5}" text-anchor="middle">${tL('Special journals','বিশেষ জাবেদা')}</text></g><g><rect class="tbt-box tbt-grp" x="200" y="${gnc-22}" width="150" height="44" rx="3"/><text class="tbt-t" x="275" y="${gnc+5}" text-anchor="middle">${tL('General journals','প্রকৃত জাবেদা')}</text></g>`;
+ sp.forEach((x,i)=>{s+=box(470,sy(i),270,36,tL(x[1],x[2]),`data-tb-go="tbspecial" data-tb-tab="${x[0]}"`,cnt(x[0]))});gn.forEach((x,i)=>{s+=box(470,gy(i),270,36,tL(x[1],x[2]),`data-tb-go="${x[0]}"`,x[3])});s+='</svg>';
+ el.innerHTML=tbHead('tbtree',['Classification of journals','জাবেদার শ্রেণিবিভাগ'],['Tap any journal to open it · numbers show recorded entries','যেকোনো জাবেদায় ট্যাপ করে খুলুন · সংখ্যা দিয়ে দাখিলার সংখ্যা দেখানো হয়েছে'])+`<div class="tbpage"><div class="tbk-sheet tbt-wrap">${s}</div></div>`}
+/* ---------- 5. Challan / Cash memo ---------- */
+function tbMemoNew(){const prof=extra.profile||{};return{kind:'challan',seller:prof.org||settings.title||'',saddr:'',no:'',date:today(),buyer:'',baddr:'',tdisc:5,terms:'',note:'',copies:1,items:[{d:'',rate:'',qty:'',unit:''}]}}
+function tbMemoTotals(m){const sub=m.items.reduce((s,i)=>s+(Number(i.rate)||0)*(Number(i.qty)||0),0),disc=qaR2(sub*(Number(m.tdisc)||0)/100);return{sub:qaR2(sub),disc,net:qaR2(sub-disc)}}
+function tbMemoHtml(m,copyLabel){const t=tbMemoTotals(m),cm=m.kind==='cashmemo',n=Math.max(m.items.length,3);
+ const rows=Array.from({length:n},(_,i)=>{const it=m.items[i];return it&&(it.d||it.rate||it.qty)?`<tr><td class="tbk-c">${tbD(i+1)}</td><td>${esc(it.d)}</td><td class="num">${it.rate!==''?tbN(it.rate):''}</td><td class="tbk-c">${it.qty!==''?tbN(it.qty)+' '+esc(it.unit||''):''}</td><td class="num">${tbN((Number(it.rate)||0)*(Number(it.qty)||0))}</td></tr>`:`<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>`}).join('');
+ const tail=`${m.tdisc>0?`<tr><td></td><td>${tL('Less: trade discount','বাদ: কারবারি বাট্টা')} (${tbD(m.tdisc)}%)</td><td></td><td></td><td class="num">(${tbN(t.disc)})</td></tr>`:''}<tr><td></td><td></td><td></td><td></td><td class="num"><span class="tbk-u">${tbN(t.net)}</span></td></tr>`;
+ const ty=cm?tL('Cash memo','ক্যাশমেমো'):tL('Challan','চালান');
+ return `<div class="tbk-memo">${copyLabel?`<div class="tbk-copy">${copyLabel}</div>`:''}<div class="tbk-mh"><div>${cm?tL('Voucher no. ','ভাউচার নং '):tL('Challan no.−','চালান নং−')}${tbD(esc(m.no))}</div><div class="tbk-mt"><b>${esc(m.seller)}</b><div>${esc(m.saddr)}</div></div><div class="tbk-md">${tL('Date : ','তারিখ : ')}${tbFull(m.date||today())}</div></div><div class="tbk-mtype"><span>${ty}</span></div><div class="tbk-mb">${tL('Buyer’s name: ','ক্রেতার নাম: ')}${esc(m.buyer)}<br>${tL('Address: ','ঠিকানা: ')}${esc(m.baddr)}</div>
+ <table class="tbk tbk-j"><thead><tr><th style="width:50px">${tL('Sl.','ক্র/নং')}</th><th>${tL('Description of goods','মালের বিবরণ')}</th><th style="width:100px">${tL('Rate (৳)','দর (টাকা)')}</th><th style="width:130px">${tL('Quantity','পরিমাণ')}</th><th style="width:130px">${tL('Amount (৳)','টাকার পরিমাণ')}</th></tr></thead><tbody>${rows}${tail}</tbody></table>
+ <div class="tbk-words">${tL('In words: ','টাকা (কথায়): ')}${esc(takaWords(t.net,tbBn()?'bn':'en'))}</div><div class="tbk-mf"><div>${!cm&&m.terms?`${tL('Terms of sale: ','বিক্রয় শর্ত: ')}${esc(m.terms)}<br>`:''}${cm?tL('Buyer’s signature','ক্রেতার স্বাক্ষর')+'<br>':''}${esc(m.note||(cm?tL('N.B.: Sold goods are not taken back.','বি: দ্র: বিক্রীত পণ্য ফেরত নেওয়া হয় না।'):tL('N.B.: Errors and omissions excepted.','বি.দ্র. ভুল-ত্রুটি সংশোধনযোগ্য।')))}</div><div class="tbk-sig">${tL('Seller’s signature','বিক্রেতার স্বাক্ষর')}</div></div></div>`}
+function tbMemoPrev(){const m=TB.memo;if($('tbMemoPrev'))$('tbMemoPrev').innerHTML=tbMemoHtml(m)}
+function tbRenderMemo(){const el=$('tbmemo');if(!el)return;if(!TB.memo)TB.memo=tbMemoNew();const m=TB.memo,f=(id,l,v,ty='text',ex='')=>`<div class="field"><label>${l}</label><input id="mm_${id}" type="${ty}" value="${esc(v)}" ${ex}></div>`;
+ const items=m.items.map((it,i)=>`<tr><td><input data-mi="d" data-i="${i}" value="${esc(it.d)}" placeholder="${tL('Item','পণ্য')}"></td><td><input data-mi="rate" data-i="${i}" type="number" step="0.01" value="${esc(it.rate)}" style="width:90px"></td><td><input data-mi="qty" data-i="${i}" type="number" step="0.01" value="${esc(it.qty)}" style="width:90px"></td><td><input data-mi="unit" data-i="${i}" value="${esc(it.unit)}" style="width:70px" placeholder="${tL('kg/pcs','কেজি/পিস')}"></td><td><button class="btn danger small" type="button" data-tb-mrm="${i}">✕</button></td></tr>`).join('');
+ const saved=(extra.memos||[]).slice().reverse().map(s=>`<tr><td>${fmtDate(s.m.date)}</td><td>${s.m.kind==='cashmemo'?tL('Cash memo','ক্যাশমেমো'):tL('Challan','চালান')}</td><td>${esc(s.m.no)}</td><td>${esc(s.m.buyer)}</td><td class="num">${money(tbMemoTotals(s.m).net)}</td><td class="qa-act"><button class="btn small" type="button" data-tb-mload="${s.id}">${tL('Open','খুলুন')}</button> <button class="btn danger small" type="button" data-tb-mdel="${s.id}">✕</button></td></tr>`).join('');
+ el.innerHTML=tbHead('tbmemo',['Challan / Cash memo','চালান / ক্যাশমেমো'],['Create, print (1 or 3 sets) and save challans and cash memos with trade discount','ট্রেড ডিসকাউন্ট (কারবারি বাট্টা) সহ চালান ও ক্যাশমেমো তৈরি, প্রিন্ট (১ বা ৩ সেট) ও সংরক্ষণ করুন'])+
+ `<div class="tbpage"><div class="panel no-print"><div class="panel-head"><h3>${tL('Details','বিবরণ')}</h3></div><div class="grid-form"><div class="field"><label>${tL('Type','ধরন')}</label><select id="mm_kind"><option value="challan"${m.kind==='challan'?' selected':''}>${tL('Challan','চালান')}</option><option value="cashmemo"${m.kind==='cashmemo'?' selected':''}>${tL('Cash memo','ক্যাশমেমো')}</option></select></div>${f('no',tL('Voucher / challan no.','ভাউচার / চালান নং'),m.no)}${f('date',tL('Date','তারিখ'),m.date,'date')}${f('seller',tL('Seller (business name)','বিক্রেতা (প্রতিষ্ঠানের নাম)'),m.seller)}${f('saddr',tL('Seller address','বিক্রেতার ঠিকানা'),m.saddr)}${f('buyer',tL('Buyer name','ক্রেতার নাম'),m.buyer)}${f('baddr',tL('Buyer address','ক্রেতার ঠিকানা'),m.baddr)}${f('tdisc',tL('Trade discount (%)','কারবারি বাট্টা (%)'),m.tdisc,'number','min="0" max="100" step="0.01"')}${f('terms',tL('Terms of sale (e.g. 2/10, n/30)','বিক্রয় শর্ত (যেমন ২/১০, নিট ৩০)'),m.terms)}${f('note',tL('Note (N.B.)','বি.দ্র.'),m.note)}<div class="field"><label>${tL('Print sets','প্রিন্ট সেট')}</label><select id="mm_copies"><option value="1"${m.copies==1?' selected':''}>1</option><option value="3"${m.copies==3?' selected':''}>3 (${tL('buyer / seller / accounts','ক্রেতা / বিক্রেতা / হিসাব')})</option></select></div></div>
+ <div class="table-wrap" style="margin-top:12px"><table><thead><tr><th>${tL('Description','মালের বিবরণ')}</th><th>${tL('Rate','দর')}</th><th>${tL('Qty','পরিমাণ')}</th><th>${tL('Unit','একক')}</th><th></th></tr></thead><tbody>${items}</tbody></table></div><div class="actions"><button class="btn" type="button" data-tb-madd>＋ ${tL('Add item','পণ্য যোগ')}</button><button class="btn primary" type="button" data-tb-mprint>⎙ ${tL('Print','প্রিন্ট')}</button><button class="btn" type="button" data-tb-msave>${tL('Save','সংরক্ষণ')}</button><button class="btn" type="button" data-tb-mnew>${tL('New','নতুন')}</button></div></div>
+ <div class="tbk-sheet" id="tbMemoPrev">${tbMemoHtml(m)}</div>
+ <div class="panel no-print" style="margin-top:14px"><div class="panel-head"><h3>${tL('Saved challans & cash memos','সংরক্ষিত চালান ও ক্যাশমেমো')}</h3></div>${table([tL('Date','তারিখ'),tL('Type','ধরন'),tL('No.','নং'),tL('Buyer','ক্রেতা'),'num:'+tL('Amount','অঙ্ক'),''],saved,tL('Nothing saved yet.','এখনো কিছু সংরক্ষিত নেই।'))}</div></div>`}
+function tbMemoPrint(){const m=TB.memo,cp=Number(m.copies)===3?[tL('Buyer’s copy','ক্রেতার কপি'),tL('Seller’s copy','বিক্রেতার কপি'),tL('Accounts copy','হিসাব শাখার কপি')]:[''];const w=window.open('','_blank','width=900,height=800');if(!w){toast(tL('Allow pop-ups to print.','প্রিন্টের জন্য পপ-আপ অনুমতি দিন।'));return}
+ const css=[...document.querySelectorAll('style')].map(s=>s.textContent).join('\n');w.document.write(`<html><head><meta charset="utf-8"><title>${esc(m.no||'memo')}</title><style>${css}</style><style>body{background:#fff!important;padding:14px}.tbk-memo{page-break-inside:avoid;margin:0 auto 22px}@page{margin:10mm}</style></head><body>${cp.map(c=>tbMemoHtml(m,c)).join('')}<script>window.onload=()=>window.print()<\/script></body></html>`);w.document.close()}
+/* ---------- 6. Profit / loss from capital comparison ---------- */
+function tbCapLoad(){const c=TB.cap,sum=(l,keys)=>keys.reduce((s,[k])=>s+tbSum(l,k),0),o=entries.filter(e=>e.date<c.from),cl=entries.filter(e=>e.date<=c.to),per=entries.filter(e=>e.date>=c.from&&e.date<=c.to);
+ c.oa=qaR2(sum(o,ASSET));c.ol=qaR2(sum(o,LIABILITY));c.ca=qaR2(sum(cl,ASSET));c.cl=qaR2(sum(cl,LIABILITY));c.add=qaR2(tbSum(per.filter(e=>e.note==='Capital'),'eq'));c.draw=qaR2(-tbSum(per.filter(e=>e.note==='Drawing'),'eq'));c.led=qaR2(tbSum(per.filter(e=>e.note==='Revenue'||e.note==='Expenses'),'eq'))}
+function tbCapOut(){const c=TB.cap,N=x=>tbN(Number(x)||0),oc=qaR2((+c.oa||0)-(+c.ol||0)),cc=qaR2((+c.ca||0)-(+c.cl||0)),a=qaR2(cc+(+c.draw||0)),b=qaR2(oc+(+c.add||0)),pl=qaR2(a-b),row=(l,r)=>`<div class="tbk-row"><div>${l}</div><div>${r}</div></div>`;
+ return `<div class="tbk-sol"><b>${tL('Solution:','সমাধান:')}</b>${row(tL('Opening capital','প্রারম্ভিক মূলধন'),`= ${tL('Opening total assets − opening total liabilities','প্রারম্ভিক মোট সম্পদ − প্রারম্ভিক মোট দায়')}<br>= (${N(c.oa)} − ${N(c.ol)}) = <b>${tbN(oc)}</b>`)}${row(tL('Closing capital','সমাপনী মূলধন'),`= ${tL('Closing total assets − closing total liabilities','সমাপনী মোট সম্পদ − সমাপনী মোট দায়')}<br>= (${N(c.ca)} − ${N(c.cl)}) = <b>${tbN(cc)}</b>`)}${row('∴ '+tL('Profit / loss','লাভ/ক্ষতি'),`= {(${tL('closing capital + drawings','সমাপনী মূলধন + উত্তোলন')}) − (${tL('opening capital + additional capital','প্রারম্ভিক মূলধন + অতিরিক্ত মূলধন')})}<br>= {(${tbN(cc)} + ${N(c.draw)}) − (${tbN(oc)} + ${N(c.add)})}<br>= {${tbN(a)} − ${tbN(b)}}<br>= <b>${tbN(pl)}</b>`)}<div class="tbk-res ${pl<0?'loss':''}">∴ ${pl<0?tL('Amount of loss','ক্ষতির পরিমাণ'):tL('Amount of profit','লাভের পরিমাণ')} = ${tbN(Math.abs(pl))} ${tL('Taka','টাকা')}</div>${c.led!=null?`<p class="tbk-note">${tL('Cross-check — income less expenses recorded in the ledger for this period: ','মিলিয়ে দেখুন — এই সময়ে খতিয়ানে লিপিবদ্ধ আয় − ব্যয়: ')}<b>${tbN(c.led,true)}</b> ${Math.abs(c.led-pl)<.005?'✓':'· '+tL('differs from the capital method (open balances or capital entries may be missing)','মূলধন পদ্ধতির সাথে পার্থক্য (প্রারম্ভিক জের বা মূলধন দাখিলা বাদ পড়তে পারে)')}</p>`:''}</div>`}
+function tbRenderCap(){const el=$('tbcap');if(!el)return;if(!TB.cap){const ds=entries.map(e=>e.date).sort();const last=ds[ds.length-1]||today();TB.cap={from:last.slice(0,4)+'-01-01',to:today()>last?today():last};tbCapLoad()}const c=TB.cap,f=(id,l,v)=>`<div class="field"><label>${l}</label><input id="cp_${id}" type="number" step="0.01" value="${esc(v)}"></div>`;
+ el.innerHTML=tbHead('tbcap',['Profit / loss from capital comparison','মূলধন তুলনা পদ্ধতিতে লাভ/ক্ষতি নির্ণয়'],['Profit/Loss = (closing capital + drawings) − (opening capital + additional capital)','লাভ/ক্ষতি = (সমাপনী মূলধন + উত্তোলন) − (প্রারম্ভিক মূলধন + অতিরিক্ত মূলধন)'])+`<div class="tbpage"><div class="panel no-print"><div class="panel-head"><div><h3>${tL('Inputs','তথ্য')}</h3><small class="muted">${tL('Pick the period and load from your ledger, or type the figures yourself.','সময় বেছে খতিয়ান থেকে নিন, অথবা নিজে অঙ্ক লিখুন।')}</small></div></div><div class="grid-form"><div class="field"><label>${tL('From','শুরু')}</label><input id="cp_from" type="date" value="${c.from}"></div><div class="field"><label>${tL('To','শেষ')}</label><input id="cp_to" type="date" value="${c.to}"></div>${f('oa',tL('Opening total assets','প্রারম্ভিক মোট সম্পদ'),c.oa)}${f('ol',tL('Opening total liabilities','প্রারম্ভিক মোট দায়'),c.ol)}${f('ca',tL('Closing total assets','সমাপনী মোট সম্পদ'),c.ca)}${f('cl',tL('Closing total liabilities','সমাপনী মোট দায়'),c.cl)}${f('add',tL('Additional capital','অতিরিক্ত মূলধন'),c.add)}${f('draw',tL('Drawings','উত্তোলন'),c.draw)}</div><div class="actions"><button class="btn primary" type="button" data-tb-capload>⟳ ${tL('Load from ledger','খতিয়ান থেকে নিন')}</button></div></div><div class="tbk-sheet"><div class="tbk-title">${tbBiz()}<small>${tL('Profit / loss for ','লাভ/ক্ষতি নির্ণয়: ')}${tbFull(c.from)} – ${tbFull(c.to)}</small></div><div id="tbCapOut">${tbCapOut()}</div></div></div>`}
+/* ---------- events ---------- */
+function tbBindOnce(){if(window.__tbBound)return;window.__tbBound=true;
+ document.addEventListener('click',e=>{const t=e.target,c=s=>t.closest&&t.closest(s);let b;
+  if(c('[data-tb-lang]')){extra.tbBn=!tbBn();save();return}
+  if((b=c('[data-tb-tab]'))&&!b.hasAttribute('data-tb-go')){TB.sj.tab=b.dataset.tbTab;tbRenderSJ();return}
+  if((b=c('[data-tb-go]'))){if(b.dataset.tbTab)TB.sj.tab=b.dataset.tbTab;if(b.dataset.tbGo==='tbspecial')tbRenderSJ();go(b.dataset.tbGo);return}
+  if(c('[data-tb-sjpost]')){tbSJPost();return}
+  if((b=c('[data-tb-sjdel]'))){if(!confirm(tL('Delete this journal entry?','এই জাবেদা দাখিলা মুছবেন?')))return;const i=entries.findIndex(x=>String(x.id)===b.dataset.tbSjdel);if(i>=0){entries.splice(i,1);save()}return}
+  if(c('[data-tb-madd]')){TB.memo.items.push({d:'',rate:'',qty:'',unit:''});tbRenderMemo();return}
+  if((b=c('[data-tb-mrm]'))){TB.memo.items.splice(+b.dataset.tbMrm,1);if(!TB.memo.items.length)TB.memo.items.push({d:'',rate:'',qty:'',unit:''});tbRenderMemo();return}
+  if(c('[data-tb-mprint]')){tbMemoPrint();return}
+  if(c('[data-tb-mnew]')){TB.memo=tbMemoNew();tbRenderMemo();return}
+  if(c('[data-tb-msave]')){const m=JSON.parse(JSON.stringify(TB.memo));if(!m.buyer&&!m.items.some(i=>i.d)){toast(tL('Add a buyer or an item first.','আগে ক্রেতা বা পণ্য যোগ করুন।'));return}extra.memos=extra.memos||[];extra.memos.push({id:'m'+Date.now().toString(36),m});save();toast(tL('Saved.','সংরক্ষিত হয়েছে।'));return}
+  if((b=c('[data-tb-mload]'))){const s=(extra.memos||[]).find(x=>x.id===b.dataset.tbMload);if(s){TB.memo=JSON.parse(JSON.stringify(s.m));tbRenderMemo();window.scrollTo({top:0,behavior:'smooth'})}return}
+  if((b=c('[data-tb-mdel]'))){if(!confirm(tL('Delete this saved document?','সংরক্ষিত নথিটি মুছবেন?')))return;extra.memos=(extra.memos||[]).filter(x=>x.id!==b.dataset.tbMdel);save();return}
+  if(c('[data-tb-capload]')){tbCapLoad();tbRenderCap();return}});
+ const onIn=e=>{const t=e.target,id=t.id||'';
+  if(id==='tbEqM'){TB.eqM=t.value;tbRenderEq();return}
+  if(id==='tbJM'){TB.jM=t.value;tbRenderJ();return}
+  if(id==='tbJQ'){TB.jQ=t.value;const p=t.selectionStart;tbRenderJ();const n=$('tbJQ');if(n){n.focus();try{n.setSelectionRange(p,p)}catch(x){}}return}
+  if(id==='tbSJM'){TB.sjM=t.value;tbRenderSJ();return}
+  if(id.startsWith('mm_')&&TB.memo){const k=id.slice(3);TB.memo[k]=t.type==='number'&&k!=='tdisc'?t.value:t.value;if(k==='kind'){tbRenderMemo();return}tbMemoPrev();return}
+  if(t.dataset&&t.dataset.mi&&TB.memo){TB.memo.items[+t.dataset.i][t.dataset.mi]=t.value;tbMemoPrev();return}
+  if(id.startsWith('cp_')&&TB.cap){const k=id.slice(3);TB.cap[k]=(k==='from'||k==='to')?t.value:t.value;if(k==='from'||k==='to'){if(e.type==='change'){tbCapLoad();tbRenderCap()}return}if($('tbCapOut'))$('tbCapOut').innerHTML=tbCapOut()}};
+ document.addEventListener('input',onIn);document.addEventListener('change',e=>{if(e.target.tagName==='SELECT'||e.target.type==='date')onIn(e)})}
+function tbRenderAll(){tbNav();tbRenderEq();tbRenderJ();tbRenderSJ();tbRenderTree();tbRenderMemo();tbRenderCap();tbRenderFS();tbQuick();tbBindOnce();if(window.kfmSnap)kfmSnap();if(window.kfmChrome)kfmChrome();if(window.kfmTourMaybe)setTimeout(kfmTourMaybe,1400)}
+(function(){const orig=renderAll;renderAll=function(){orig();tbRenderAll()}})();
+/* ===== Textbook statements + command palette + dashboard quick tiles ===== */
+TB.fs={tab:'tb'};TB.pi=0;
+function tbFSData(){const acc=[];ASSET.forEach(([k,n])=>{const b=qaR2(total(k));if(b)acc.push({n,bn:TBBN[k]||n,side:b>0?'dr':'cr',a:Math.abs(b),k,asset:true})});
+ LIABILITY.forEach(([k,n])=>{const b=qaR2(total(k));if(b)acc.push({n,bn:TBBN[k]||n,side:b>0?'cr':'dr',a:Math.abs(b),k,asset:false})});
+ const eqN=note=>qaR2(tbSum(entries.filter(e=>e.note===note),'eq')),rev=eqN('Revenue'),exp=eqN('Expenses'),cap=eqN('Capital'),dw=eqN('Drawing'),eqT=qaR2(total('eq')),other=qaR2(eqT-rev-exp-cap-dw);
+ return{acc,rev,exp:-exp,cap,drw:-dw,other,eqT,profit:qaR2(rev+exp)}}
+function tbRenderFS(){const el=$('tbfs');if(!el)return;const d=tbFSData(),tab=TB.fs.tab,nm=a=>tbBn()?a.bn+' হিসাব':a.n+' A/c';
+ const tabs=[['tb','Trial balance','রেওয়ামিল'],['is','Income statement','আয় বিবরণী'],['bs','Balance sheet','স্থিতিপত্র']].map(([k,en,bn])=>`<button class="btn small ${k===tab?'on':''}" type="button" data-tb-fstab="${k}">${tL(en,bn)}</button>`).join('');
+ const th=(w,t)=>`<th${w?` style="width:${w}px"`:''}>${t}</th>`;let sheet='';
+ if(tab==='tb'){const rows=d.acc.map(a=>({name:nm(a),lp:lpOf(a.n),side:a.side,a:a.a}));
+  const q=(en,bn,v,crIfPos)=>{if(!v)return;const cr=crIfPos?v>0:v<0;rows.push({name:tbBn()?bn+' হিসাব':en+' A/c',lp:'',side:cr?'cr':'dr',a:Math.abs(v)})};
+  q('Capital','মূলধন',d.cap,true);q('Revenue','আয়',d.rev,true);q('Expenses','ব্যয়',-d.exp,false);q('Drawings','উত্তোলন',-d.drw,false);q('Other equity','অন্যান্য মালিকানা স্বত্ব',d.other,true);
+  const td=rows.filter(r=>r.side==='dr').reduce((s,r)=>s+r.a,0),tc=rows.filter(r=>r.side==='cr').reduce((s,r)=>s+r.a,0);
+  sheet=`<div class="tbk-title">${tbBiz()}<small>${tL('Trial balance','রেওয়ামিল')} ${tL('as on ','তারিখ: ')}${tbFull(today())}</small></div><table class="tbk tbk-j"><thead><tr>${th('',tL('Account title','হিসাবের নাম'))}${th(60,tL('L.P.','খ.পৃ.'))}${th(130,tL('Debit (৳)','ডেবিট টাকা'))}${th(130,tL('Credit (৳)','ক্রেডিট টাকা'))}</tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r.name)}</td><td class="tbk-c">${tbD(r.lp==null?'':r.lp)}</td><td class="num">${r.side==='dr'?tbN(r.a):''}</td><td class="num">${r.side==='cr'?tbN(r.a):''}</td></tr>`).join('')}<tr class="tbk-tot"><td class="num" colspan="2"><b>${tL('Total','মোট')}</b></td><td class="num"><span class="tbk-dbl">${tbN(td)}</span></td><td class="num"><span class="tbk-dbl">${tbN(tc)}</span></td></tr></tbody></table>${Math.abs(td-tc)>.004?`<p class="tbk-warn">${tL('Trial balance does not agree — difference ','রেওয়ামিল মিলছে না — পার্থক্য ')}${tbN(Math.abs(td-tc))}</p>`:`<p class="tbk-res">✓ ${tL('Trial balance agrees','রেওয়ামিল মিলেছে')}</p>`}`}
+ if(tab==='is'){sheet=`<div class="tbk-title">${tbBiz()}<small>${tL('Income statement','আয় বিবরণী')} ${tL('(to ','(তারিখ পর্যন্ত: ')}${tbFull(today())})</small></div><table class="tbk tbk-j" style="max-width:640px;margin:0 auto"><thead><tr>${th('',tL('Particulars','বিবরণ'))}${th(140,tL('Amount (৳)','টাকা'))}</tr></thead><tbody><tr><td>${tL('Revenue / sales','আয় / বিক্রয়')}</td><td class="num">${tbN(d.rev)}</td></tr><tr><td>${tL('Less: expenses','বাদ: ব্যয়')}</td><td class="num">(${tbN(d.exp)})</td></tr><tr class="tbk-tot"><td><b>${d.profit<0?tL('Net loss','নিট ক্ষতি'):tL('Net profit','নিট মুনাফা')}</b></td><td class="num"><span class="tbk-dbl">${tbN(Math.abs(d.profit))}</span></td></tr></tbody></table>`}
+ if(tab==='bs'){const L=d.acc.filter(a=>a.asset).map(a=>[nm(a),a.side==='dr'?a.a:-a.a]),R=d.acc.filter(a=>!a.asset).map(a=>[nm(a),a.side==='cr'?a.a:-a.a]);
+  const ta=qaR2(L.reduce((s,x)=>s+x[1],0)),tlb=qaR2(R.reduce((s,x)=>s+x[1],0));const eqR=[];if(d.cap)eqR.push([tL('Owner’s capital','মালিকের মূলধন'),d.cap]);if(d.other)eqR.push([tL('Other equity','অন্যান্য মালিকানা স্বত্ব'),d.other]);if(d.profit)eqR.push([d.profit<0?tL('Less: net loss','বাদ: নিট ক্ষতি'):tL('Add: net profit','যোগ: নিট মুনাফা'),d.profit]);if(d.drw)eqR.push([tL('Less: drawings','বাদ: উত্তোলন'),-d.drw]);
+  const right=R.concat(eqR),tr=qaR2(tlb+d.eqT-(d.cap+d.other+d.profit-d.drw)+(d.cap+d.other+d.profit-d.drw)),n=Math.max(L.length,right.length),cellA=x=>x?`<td>${esc(x[0])}</td><td class="num">${tbN(x[1],true)}</td>`:'<td></td><td></td>';
+  const rows=Array.from({length:n},(_,i)=>`<tr>${cellA(L[i])}${cellA(right[i])}</tr>`).join('');const rt=qaR2(tlb+d.eqT);
+  sheet=`<div class="tbk-title">${tbBiz()}<small>${tL('Balance sheet','স্থিতিপত্র')} ${tL('as on ','তারিখ: ')}${tbFull(today())}</small></div><div style="overflow-x:auto"><table class="tbk tbk-j"><thead><tr><th colspan="2">${tL('Assets','সম্পদ')}</th><th colspan="2">${tL('Liabilities & owner’s equity','দায় ও মালিকানা স্বত্ব')}</th></tr></thead><tbody>${rows}<tr class="tbk-tot"><td><b>${tL('Total assets','মোট সম্পদ')}</b></td><td class="num"><span class="tbk-dbl">${tbN(ta)}</span></td><td><b>${tL('Total','মোট')}</b></td><td class="num"><span class="tbk-dbl">${tbN(rt)}</span></td></tr></tbody></table></div>${Math.abs(ta-rt)>.004?`<p class="tbk-warn">${tL('Assets and liabilities + equity differ by ','সম্পদ এবং দায় + মালিকানা স্বত্বের পার্থক্য ')}${tbN(Math.abs(ta-rt))}</p>`:`<p class="tbk-res">✓ ${tL('Balance sheet balances','স্থিতিপত্র মিলেছে')}</p>`}`}
+ el.innerHTML=tbHead('tbfs',['Statements in textbook format','পাঠ্যবই ধাঁচে তালিকা ও বিবরণী'],['Trial balance, income statement and balance sheet from your ledger','আপনার খতিয়ান থেকে রেওয়ামিল, আয় বিবরণী ও স্থিতিপত্র'])+`<div class="tbpage"><div class="panel no-print"><div class="tb-tabs">${tabs}</div></div><div class="tbk-sheet">${sheet}</div></div>`}
+function tbQuick(){const d=$('dashboard');if(!d||$('tbQuick'))return;d.insertAdjacentHTML('beforeend',`<div class="panel" id="tbQuick"><div class="panel-head"><h3>📘 ${tL('Textbook formats','পাঠ্যবই ছক')}</h3><small class="muted">${tL('Press Ctrl+K to search anything','যেকোনো কিছু খুঁজতে Ctrl+K চাপুন')}</small></div><div class="tb-tiles">${TB_PAGES.map(([id,ic,l])=>`<button class="tb-tile" type="button" data-tb-go="${id}"><span>${ic}</span><b>${tL(...l)}</b></button>`).join('')}</div></div>`)}
+/* ---- command palette ---- */
+function tbPalItems(q){const s=q.trim().toLowerCase().split(/\s+/).filter(Boolean),out=[];
+ document.querySelectorAll('.nav-btn[data-page]').forEach(b=>{const c=b.cloneNode(true);const ic=c.querySelector('.ico');if(ic)ic.remove();const t=c.textContent.trim().replace(/\s+/g,' ');out.push({t,ic:'↪',sub:tL('Page','পেজ'),run:()=>go(b.dataset.page)})});
+ out.push({t:tL('New entry','নতুন দাখিলা'),ic:'＋',sub:tL('Action','কাজ'),run:()=>go('entry')},{t:tL('Switch textbook language (বাংলা ⇄ EN)','পাঠ্যবই ভাষা বদলান (বাংলা ⇄ EN)'),ic:'🌐',sub:tL('Action','কাজ'),run:()=>{extra.tbBn=!tbBn();save()}});
+ (TB.acts?TB.acts():[]).forEach(a=>out.push(a));
+ let r=out.filter(x=>s.every(w=>x.t.toLowerCase().includes(w)));
+ if(q.trim().length>=2){entries.slice().sort((a,b)=>b.date.localeCompare(a.date)).filter(e=>s.every(w=>(e.desc+' '+e.date).toLowerCase().includes(w))).slice(0,6).forEach(e=>r.push({t:tbClean(e.desc),ic:'✎',sub:fmtDate(e.date),run:()=>{jq=q.trim();jm='';go('journal')}}))}
+ return r.slice(0,12)}
+function tbPalList(){const q=$('kcmdIn').value,it=tbPalItems(q);TB.pitems=it;if(TB.pi>=it.length)TB.pi=0;$('kcmdList').innerHTML=it.map((x,i)=>`<div class="kcmd-it ${i===TB.pi?'on':''}" data-i="${i}"><span class="kcmd-ic">${x.ic}</span><span class="kcmd-t">${esc(x.t)}</span><em>${esc(x.sub)}</em></div>`).join('')||`<div class="kcmd-empty">${tL('No results','কিছু পাওয়া যায়নি')}</div>`}
+function tbPalClose(){const o=$('kcmd');if(o)o.classList.add('hide')}
+function tbPalRun(i){const x=(TB.pitems||[])[i];if(!x)return;tbPalClose();x.run()}
+function tbPalOpen(){let o=$('kcmd');if(!o){document.body.insertAdjacentHTML('beforeend','<div id="kcmd" class="kcmd hide"><div class="kcmd-box"><input id="kcmdIn" autocomplete="off"><div id="kcmdList"></div></div></div>');o=$('kcmd');
+  o.addEventListener('click',e=>{if(e.target===o){tbPalClose();return}const it=e.target.closest('.kcmd-it');if(it)tbPalRun(+it.dataset.i)});
+  $('kcmdIn').addEventListener('input',()=>{TB.pi=0;tbPalList()});
+  $('kcmdIn').addEventListener('keydown',e=>{const n=(TB.pitems||[]).length;if(e.key==='ArrowDown'){e.preventDefault();TB.pi=(TB.pi+1)%Math.max(n,1);tbPalList()}else if(e.key==='ArrowUp'){e.preventDefault();TB.pi=(TB.pi-1+n)%Math.max(n,1);tbPalList()}else if(e.key==='Enter'){e.preventDefault();tbPalRun(TB.pi)}else if(e.key==='Escape')tbPalClose()})}
+ o.classList.remove('hide');$('kcmdIn').value='';$('kcmdIn').placeholder=tL('Search pages, actions, entries…','পেজ, কাজ, দাখিলা খুঁজুন…');TB.pi=0;tbPalList();setTimeout(()=>$('kcmdIn').focus(),20)}
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();tbPalOpen();return}const tg=(e.target.tagName||'').toLowerCase();if(e.key==='/'&&!['input','textarea','select'].includes(tg)&&!e.ctrlKey&&!e.metaKey){e.preventDefault();tbPalOpen()}else if(e.key==='Escape')tbPalClose()});
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-tb-fstab]');if(b){TB.fs.tab=b.dataset.tbFstab;tbRenderFS()}});
+/* ===== App-like layer: splash, tour, undo, save status, FAB, install, shortcuts ===== */
+(function(){
+const bn=()=>typeof tbBn==='function'?tbBn():false,L=(a,b)=>bn()?b:a;
+/* splash */
+const sp=document.createElement('div');sp.id='kfmSplash';sp.innerHTML='<div class="sp-logo">K</div><div class="sp-t">KFM Accounts</div><div class="sp-s">Double-entry bookkeeping</div><div class="sp-bar"><i></i></div>';document.body.appendChild(sp);
+setTimeout(()=>{sp.classList.add('out');setTimeout(()=>sp.remove(),450)},950);
+/* undo history */
+let last=null,stack=[];const osave=save;
+window.kfmSnap=()=>{if(last===null)last=JSON.stringify({e:entries,x:extra})};
+save=function(){const prev=last;osave.apply(this,arguments);const now=JSON.stringify({e:entries,x:extra});if(prev!==null&&prev!==now){stack.push(prev);if(stack.length>30)stack.shift()}last=now;kfmStatus('saved')};
+window.kfmUndo=function(){const p=stack.pop();if(!p){toast(L('Nothing to undo.','পূর্বাবস্থায় ফেরানোর কিছু নেই।'));return}const o=JSON.parse(p);entries.splice(0,entries.length,...o.e);Object.keys(extra).forEach(k=>delete extra[k]);Object.assign(extra,o.x);last=p;osave();kfmStatus('saved');toast(L('Last change undone.','শেষ পরিবর্তন ফিরিয়ে নেওয়া হয়েছে।'))};
+/* status chip */
+window.kfmStatus=function(k){const c=document.getElementById('kfmSaved');if(!c)return;if(!navigator.onLine){c.className='kfm-chip off';c.textContent='● '+L('Offline','অফলাইন');return}c.className='kfm-chip';const t=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});c.textContent=k==='saved'?'✓ '+L('Saved ','সংরক্ষিত ')+t:'● '+L('Ready','প্রস্তুত')};
+addEventListener('online',()=>kfmStatus());addEventListener('offline',()=>kfmStatus());
+/* install */
+let dip=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e});
+window.kfmInstall=async function(){if(dip){dip.prompt();try{await dip.userChoice}catch(x){}dip=null}else toast(L('To install: open this app from a web host (https) and use the browser menu → Install. On iPhone: Share → Add to Home Screen.','ইনস্টল করতে: অ্যাপটি ওয়েব হোস্ট (https) থেকে খুলে ব্রাউজার মেনু → Install চাপুন। আইফোনে: Share → Add to Home Screen।'))};
+/* shortcuts + tour overlays */
+function modal(id,html){let m=document.getElementById(id);if(m)m.remove();document.body.insertAdjacentHTML('beforeend',`<div class="kfm-modal" id="${id}"><div class="kfm-card">${html}</div></div>`);const el=document.getElementById(id);el.addEventListener('click',e=>{if(e.target===el)el.remove()});return el}
+window.kfmShortcuts=function(){const rows=[['Ctrl / ⌘ + K  ·  /',L('Search anything','যেকোনো কিছু খুঁজুন')],['Ctrl / ⌘ + Z',L('Undo last change','শেষ পরিবর্তন ফেরান')],['N',L('New entry','নতুন দাখিলা')],['?',L('Show shortcuts','শর্টকাট দেখুন')],['Esc',L('Close dialogs','ডায়ালগ বন্ধ')]];
+ const el=modal('kfmSc',`<h3>⌨ ${L('Keyboard shortcuts','কীবোর্ড শর্টকাট')}</h3>${rows.map(r=>`<div class="sc-row"><kbd>${r[0]}</kbd><span>${r[1]}</span></div>`).join('')}<div class="actions"><button class="btn primary" type="button" id="kfmScOk">OK</button></div>`);el.querySelector('#kfmScOk').onclick=()=>el.remove()};
+const steps=()=>[['👋',L('Welcome to KFM Accounts','KFM Accounts-এ স্বাগতম'),L('A complete double-entry accounting workspace — now with textbook-format journals, statements and one-click adjustments.','সম্পূর্ণ দুই তরফা হিসাবের কর্মক্ষেত্র — এখন পাঠ্যবই ধাঁচের জাবেদা, বিবরণী ও এক ক্লিকে সমন্বয় সহ।')],
+ ['⌕',L('Search anything','যেকোনো কিছু খুঁজুন'),L('Press Ctrl+K (or /) to jump to any page, action or past entry. On mobile tap Search.','যেকোনো পেজ, কাজ বা আগের দাখিলায় যেতে Ctrl+K (বা /) চাপুন। মোবাইলে Search ট্যাপ করুন।')],
+ ['⚡',L('One-click adjustments','এক ক্লিকে সমন্বয়'),L('Adjusting entries → depreciation, bad debts, ledger fix and reversals, pre-filled from your data.','সমন্বয় দাখিলা → অবচয়, অনাদায়ী পাওনা, খতিয়ান ঠিক ও উল্টে দেওয়া — আপনার তথ্য থেকে আগেই ভরা।')],
+ ['📘',L('Textbook formats','পাঠ্যবই ছক'),L('Accounting equation, journals, challan/cash memo, profit from capital, trial balance and balance sheet.','হিসাব সমীকরণ, জাবেদা, চালান/ক্যাশমেমো, মূলধন থেকে লাভ, রেওয়ামিল ও স্থিতিপত্র।')],
+ ['↶',L('Safe to experiment','নির্ভয়ে চেষ্টা করুন'),L('Made a mistake? Press Ctrl+Z to undo. Use Backup regularly to keep a copy of your data.','ভুল হলে Ctrl+Z চেপে ফিরে যান। তথ্যের কপি রাখতে নিয়মিত Backup নিন।')]];
+window.kfmTour=function(i=0){const S=steps(),s=S[i];const el=modal('kfmTour',`<div class="tour-ic">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p><div class="tour-dots">${S.map((_,k)=>`<i class="${k===i?'on':''}"></i>`).join('')}</div><div class="actions"><button class="btn" type="button" id="tSkip">${L('Skip','এড়িয়ে যান')}</button><button class="btn primary" type="button" id="tNext">${i<S.length-1?L('Next','পরবর্তী'):L('Get started','শুরু করুন')}</button></div>`);
+ const done=()=>{try{localStorage.setItem('kfm_tour','1')}catch(x){}el.remove()};el.querySelector('#tSkip').onclick=done;el.querySelector('#tNext').onclick=()=>{if(i<S.length-1){el.remove();kfmTour(i+1)}else done()}};
+window.kfmTourMaybe=function(){let seen=false;try{seen=localStorage.getItem('kfm_tour')}catch(x){}if(seen||document.getElementById('kfmTour'))return;const g=document.querySelector('.lg-wrap');if(g&&g.offsetParent!==null)return;if(document.getElementById('kfmSplash'))return;kfmTour(0)};
+/* palette actions */
+TB.acts=()=>[{t:L('Undo last change','শেষ পরিবর্তন ফেরান'),ic:'↶',sub:'Ctrl+Z',run:()=>kfmUndo()},{t:L('Install app','অ্যাপ ইনস্টল করুন'),ic:'⬇',sub:L('Action','কাজ'),run:()=>kfmInstall()},{t:L('Keyboard shortcuts','কীবোর্ড শর্টকাট'),ic:'⌨',sub:'?',run:()=>kfmShortcuts()},{t:L('Welcome tour','স্বাগতম ট্যুর'),ic:'👋',sub:L('Action','কাজ'),run:()=>kfmTour(0)}];
+/* keys */
+document.addEventListener('keydown',e=>{const tg=(e.target.tagName||'').toLowerCase(),typing=['input','textarea','select'].includes(tg)||e.target.isContentEditable;
+ if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!e.shiftKey&&!typing){e.preventDefault();kfmUndo();return}
+ if(!typing&&!e.ctrlKey&&!e.metaKey&&!e.altKey){if(e.key==='?'){e.preventDefault();kfmShortcuts()}else if(e.key.toLowerCase()==='n'&&!document.querySelector('.kfm-modal')&&!document.querySelector('.kcmd:not(.hide)')){e.preventDefault();go('entry')}}
+ if(e.key==='Escape'){const m=document.querySelector('.kfm-modal');if(m&&m.id!=='kfmTour')m.remove()}});
+/* haptics */
+document.addEventListener('click',e=>{if(navigator.vibrate&&e.target.closest&&e.target.closest('.btn,.nav-btn,.tb-tile,.bottomnav button'))navigator.vibrate(8)},true);
+/* FAB + header chip */
+window.kfmChrome=function(){
+ if(!document.getElementById('kfmSaved')){const f=document.querySelector('.topbar .btn');if(f)f.parentElement.insertAdjacentHTML('afterbegin','<span id="kfmSaved" class="kfm-chip"></span>')}
+ kfmStatus()};
+const og=go;go=function(){og.apply(this,arguments);try{kfmChrome()}catch(x){}};
+})();
+/* ===== Vouchers & documents hub (cash memo / challan / invoice / notes) + textbook ledger ===== */
+const MEMO_K={
+ cashmemo:{en:'Cash memo',bn:'ক্যাশমেমো',no:['Voucher no. ','ভাউচার নং '],party:['Buyer’s name','ক্রেতার নাম'],post:'cash',sign:'both',nb:['N.B.: Sold goods are not taken back.','বি: দ্র: বিক্রীত পণ্য ফেরত নেওয়া হয় না।']},
+ challan:{en:'Challan',bn:'চালান',no:['Challan no.−','চালান নং−'],party:['Buyer’s name','ক্রেতার নাম'],post:'sales',nb:['N.B.: Errors and omissions excepted.','বি.দ্র. ভুল-ত্রুটি সংশোধনযোগ্য।']},
+ invoice:{en:'Invoice',bn:'ইনভয়েস',no:['Invoice no. ','ইনভয়েস নং '],party:['Buyer’s name','ক্রেতার নাম'],post:'sales',nb:['N.B.: Errors and omissions excepted.','বি.দ্র. ভুল-ত্রুটি সংশোধনযোগ্য।']},
+ debitnote:{en:'Debit note',bn:'ডেবিট নোট',no:['Debit note no. ','ডেবিট নোট নং '],party:['Supplier’s name','সরবরাহকারীর নাম'],post:'preturn',nb:['Goods returned to the supplier — please credit our account.','পণ্য সরবরাহকারীকে ফেরত — আমাদের হিসাবে ক্রেডিট করুন।']},
+ creditnote:{en:'Credit note',bn:'ক্রেডিট নোট',no:['Credit note no. ','ক্রেডিট নোট নং '],party:['Customer’s name','ক্রেতার নাম'],post:'sreturn',nb:['Goods returned by the customer — your account is credited.','ক্রেতা কর্তৃক পণ্য ফেরত — আপনার হিসাবে ক্রেডিট করা হলো।']}};
+const tbMemoAuto=k=>String((extra.memos||[]).filter(s=>s.m.kind===k).length+1).padStart(4,'0');
+function tbMemoNew(kind){const prof=extra.profile||{};kind=kind||'challan';const a=tbMemoAuto(kind);return{kind,seller:prof.org||settings.title||'',saddr:'',no:a,_auto:a,date:today(),buyer:'',baddr:'',tdisc:kind==='debitnote'||kind==='creditnote'?0:5,vat:0,terms:'',note:'',copies:1,items:[{d:'',rate:'',qty:'',unit:''}]}}
+function tbMemoTotals(m){const sub=m.items.reduce((s,i)=>s+(Number(i.rate)||0)*(Number(i.qty)||0),0),disc=qaR2(sub*(Number(m.tdisc)||0)/100),vat=qaR2((sub-disc)*(Number(m.vat)||0)/100);return{sub:qaR2(sub),disc,vat,net:qaR2(sub-disc+vat)}}
+function tbMemoHtml(m,copyLabel){const t=tbMemoTotals(m),K=MEMO_K[m.kind]||MEMO_K.challan,n=Math.max(m.items.length,3),note=m.kind==='cashmemo'||m.kind==='challan'||m.kind==='invoice'||true;
+ const rows=Array.from({length:n},(_,i)=>{const it=m.items[i];return it&&(it.d||it.rate||it.qty)?`<tr><td class="tbk-c">${tbD(i+1)}</td><td>${esc(it.d)}</td><td class="num">${it.rate!==''?tbN(it.rate):''}</td><td class="tbk-c">${it.qty!==''?tbN(it.qty)+' '+esc(it.unit||''):''}</td><td class="num">${tbN((Number(it.rate)||0)*(Number(it.qty)||0))}</td></tr>`:`<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>`}).join('');
+ const tail=`${m.tdisc>0?`<tr><td></td><td>${tL('Less: trade discount','বাদ: কারবারি বাট্টা')} (${tbD(m.tdisc)}%)</td><td></td><td></td><td class="num">(${tbN(t.disc)})</td></tr>`:''}${m.vat>0?`<tr><td></td><td>${tL('Add: VAT','যোগ: ভ্যাট')} (${tbD(m.vat)}%)</td><td></td><td></td><td class="num">${tbN(t.vat)}</td></tr>`:''}<tr><td></td><td></td><td></td><td></td><td class="num"><span class="tbk-u">${tbN(t.net)}</span></td></tr>`;
+ return `<div class="tbk-memo">${copyLabel?`<div class="tbk-copy">${copyLabel}</div>`:''}<div class="tbk-mh"><div>${tL(...K.no)}${tbD(esc(m.no))}</div><div class="tbk-mt"><b>${esc(m.seller)}</b><div>${esc(m.saddr)}</div></div><div class="tbk-md">${tL('Date : ','তারিখ : ')}${tbFull(m.date||today())}</div></div><div class="tbk-mtype"><span>${tL(K.en,K.bn)}</span></div><div class="tbk-mb">${tL(...K.party)}: ${esc(m.buyer)}<br>${tL('Address: ','ঠিকানা: ')}${esc(m.baddr)}</div>
+ <table class="tbk tbk-j"><thead><tr><th style="width:50px">${tL('Sl.','ক্র/নং')}</th><th>${tL('Description of goods','মালের বিবরণ')}</th><th style="width:100px">${tL('Rate (৳)','দর (টাকা)')}</th><th style="width:130px">${tL('Quantity','পরিমাণ')}</th><th style="width:130px">${tL('Amount (৳)','টাকার পরিমাণ')}</th></tr></thead><tbody>${rows}${tail}</tbody></table>
+ <div class="tbk-words">${tL('In words: ','টাকা (কথায়): ')}${esc(takaWords(t.net,tbBn()?'bn':'en'))}</div><div class="tbk-mf"><div>${m.terms&&(m.kind==='challan'||m.kind==='invoice')?`${tL('Terms of sale: ','বিক্রয় শর্ত: ')}${esc(m.terms)}<br>`:''}${m.kind==='cashmemo'?tL('Buyer’s signature','ক্রেতার স্বাক্ষর')+'<br>':''}${esc(m.note||tL(...K.nb))}</div><div class="tbk-sig">${tL('Seller’s signature','বিক্রেতার স্বাক্ষর')}</div></div></div>`}
+function tbDocStrip(active,bnFlag){const L=(a,b)=>bnFlag?b:a;const tabs=[['vouchers','Voucher','ভাউচার'],['tbmemo:cashmemo','Cash memo','ক্যাশমেমো'],['tbmemo:challan','Challan','চালান'],['tbmemo:invoice','Invoice','ইনভয়েস'],['tbmemo:debitnote','Debit note','ডেবিট নোট'],['tbmemo:creditnote','Credit note','ক্রেডিট নোট'],['receipts','Receipt','রসিদ']];
+ return `<div class="tb-docstrip no-print"><b>🧾 ${L('Vouchers & documents','ভাউচার ও নথি')}</b>${tabs.map(([k,en,bn])=>`<button class="btn small ${k===active?'on':''}" type="button" data-tb-doc="${k}">${L(en,bn)}</button>`).join('')}</div>`}
+function tbOpenDoc(kind){if(!TB.memo)TB.memo=tbMemoNew(kind);TB.memo.kind=kind;tbRenderMemo();go('tbmemo')}
+function tbMemoPost(){const m=TB.memo,t=tbMemoTotals(m),K=MEMO_K[m.kind];if(!(t.net>0)){toast(tL('Add items first.','আগে পণ্য যোগ করুন।'));return}if(!m.buyer.trim()){toast(tL('Enter the party name.','পক্ষের নাম লিখুন।'));return}
+ if(m.posted&&!confirm(tL('This document was already posted to the books. Post again?','এই নথি আগেই হিসাবে পোস্ট হয়েছে। আবার পোস্ট করবেন?')))return;
+ const cash=K.post==='cash',T=cash?SJT.cin:SJT[K.post],dr=cash?'ca':T.dr,cr=cash?'REV':T.cr,J=tbJ(dr,cr,t.net,T.note);
+ entries.push({id:'u'+Date.now()+Math.random().toString(36).slice(2,7),date:m.date||today(),desc:`${T.en}: ${m.buyer} · ${K.en} ${m.no}`,note:J.note,v:J.v,sj:{t:cash?'cin':K.post,party:m.buyer,no:m.no,nar:K.en,amt:t.net,cash:cash?'ca':null,ctr:cash?'REV':null}});m.posted=true;save();toast(tL('Posted to the books (see Special journals).','হিসাবে পোস্ট হয়েছে (বিশেষ জাবেদায় দেখুন)।'))}
+function tbRenderMemo(){const el=$('tbmemo');if(!el)return;if(!TB.memo)TB.memo=tbMemoNew('challan');const m=TB.memo;if(!MEMO_K[m.kind])m.kind='challan';if(m._auto!==undefined&&(m.no===''||m.no===m._auto)){m.no=m._auto=tbMemoAuto(m.kind)}
+ const K=MEMO_K[m.kind],f=(id,l,v,ty='text',ex='')=>`<div class="field"><label>${l}</label><input id="mm_${id}" type="${ty}" value="${esc(v)}" ${ex}></div>`;
+ const buyers=[...new Set((extra.debtors||[]).map(d=>d.name).concat(entries.filter(e=>e.sj&&e.sj.party).map(e=>e.sj.party)).concat((extra.memos||[]).map(s=>s.m.buyer)).filter(Boolean))];
+ const prods=[...new Set((extra.products||[]).map(p=>p.name).concat((extra.memos||[]).flatMap(s=>s.m.items.map(i=>i.d))).filter(Boolean))];
+ const items=m.items.map((it,i)=>`<tr><td><input data-mi="d" data-i="${i}" list="mmProds" value="${esc(it.d)}" placeholder="${tL('Item','পণ্য')}"></td><td><input data-mi="rate" data-i="${i}" type="number" step="0.01" value="${esc(it.rate)}" style="width:90px"></td><td><input data-mi="qty" data-i="${i}" type="number" step="0.01" value="${esc(it.qty)}" style="width:90px"></td><td><input data-mi="unit" data-i="${i}" value="${esc(it.unit)}" style="width:70px" placeholder="${tL('kg/pcs','কেজি/পিস')}"></td><td><button class="btn danger small" type="button" data-tb-mrm="${i}">✕</button></td></tr>`).join('');
+ const saved=(extra.memos||[]).slice().reverse().map(s=>{const k=MEMO_K[s.m.kind]||MEMO_K.challan;return `<tr><td>${fmtDate(s.m.date)}</td><td>${tL(k.en,k.bn)}</td><td>${esc(s.m.no)}</td><td>${esc(s.m.buyer)}</td><td class="num">${money(tbMemoTotals(s.m).net)}</td><td>${s.m.posted?'✓':''}</td><td class="qa-act"><button class="btn small" type="button" data-tb-mload="${s.id}">${tL('Open','খুলুন')}</button> <button class="btn danger small" type="button" data-tb-mdel="${s.id}">✕</button></td></tr>`}).join('');
+ const t=tbMemoTotals(m);
+ el.innerHTML=tbHead('tbmemo',['Vouchers & documents','ভাউচার ও নথি'],['Cash memo, challan, invoice, debit note and credit note in one place — print, save, or post straight to your books','ক্যাশমেমো, চালান, ইনভয়েস, ডেবিট ও ক্রেডিট নোট এক জায়গায় — প্রিন্ট, সংরক্ষণ বা সরাসরি হিসাবে পোস্ট করুন'])+tbDocStrip('tbmemo:'+m.kind,tbBn())+
+ `<datalist id="mmBuyers">${buyers.map(b=>`<option value="${esc(b)}">`).join('')}</datalist><datalist id="mmProds">${prods.map(b=>`<option value="${esc(b)}">`).join('')}</datalist><div class="tbpage"><div class="panel no-print"><div class="panel-head"><h3>${tL(K.en,K.bn)}</h3><span class="pill">${tL('Total','মোট')} ${money(t.net)}</span></div><div class="grid-form"><div class="field"><label>${tL('Type','ধরন')}</label><select id="mm_kind">${Object.entries(MEMO_K).map(([k,v])=>`<option value="${k}"${k===m.kind?' selected':''}>${tL(v.en,v.bn)}</option>`).join('')}</select></div>${f('no',tL('Document no.','নথির নং'),m.no)}${f('date',tL('Date','তারিখ'),m.date,'date')}${f('seller',tL('Your business name','আপনার প্রতিষ্ঠানের নাম'),m.seller)}${f('saddr',tL('Business address','প্রতিষ্ঠানের ঠিকানা'),m.saddr)}${f('buyer',tL(...K.party),m.buyer,'text','list="mmBuyers"')}${f('baddr',tL('Party address','ঠিকানা'),m.baddr)}${f('tdisc',tL('Trade discount (%)','কারবারি বাট্টা (%)'),m.tdisc,'number','min="0" max="100" step="0.01"')}${f('vat',tL('VAT (%)','ভ্যাট (%)'),m.vat,'number','min="0" max="100" step="0.01"')}${f('terms',tL('Terms of sale (e.g. 2/10, n/30)','বিক্রয় শর্ত (যেমন ২/১০, নিট ৩০)'),m.terms)}${f('note',tL('Note (N.B.)','বি.দ্র.'),m.note)}<div class="field"><label>${tL('Print sets','প্রিন্ট সেট')}</label><select id="mm_copies"><option value="1"${m.copies==1?' selected':''}>1</option><option value="3"${m.copies==3?' selected':''}>3 (${tL('buyer / seller / accounts','ক্রেতা / বিক্রেতা / হিসাব')})</option></select></div></div>
+ <div class="table-wrap" style="margin-top:12px"><table><thead><tr><th>${tL('Description','মালের বিবরণ')}</th><th>${tL('Rate','দর')}</th><th>${tL('Qty','পরিমাণ')}</th><th>${tL('Unit','একক')}</th><th></th></tr></thead><tbody>${items}</tbody></table></div><div class="actions"><button class="btn" type="button" data-tb-madd>＋ ${tL('Add item','পণ্য যোগ')}</button><button class="btn primary" type="button" data-tb-mprint>⎙ ${tL('Print','প্রিন্ট')}</button><button class="btn" type="button" data-tb-msave>${tL('Save','সংরক্ষণ')}</button><button class="btn" type="button" data-tb-mpost>${tL('Post to books','হিসাবে পোস্ট')}${m.posted?' ✓':''}</button><button class="btn" type="button" data-tb-mauto>#${tL(' Auto number',' স্বয়ংক্রিয় নং')}</button><button class="btn" type="button" data-tb-mnew>${tL('New','নতুন')}</button></div></div>
+ <div class="tbk-sheet" id="tbMemoPrev">${tbMemoHtml(m)}</div>
+ <div class="panel no-print" style="margin-top:14px"><div class="panel-head"><h3>${tL('Saved documents','সংরক্ষিত নথি')}</h3></div>${table([tL('Date','তারিখ'),tL('Type','ধরন'),tL('No.','নং'),tL('Party','পক্ষ'),'num:'+tL('Amount','অঙ্ক'),tL('Posted','পোস্ট'),''],saved,tL('Nothing saved yet.','এখনো কিছু সংরক্ষিত নেই।'))}</div></div>`}
+(function(){
+ document.addEventListener('click',e=>{const c=s=>e.target.closest&&e.target.closest(s);let b;
+  if((b=c('[data-tb-doc]'))){const k=b.dataset.tbDoc;if(k.startsWith('tbmemo:'))tbOpenDoc(k.slice(7));else go(k);return}
+  if(c('[data-tb-mpost]')){tbMemoPost();return}
+  if(c('[data-tb-mauto]')){TB.memo.no=TB.memo._auto=tbMemoAuto(TB.memo.kind);tbRenderMemo();return}
+  if((b=c('[data-tb-lgnav]'))){const ids=tbLgIds(),i=ids.indexOf(TB.lgAcc),n=ids.length;TB.lgAcc=ids[(i+(+b.dataset.tbLgnav)+n)%n];tbRenderLedger();return}});
+ document.addEventListener('change',e=>{const t=e.target;
+  if(t.dataset&&t.dataset.mi==='d'&&TB.memo){const i=+t.dataset.i,p=(extra.products||[]).find(x=>x.name===t.value);if(p&&TB.memo.items[i].rate===''&&p.price){TB.memo.items[i].rate=String(p.price);const r=document.querySelector(`[data-mi=rate][data-i="${i}"]`);if(r)r.value=p.price;tbMemoPrev()}return}
+  if(t.id==='tbLgA'){TB.lgAcc=t.value;tbRenderLedger()}else if(t.id==='tbLgM'){TB.lgM=t.value;tbRenderLedger()}});
+ const oa=TB.acts;TB.acts=()=>(oa?oa():[]).concat(Object.entries(MEMO_K).map(([k,v])=>({t:tL('New '+v.en.toLowerCase(),'নতুন '+v.bn),ic:'🧾',sub:tL('Document','নথি'),run:()=>tbOpenDoc(k)})));
+})();
+/* ---------- Textbook ledger (খতিয়ান) ---------- */
+TB.lgAcc='ca';TB.lgM='';
+const TB_EQ=[['eq:Capital','Capital','মূলধন',false,'Capital'],['eq:Revenue','Revenue / Sales','আয় / বিক্রয়',false,'Revenue'],['eq:Expenses','Expenses','ব্যয়',true,'Expenses'],['eq:Drawing','Drawings','উত্তোলন',true,'Drawings'],['eq:other','Other equity','অন্যান্য মালিকানা স্বত্ব',false,'Owner’s equity']];
+function tbLgAccts(){const a=[];ASSET.concat(LIABILITY).forEach(([k,n])=>a.push({id:k,en:n,bn:TBBN[k]||n,dr:isA(k),lpn:n}));TB_EQ.forEach(([id,en,bn,dr,ln])=>a.push({id,en,bn,dr,lpn:EQN[ln.replace('Drawings','Drawings')]||ln}));return a}
+const tbLgIds=()=>tbLgAccts().map(a=>a.id);
+function tbLgItems(id){const out=[];asc().forEach(e=>{const L=tbLines(e),all=L.dr.map(x=>({...x,s:'dr'})).concat(L.cr.map(x=>({...x,s:'cr'}))),key=l=>l.k==='eq'?'eq:'+({Revenue:'Revenue',Expenses:'Expenses',Capital:'Capital',Drawing:'Drawing'}[e.note]||'other'):l.k;
+  all.filter(l=>key(l)===id).forEach(l=>{const opp=all.filter(x=>key(x)!==id).map(x=>x.name);out.push({e,side:l.s,a:l.a,opp})})});return out}
+function tbLgBook(ac,m){const items=tbLgItems(ac.id),before=m?items.filter(x=>x.e.date.slice(0,7)<m):[],per=items.filter(x=>!m||x.e.date.startsWith(m));if(!per.length&&!before.length)return null;
+ const net=before.reduce((s,x)=>s+(x.side==='dr'?x.a:-x.a),0),Lr=[],Rr=[];
+ if(m&&Math.abs(net)>.004){(net>0?Lr:Rr).push({d:'',p:tL('Opening balance b/d','প্রারম্ভিক জের (b/d)'),j:'',a:Math.abs(net)})}
+ per.forEach(x=>{const p=x.opp.length>1?tL('Various','বিবিধ'):(x.opp[0]||'');(x.side==='dr'?Lr:Rr).push({d:tbD(tbMD(x.e.date)),p:(x.side==='dr'?tL('To ','প্রতি '):tL('By ','দ্বারা '))+p,j:'J'+x.e.jn,a:x.a})});
+ const td=Lr.reduce((s,r)=>s+r.a,0),tc=Rr.reduce((s,r)=>s+r.a,0),bal=qaR2(Math.abs(td-tc)),end=per.length?tbD(tbMD(per[per.length-1].e.date)):'',tot=Math.max(td,tc);let bd=null;
+ if(bal>.004){if(td>tc){Rr.push({d:end,p:tL('By balance c/d','জের c/d'),j:'',a:bal});bd='L'}else{Lr.push({d:end,p:tL('To balance c/d','জের c/d'),j:'',a:bal});bd='R'}}
+ return{Lr,Rr,tot,bal,bd,side:td>tc?'dr':'cr',dr:td,cr:tc}}
+function tbLgTable(ac,bk){const nm=tbBn()?ac.bn+' হিসাব':ac.en+' A/c',n=Math.max(bk.Lr.length,bk.Rr.length,3),cl=(r,s)=>r?`<td class="tbk-d">${r.d}</td><td>${esc(r.p)}</td><td class="tbk-c">${tbD(r.j)}</td><td class="num${s?' sep':''}">${tbN(r.a)}</td>`:`<td class="tbk-d">&nbsp;</td><td></td><td></td><td class="num${s?' sep':''}"></td>`;
+ let rows='';for(let i=0;i<n;i++)rows+=`<tr>${cl(bk.Lr[i],true)}${cl(bk.Rr[i],false)}</tr>`;
+ const bdRow=bk.bd?`<tr class="tbk-bd">${bk.bd==='L'?`<td class="tbk-d"></td><td>${tL('To balance b/d','জের b/d')}</td><td></td><td class="num sep">${tbN(bk.bal)}</td><td colspan="4"></td>`:`<td colspan="4" class="sepx"></td><td class="tbk-d"></td><td>${tL('By balance b/d','জের b/d')}</td><td></td><td class="num">${tbN(bk.bal)}</td>`}</tr>`:'';
+ return `<div class="tbk-sheet tbk-lgpage"><div class="tbk-title">${esc(nm)}<small>${tL('Ledger page no.','খতিয়ান পৃষ্ঠা নং')}: ${tbD(lpOf(ac.lpn)==null?'':lpOf(ac.lpn))}</small></div><div style="overflow-x:auto"><table class="tbk tbk-j tbk-ledger"><thead><tr><th colspan="4">${tL('Debit','ডেবিট')}</th><th colspan="4">${tL('Credit','ক্রেডিট')}</th></tr><tr><th style="width:62px">${tL('Date','তারিখ')}</th><th>${tL('Particulars','বিবরণ')}</th><th style="width:48px">${tL('J.P.','জা.পৃ.')}</th><th style="width:100px" class="sep">${tL('Taka','টাকা')}</th><th style="width:62px">${tL('Date','তারিখ')}</th><th>${tL('Particulars','বিবরণ')}</th><th style="width:48px">${tL('J.P.','জা.পৃ.')}</th><th style="width:100px">${tL('Taka','টাকা')}</th></tr></thead><tbody>${rows}<tr class="tbk-tot"><td></td><td class="num"><b>${tL('Total','মোট')}</b></td><td></td><td class="num sep"><span class="tbk-dbl">${tbN(bk.tot)}</span></td><td></td><td class="num"><b>${tL('Total','মোট')}</b></td><td></td><td class="num"><span class="tbk-dbl">${tbN(bk.tot)}</span></td></tr>${bdRow}</tbody></table></div></div>`}
+function tbRenderLedger(){const el=$('tbledger');if(!el)return;const A=tbLgAccts(),m=TB.lgM;if(TB.lgAcc!=='*'&&!A.some(a=>a.id===TB.lgAcc))TB.lgAcc='ca';
+ const opts=`<option value="*"${TB.lgAcc==='*'?' selected':''}>${tL('All accounts (full ledger)','সব হিসাব (পূর্ণ খতিয়ান)')}</option><optgroup label="${tL('Assets','সম্পদ')}">${A.filter(a=>ASSET.some(x=>x[0]===a.id)).map(a=>`<option value="${a.id}"${a.id===TB.lgAcc?' selected':''}>${esc(tL(a.en,a.bn))}</option>`).join('')}</optgroup><optgroup label="${tL('Liabilities','দায়')}">${A.filter(a=>LIABILITY.some(x=>x[0]===a.id)).map(a=>`<option value="${a.id}"${a.id===TB.lgAcc?' selected':''}>${esc(tL(a.en,a.bn))}</option>`).join('')}</optgroup><optgroup label="${tL('Owner’s equity','মালিকানা স্বত্ব')}">${A.filter(a=>a.id.startsWith('eq:')).map(a=>`<option value="${a.id}"${a.id===TB.lgAcc?' selected':''}>${esc(tL(a.en,a.bn))}</option>`).join('')}</optgroup>`;
+ let body='';if(TB.lgAcc==='*'){const list=A.map(a=>[a,tbLgBook(a,m)]).filter(x=>x[1]);body=list.map(([a,b])=>tbLgTable(a,b)).join('')||`<div class="panel"><p class="muted">${tL('No postings yet.','এখনো কোনো লেনদেন নেই।')}</p></div>`}
+ else{const a=A.find(x=>x.id===TB.lgAcc),b=tbLgBook(a,m);body=b?tbLgTable(a,b):`<div class="panel"><p class="muted">${tL('No postings in this account for the selected period.','নির্বাচিত সময়ে এই হিসাবে কোনো লেনদেন নেই।')}</p></div>`;
+  if(b&&b.bal>.004)body=`<div class="tbk-chip no-print">${tL('Closing balance','সমাপনী জের')}: <b>${tbN(b.bal)}</b> ${b.side==='dr'?tL('Debit','ডেবিট'):tL('Credit','ক্রেডিট')}</div>`+body}
+ el.innerHTML=tbHead('tbledger',['Ledger (textbook format)','খতিয়ান (পাঠ্যবই ছক)'],['Two-sided T-format ledger accounts with balance c/d and b/d, built from your journal','জাবেদা থেকে তৈরি জের c/d ও b/d সহ দুই তরফা T-ছকের খতিয়ান'])+`<div class="tbpage"><div class="panel no-print"><div class="panel-head filters"><button class="btn small" type="button" data-tb-lgnav="-1">◀</button><div class="field"><label>${tL('Account','হিসাব')}</label><select id="tbLgA">${opts}</select></div><button class="btn small" type="button" data-tb-lgnav="1">▶</button><div class="field"><label>${tL('Month','মাস')}</label>${tbMonthSel('tbLgM',m)}</div></div></div>${body}</div>`}
+(function(){const o=tbRenderAll;tbRenderAll=function(){o();tbRenderLedger();['vouchers','receipts'].forEach(id=>{const el=$(id);if(el&&!el.querySelector(':scope>.tb-docstrip'))el.insertAdjacentHTML('afterbegin',tbDocStrip(id,isBn()))})}})();
+
 function renderCashJournal(){
  const cashKeys=[['ca','Cash'],['ba','Bank Account'],['bk','bKash'],['ng','Nagad'],['sv','Savings']];
  const cashOpts=cashKeys.map(([k,n])=>`<option value="${k}">${n}</option>`).join('');const otherOpts=ALL.map(([k,n])=>`<option value="${k}">${n}</option>`).join('');
@@ -1141,10 +1905,10 @@ function translateWorkspace(){
  const map={
  'Workspace':'ওয়ার্কস্পেস','Introduction / পরিচিতি':'পরিচিতি','Dashboard':'ড্যাশবোর্ড','Accounting cycle':'হিসাবচক্র','New entry':'নতুন দাখিলা','Ledger':'খতিয়ান','T-chart':'টি-চার্ট','Chart of accounts':'হিসাবের তালিকা','Journal':'জাবেদা','Adjusting entries':'সমন্বয় দাখিলা','Cash in/out journal':'নগদ জমা/খরচ জাবেদা','Cash book':'নগদান বই','General ledger':'সাধারণ খতিয়ান','Financial statements':'আর্থিক বিবরণী','Capital & revenue':'মূলধন ও আয়','Management':'ব্যবস্থাপনা','Debtors':'দেনাদার','Creditors':'পাওনাদার','Inventory':'মজুত পণ্য','Receipts':'রসিদ','Vouchers':'ভাউচার','Operators':'অপারেটর','Reports':'প্রতিবেদন','App':'অ্যাপ','Settings':'সেটিংস','Sign out':'সাইন আউট','Theme':'থিম','Excel (all)':'এক্সেল (সব)','Backup':'ব্যাকআপ','Restore':'পুনরুদ্ধার','Home':'হোম','Add':'যোগ','More':'আরও','Save settings':'সেটিংস সংরক্ষণ','Toggle light / dark theme':'লাইট / ডার্ক থিম বদলান','Appearance & language':'চেহারা ও ভাষা','Language':'ভাষা','English':'ইংরেজি','Save introduction':'পরিচিতি সংরক্ষণ','Print page':'পৃষ্ঠা প্রিন্ট','Print':'প্রিন্ট','Date':'তারিখ','Particulars':'বিবরণ','Account':'হিসাব','Debit':'ডেবিট','Credit':'ক্রেডিট','Total':'মোট','Assets':'সম্পদ','Liabilities':'দায়','Owner’s equity':'মালিকানা স্বত্ব','Revenue':'আয়','Expenses':'ব্যয়','Monthly summary':'মাসিক সারসংক্ষেপ','Net income':'নিট আয়','Difference':'পার্থক্য','Balanced ✓':'মিলেছে ✓','Not balanced':'মেলেনি','No entries.':'কোনো দাখিলা নেই।','Search particulars…':'বিবরণ খুঁজুন…','All months':'সব মাস','Cash book':'নগদান বই','Account balances':'হিসাবের জের','Save changes':'পরিবর্তন সংরক্ষণ','Cancel':'বাতিল','Your name':'আপনার নাম','Role / title':'ভূমিকা / পদবি','Business / school':'ব্যবসা / বিদ্যালয়','Email (optional)':'ইমেইল (ঐচ্ছিক)','Introduction':'পরিচিতি','Profile photo':'প্রোফাইল ছবি','Trial balance report':'রেওয়ামিল প্রতিবেদন','Balance sheet':'স্থিতিপত্র','Trial balance':'রেওয়ামিল','As at':'তারিখ','Total debit':'মোট ডেবিট','Total credit':'মোট ক্রেডিট','Difference':'পার্থক্য','Monthly summary':'মাসিক সারসংক্ষেপ','Cash':'নগদ','Cash balance':'নগদ জের','Purchase':'ক্রয়','Sales':'বিক্রয়','Save':'সংরক্ষণ','Clear':'মুছুন','Delete':'মুছে ফেলুন','Edit':'সম্পাদনা','Search':'খুঁজুন','No adjusting entries yet.':'এখনও কোনো সমন্বয় দাখিলা নেই।','New adjusting journal entry':'নতুন সমন্বয় জাবেদা দাখিলা','Adjustment type':'সমন্বয়ের ধরন','Amount (৳)':'টাকার পরিমাণ (৳)','Debit account':'ডেবিট হিসাব','Credit account':'ক্রেডিট হিসাব','Explanation / particulars':'ব্যাখ্যা / বিবরণ','Save adjusting entry':'সমন্বয় দাখিলা সংরক্ষণ','Enter an amount.':'টাকার পরিমাণ লিখুন।','Choose two different accounts.':'দুটি আলাদা হিসাব নির্বাচন করুন।'
  };
- const nodes=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=nodes.nextNode())){const t=n.nodeValue.trim();if(!t)continue;if(bn&&map[t])n.nodeValue=n.nodeValue.replace(t,map[t]);else if(!bn){const rev=Object.fromEntries(Object.entries(map).map(([a,b])=>[b,a]));if(rev[t])n.nodeValue=n.nodeValue.replace(t,rev[t]);}}
+ const nodes=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=nodes.nextNode())){const t=n.nodeValue.trim();if(!t)continue;if(n.parentElement&&n.parentElement.closest('.tbpage'))continue;if(bn&&map[t])n.nodeValue=n.nodeValue.replace(t,map[t]);else if(!bn){const rev=Object.fromEntries(Object.entries(map).map(([a,b])=>[b,a]));if(rev[t])n.nodeValue=n.nodeValue.replace(t,rev[t]);}}
  document.querySelectorAll('[data-en][data-bn]').forEach(el=>el.textContent=bn?el.dataset.bn:el.dataset.en);
  document.querySelectorAll('input[placeholder],textarea[placeholder]').forEach(el=>{if(bn&&el.dataset.enPlaceholder===undefined)el.dataset.enPlaceholder=el.placeholder; if(!bn&&el.dataset.enPlaceholder!==undefined)el.placeholder=el.dataset.enPlaceholder;});
- const nav=$('sidebar');if(nav){nav.querySelector('.nav-label').textContent=bn?'ওয়ার্কস্পেস':'Workspace';const labels=[['Introduction / পরিচিতি','পরিচিতি'],['Dashboard','ড্যাশবোর্ড'],['Accounting cycle','হিসাবচক্র'],['New entry','নতুন দাখিলা'],['Ledger','খতিয়ান'],['T-chart','টি-চার্ট'],['Chart of accounts','হিসাবের তালিকা'],['Journal','জাবেদা'],['Adjusting entries','সমন্বয় দাখিলা'],['Cash in/out journal','নগদ জমা/খরচ জাবেদা'],['Cash book','নগদান বই'],['Trial balance','রেওয়ামিল'],['Balance sheet','স্থিতিপত্র'],['General ledger','সাধারণ খতিয়ান'],['Financial statements','আর্থিক বিবরণী'],['Capital & revenue','মূলধন ও আয়'],['Debtors','দেনাদার'],['Creditors','পাওনাদার'],['Inventory','মজুত পণ্য'],['Receipts','রসিদ'],['Vouchers','ভাউচার'],['Operators','অপারেটর'],['Reports','প্রতিবেদন'],['Settings','সেটিংস']];nav.querySelectorAll('.nav-btn').forEach((b,i)=>{if(labels[i]){const icon=b.querySelector('.ico');b.textContent='';if(icon)b.appendChild(icon);b.append(document.createTextNode(bn?labels[i][1]:labels[i][0]));}});const nl=nav.querySelectorAll('.nav-label');if(nl[1])nl[1].textContent=bn?'ব্যবস্থাপনা':'Management';if(nl[2])nl[2].textContent=bn?'অ্যাপ':'App';}
+ const nav=$('sidebar');if(nav){const labels=[['Introduction / পরিচিতি','পরিচিতি'],['Dashboard','ড্যাশবোর্ড'],['Accounting cycle','হিসাবচক্র'],['New entry','নতুন দাখিলা'],['Ledger','খতিয়ান'],['T-chart','টি-চার্ট'],['Chart of accounts','হিসাবের তালিকা'],['Journal','জাবেদা'],['Adjusting entries','সমন্বয় দাখিলা'],['Cash in/out journal','নগদ জমা/খরচ জাবেদা'],['Cash book','নগদান বই'],['Trial balance','রেওয়ামিল'],['Balance sheet','স্থিতিপত্র'],['General ledger','সাধারণ খতিয়ান'],['Financial statements','আর্থিক বিবরণী'],['Capital & revenue','মূলধন ও আয়'],['Debtors','দেনাদার'],['Creditors','পাওনাদার'],['Inventory','মজুত পণ্য'],['Receipts','রসিদ'],['Vouchers','ভাউচার'],['Operators','অপারেটর'],['Reports','প্রতিবেদন'],['Settings','সেটিংস']];nav.querySelectorAll('.nav-btn').forEach((b,i)=>{if(false){const icon=b.querySelector('.ico');b.textContent='';if(icon)b.appendChild(icon);b.append(document.createTextNode(bn?labels[i][1]:labels[i][0]));}});const nl=nav.querySelectorAll('.nav-label');}
  const sign=$('signOutTopBtn');if(sign)sign.textContent=bn?'⇥ সাইন আউট':'⇥ Sign out';const lang=$('langBtn');if(lang)lang.textContent=bn?'English':'বাংলা';const th=$('themeBtn');if(th)th.textContent=bn?'◐ থিম':'◐ Theme';const ex=$('exportAllBtn');if(ex)ex.textContent=bn?'⇩ এক্সেল (সব)':'⇩ Excel (all)';const bk=$('backupBtn');if(bk)bk.textContent=bn?'↧ ব্যাকআপ':'↧ Backup';const rs=$('restoreBtn');if(rs)rs.textContent=bn?'↥ পুনরুদ্ধার':'↥ Restore';
 }
 function renderAll(){document.title=settings.title||'Accounts';$('brandTitle').textContent=settings.title||'Accounts';$('brandSub').textContent=isBn()?'ব্যক্তিগত হিসাব · দ্বৈত দাখিলা খতিয়ান':'Personal accounts · Double-entry ledger';document.documentElement.dataset.theme=settings.theme||'light';document.documentElement.dataset.accent=settings.accent||'emerald';renderIntro();renderDashboard();renderEntry();renderLedger();renderAccounts();renderChartOfAccounts();renderDebtors();renderInventory();renderReceipts();renderReports();renderJournal();renderCashbook();renderBalance();renderTrialBalance();renderVouchers();renderCycle();renderAdjusting();renderCashJournal();renderCreditors();renderOperators();renderGL();renderStatements();renderCapRev();renderSettings();addExportBtns();renderSync();showPage(currentPage);translateWorkspace()}
@@ -1164,9 +1928,176 @@ document.addEventListener('click',e=>{const goto=e.target.closest('[data-goto]')
 .panel{box-shadow:0 8px 28px #1639230a}.panel-head h3{letter-spacing:-.2px}
 #chartofaccounts code{font-size:11px;background:var(--surface2);padding:3px 6px;border-radius:6px;color:var(--brand)}
 @media(max-width:600px){#chartofaccounts .cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* =========================================================
+   KFM SIGNATURE EDITION — ADVANCED OLIVE / SAGE / CREAM UI
+   Visual-only enhancement. Existing application logic retained.
+   ========================================================= */
+:root {
+  --kfm-ink: #0f1f17;
+  --kfm-forest: #1e3a2e;
+  --kfm-moss: #3e5a3f;
+  --kfm-sage: #6b7f67;
+  --kfm-stone: #c7cbb8;
+  --kfm-charcoal: #3d4337;
+  --kfm-glass: rgba(251,252,246,.78);
+  --kfm-glass-border: rgba(199,203,184,.58);
+  --kfm-ease: cubic-bezier(.2,.75,.25,1);
+}
+* { -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body {
+  letter-spacing: .005em;
+  -webkit-font-smoothing: antialiased;
+}
+button, .btn, .nav-btn, a, input, select, textarea {
+  transition: background .22s var(--kfm-ease), color .22s var(--kfm-ease),
+    border-color .22s var(--kfm-ease), box-shadow .22s var(--kfm-ease),
+    transform .22s var(--kfm-ease), opacity .22s var(--kfm-ease);
+}
+.topbar {
+  border-bottom: 1px solid rgba(107,127,103,.24) !important;
+  box-shadow: 0 8px 28px rgba(15,31,23,.055) !important;
+}
+.sidebar {
+  box-shadow: 12px 0 38px rgba(15,31,23,.13) !important;
+}
+.sidebar .nav-btn {
+  position: relative;
+  border: 1px solid transparent !important;
+  border-radius: 13px !important;
+  margin-block: 3px;
+}
+.sidebar .nav-btn:hover {
+  background: rgba(199,203,184,.14) !important;
+  transform: translateX(3px);
+}
+.sidebar .nav-btn.active {
+  box-shadow: inset 3px 0 0 #c7cbb8, 0 7px 18px rgba(0,0,0,.12) !important;
+}
+.panel, .metric-card, .command-tile, .pro-stat, .harmony-insight {
+  border: 1px solid var(--line) !important;
+  border-radius: 19px !important;
+  box-shadow: 0 8px 24px rgba(15,31,23,.055) !important;
+  transition: transform .24s var(--kfm-ease), box-shadow .24s var(--kfm-ease),
+    border-color .24s var(--kfm-ease) !important;
+}
+.metric-card:hover, .command-tile:hover, .pro-stat:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgba(15,31,23,.12) !important;
+}
+.panel:hover { box-shadow: 0 14px 32px rgba(15,31,23,.085) !important; }
+.dash-hero, .dash-hero-pro {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px !important;
+  box-shadow: 0 20px 48px rgba(15,31,23,.20) !important;
+}
+.dash-hero::after, .dash-hero-pro::after {
+  content: "";
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  right: -90px;
+  top: -145px;
+  border: 1px solid rgba(199,203,184,.23);
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px rgba(199,203,184,.045),
+              0 0 0 58px rgba(199,203,184,.035);
+  pointer-events: none;
+}
+.btn, button {
+  border-radius: 12px;
+}
+.btn.primary, .lg-btn, button.primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn.primary::after, .lg-btn::after, button.primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg,transparent 20%,rgba(255,255,255,.18) 48%,transparent 72%);
+  transform: translateX(-120%);
+  transition: transform .6s var(--kfm-ease);
+  pointer-events: none;
+}
+.btn.primary:hover::after, .lg-btn:hover::after, button.primary:hover::after {
+  transform: translateX(120%);
+}
+input, select, textarea, .lg-in {
+  border-radius: 11px !important;
+  min-height: 42px;
+}
+input:focus, select:focus, textarea:focus, .lg-in:focus {
+  box-shadow: 0 0 0 4px rgba(107,127,103,.13) !important;
+}
+.lg-wrap {
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+}
+.lg-wrap::before, .lg-wrap::after {
+  content: "";
+  position: fixed;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  filter: blur(65px);
+  opacity: .23;
+  z-index: -1;
+  pointer-events: none;
+  animation: kfmFloat 11s ease-in-out infinite alternate;
+}
+.lg-wrap::before { background: #c7cbb8; left: -90px; top: 12%; }
+.lg-wrap::after { background: #6b7f67; right: -90px; bottom: 8%; animation-delay: -4s; }
+.lg-card {
+  border-radius: 25px !important;
+  box-shadow: 0 28px 75px rgba(0,0,0,.22) !important;
+  backdrop-filter: blur(18px);
+}
+.lg-in { min-height: 48px; }
+.lg-btn { min-height: 48px; border-radius: 13px !important; }
+table { border-color: var(--line) !important; }
+th {
+  background: #e5e9dc !important;
+  color: #1e3a2e !important;
+  font-weight: 700;
+}
+td, th { border-color: var(--line) !important; }
+tr:hover td { background: rgba(199,203,184,.16); }
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: rgba(199,203,184,.22); border-radius: 20px; }
+::-webkit-scrollbar-thumb { background: #8b9a83; border: 2px solid transparent; background-clip: padding-box; border-radius: 20px; }
+::-webkit-scrollbar-thumb:hover { background: #3e5a3f; border: 2px solid transparent; background-clip: padding-box; }
+@keyframes kfmFloat {
+  from { transform: translate3d(0,-12px,0) scale(.94); }
+  to { transform: translate3d(18px,18px,0) scale(1.08); }
+}
+@media (max-width: 760px) {
+  .topbar { backdrop-filter: blur(18px); }
+  .panel, .metric-card, .command-tile, .pro-stat, .harmony-insight {
+    border-radius: 16px !important;
+  }
+  .dash-hero, .dash-hero-pro { border-radius: 19px !important; }
+  .lg-card { margin-inline: 14px; border-radius: 21px !important; }
+  button, .btn, .nav-btn { min-height: 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+
+
 </style></head><body><h1>${esc(settings.title)}</h1><h2>Payment receipt</h2><p>Receipt no: ${esc(r.no)}<br>Date: ${esc(r.date)}</p><hr><p>Received from: <b>${esc(r.customer)}</b></p><p>Purpose: ${esc(r.note||'Payment')}</p><p class="amount">${money(r.amount)}</p><hr><p>Authorized signature: ____________________</p><script>window.onload=()=>window.print()<\\/script></body></html>`);w.document.close();return}const rd=e.target.closest('[data-receipt-del]');if(rd&&confirm('Delete this receipt?')){extra.receipts.splice(Number(rd.dataset.receiptDel),1);save()}});
 $('backupBtn').onclick=backup;$('restoreBtn').onclick=restoreFileHandler;$('themeBtn').onclick=toggleTheme;$('langBtn').onclick=()=>{settings.lang=settings.lang==='en'?'bn':'en';try{localStorage.setItem(SETTINGS,JSON.stringify(settings))}catch(e){}toast(settings.lang==='bn'?'বাংলা ভাষা নির্বাচিত হয়েছে।':'English selected.');renderAll()};
 $('restoreFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text());const tx=Array.isArray(data)?data:data.entries;if(!Array.isArray(tx))throw Error('bad');if(confirm(`Replace local transactions with ${tx.length} imported entries?`)){entries=tx;if(data.extra)extra={...extra,...data.extra};if(data.settings)settings={...settings,...data.settings};save();toast('Backup restored.')}}catch(err){toast('Could not read that backup file.')}e.target.value=''});
 load();renderAll();updateAuthGate(guestOn()?GUESTU():null);setAuthMode('in');fbInit();
 </script>
-</body></html>
+<script>if('serviceWorker' in navigator&&/^https?:/.test(location.protocol)){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}</script></body></html>
