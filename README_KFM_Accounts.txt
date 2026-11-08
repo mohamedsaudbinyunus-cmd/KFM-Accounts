@@ -22,7 +22,9 @@ New accounting modules
 Sales register, purchase register, expense register, other income, payroll & salary,
 fixed assets and depreciation, Tax/VAT control, bank reconciliation, cash-flow
 statement, budgets & forecasts, closing entries (সমাপনী দাখিলা), reversing entries,
-party statements, and audit trail.
+party statements, audit trail, and a dedicated Contra entry page (কন্ট্রা দাখিলা) for
+transfers between your own Cash, Bank, bKash, Nagad and Savings accounts — found under
+Journals → Contra entry.
 
 Existing accounting workspace retained
 ---------------------------------------
