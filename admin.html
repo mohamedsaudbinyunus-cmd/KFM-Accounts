@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b1b22">
+<title>KFM Master Dashboard</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<style>
+:root{--bg:#f3f5f4;--surface:#ffffff;--surface2:#f6f8f7;--text:#0e1a1f;--muted:#5b6a70;--line:#dfe5e3;--acc:#0e8f84;--acc-ink:#fff;--side:#0b1b22;--side-text:#c9d8d6;
+ --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--ok:#006300;--okbg:#d9f2e1;--warn:#7a4b00;--warnbg:#fdeccb;--bad:#8e1a12;--badbg:#fde0dd;--info:#1f3a5f;--infobg:#e1e9f5;--shadow:0 8px 28px #0a1d2210;color-scheme:light}
+[data-theme="dark"]{--bg:#09151b;--surface:#0f2029;--surface2:#13262f;--text:#eaf2f0;--muted:#93a8ad;--line:#1f3640;--acc:#35d0c1;--acc-ink:#04211e;--side:#071017;--side-text:#aebfc0;
+ --s1:#3987e5;--s2:#d95926;--s3:#199e70;--ok:#6fdc9d;--okbg:#143626;--warn:#f2c35b;--warnbg:#3b2f10;--bad:#ff9a92;--badbg:#42201d;--info:#9cc2f5;--infobg:#17304f;--shadow:0 8px 28px #0006;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;min-height:100dvh}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+.hide{display:none!important}
+h1,h2,h3{margin:0;letter-spacing:-.02em}
+/* auth */
+.gate{min-height:100dvh;display:grid;place-items:center;padding:20px;background:radial-gradient(900px 500px at 20% 0%,#10464a55,transparent),radial-gradient(700px 500px at 100% 100%,#d9a43a22,transparent),var(--bg)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.gate .card{width:min(420px,100%);padding:28px}
+.logo{display:flex;align-items:center;gap:12px;margin-bottom:18px}.logo img{width:44px;height:44px;border-radius:12px}.logo b{font-size:17px;display:block}.logo small{color:var(--muted)}
+.f{display:grid;gap:5px;margin-bottom:13px}.f label{font-size:12px;font-weight:700;color:var(--muted)}
+.f input,.f select,.f textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface2);min-height:44px}
+.f input:focus,.f select:focus,.f textarea:focus{outline:2px solid var(--acc);outline-offset:1px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-weight:650;min-height:40px;white-space:nowrap}
+.btn:hover{border-color:var(--acc)}.btn.pri{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}.btn.bad{color:var(--bad)}.btn.sm{padding:5px 10px;min-height:32px;font-size:12.5px}.btn:disabled{opacity:.5;cursor:not-allowed}
+.err{color:var(--bad);font-size:13px;min-height:18px;margin:8px 0 0}
+.note{padding:12px 14px;border-radius:12px;background:var(--infobg);color:var(--info);font-size:13px}
+code{background:var(--surface2);padding:2px 6px;border-radius:6px;word-break:break-all;color:var(--text)}
+/* shell */
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100dvh}
+.side{background:var(--side);color:var(--side-text);padding:18px 12px;position:sticky;top:0;height:100dvh;display:flex;flex-direction:column;gap:4px}
+.side .logo{padding:2px 8px 16px;margin:0;color:#fff}.side .logo small{color:#86a0a2}
+.nav{display:flex;align-items:center;gap:11px;width:100%;padding:11px 12px;border:0;border-radius:11px;background:transparent;color:inherit;text-align:left;font-weight:600;min-height:44px}
+.nav:hover{background:#ffffff12;color:#fff}.nav.on{background:var(--acc);color:var(--acc-ink)}
+.nav i{font-style:normal;width:20px;text-align:center}.nav .bd{margin-left:auto;background:#e5484d;color:#fff;border-radius:99px;font-size:11px;padding:1px 7px;font-weight:800}
+.side .sp{flex:1}
+.main{padding:20px clamp(14px,3vw,32px) 40px;min-width:0}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.top h2{font-size:clamp(21px,3vw,27px)}.top p{margin:0;color:var(--muted)}.top .sp{flex:1}
+.who{display:flex;align-items:center;gap:9px;padding:4px 12px 4px 4px;border:1px solid var(--line);border-radius:99px;background:var(--surface)}
+.who span{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#f3d27a,#b98a1d);color:#1a1405;font-weight:850}
+.who small{max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted)}
+.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-bottom:14px}
+.kpi{padding:16px 18px;text-align:left;cursor:default;display:block;width:100%}
+button.kpi{cursor:pointer}button.kpi:hover{border-color:var(--acc)}
+.kpi small{display:block;color:var(--muted);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em}
+.kpi b{display:block;font-size:30px;letter-spacing:-.03em;margin:4px 0 2px;font-variant-numeric:tabular-nums}.kpi span{font-size:12.5px;color:var(--muted)}
+.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));margin-bottom:14px}
+.panel{padding:18px}.panel h3{font-size:15px;margin-bottom:4px}.panel .sub{color:var(--muted);font-size:12.5px;margin:0 0 12px}
+.ph{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}
+/* chips */
+.chip{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:750;background:var(--surface2);color:var(--muted);white-space:nowrap}
+.chip.ok{background:var(--okbg);color:var(--ok)}.chip.warn{background:var(--warnbg);color:var(--warn)}.chip.bad{background:var(--badbg);color:var(--bad)}.chip.info{background:var(--infobg);color:var(--info)}
+/* table */
+.tw{overflow:auto;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th{background:var(--surface2);text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:10px 12px;white-space:nowrap;position:sticky;top:0}
+td{padding:11px 12px;border-top:1px solid var(--line);vertical-align:middle}tr:hover td{background:color-mix(in srgb,var(--surface2) 70%,transparent)}
+td .acts{display:flex;gap:6px;flex-wrap:wrap}td small{color:var(--muted);display:block}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center}.bar input,.bar select{padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);min-height:40px}.bar input{flex:1;min-width:180px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}.seg button{border:0;background:none;padding:9px 13px;font-weight:650;color:var(--muted);min-height:40px}.seg button.on{background:var(--text);color:var(--surface)}
+.empty{padding:26px;text-align:center;color:var(--muted)}
+.list{display:grid;gap:8px}.li{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface2)}.li small{color:var(--muted);display:block}
+/* charts */
+.chart{position:relative}.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart .gl{stroke:var(--line);stroke-width:1}.chart .ax{fill:var(--muted);font-size:11px}
+.chart .bar-r{transition:opacity .12s}.chart .col:hover .bar-r{opacity:.8}
+.tip{position:fixed;z-index:50;pointer-events:none;background:var(--text);color:var(--surface);padding:6px 10px;border-radius:8px;font-size:12px;box-shadow:0 8px 24px #0006;display:none;max-width:240px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:8px}.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+details.tbl{margin-top:10px;font-size:12.5px;color:var(--muted)}details.tbl table{font-size:12.5px;margin-top:8px}
+.hbar{display:grid;grid-template-columns:90px 1fr auto;gap:10px;align-items:center;margin:9px 0}.hbar .t{height:14px;border-radius:0 4px 4px 0;background:var(--s1);min-width:2px}.hbar .trk{height:14px}.hbar b{font-variant-numeric:tabular-nums}
+/* settings */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:14px}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--text);color:var(--surface);padding:10px 16px;border-radius:12px;z-index:60;box-shadow:0 12px 30px #0006;font-weight:650}
+.tabs{display:none}
+@media(max-width:860px){.tw{border:0;background:none}.tw table,.tw tbody,.tw tr,.tw td{display:block}.tw thead{display:none}
+ .tw tr{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;padding:6px 4px}
+ .tw td{border:0;display:flex;justify-content:space-between;gap:12px;padding:6px 10px;text-align:right}.tw td:before{content:attr(data-l);color:var(--muted);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;text-align:left;flex:none;padding-top:2px}
+ .tw td small{text-align:right}.tw td .acts{justify-content:flex-end}.tw td[colspan]:before{content:none}}
+@media(max-width:860px){
+ .shell{grid-template-columns:1fr}.side{display:none}
+ .tabs{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));background:var(--side);border-radius:20px;padding:6px;z-index:40;box-shadow:0 14px 34px #0007}
+ .tabs button{border:0;background:none;color:var(--side-text);padding:8px 2px;border-radius:14px;font-size:11px;font-weight:700;display:grid;gap:2px;justify-items:center;min-height:52px;position:relative}
+ .tabs button i{font-style:normal;font-size:19px}.tabs button.on{background:var(--acc);color:var(--acc-ink)}
+ .tabs .bd{position:absolute;top:2px;right:16px;background:#e5484d;color:#fff;border-radius:99px;font-size:10px;padding:0 6px}
+ .main{padding-bottom:110px}.who{display:none}
+ input,select,textarea{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- sign in -->
+<div class="gate" id="gate">
+ <div class="card">
+  <div class="logo"><img src="icon-v3-192.png" alt=""><div><b>KFM Master Dashboard</b><small>Admin only · subscriptions &amp; users</small></div></div>
+  <form id="authForm" novalidate>
+   <div class="f"><label for="em">Admin email</label><input id="em" type="email" autocomplete="username" required></div>
+   <div class="f"><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" required></div>
+   <button class="btn pri" style="width:100%;min-height:46px" type="submit" id="go">Sign in</button>
+   <p class="err" id="gerr" role="alert"></p>
+  </form>
+  <button class="btn" style="width:100%;margin-top:6px" id="gg" type="button">Continue with Google</button>
+  <p style="margin:16px 0 0;color:var(--muted);font-size:12.5px">Use the same account you use in the app. Only accounts listed under <code>admins</code> in the database can open this page.</p>
+ </div>
+</div>
+
+<!-- not an admin -->
+<div class="gate hide" id="denied">
+ <div class="card">
+  <div class="logo"><img src="icon-v3-192.png" alt=""><div><b>Not an administrator</b><small id="dEmail"></small></div></div>
+  <p id="dMsg">This account is not listed as an admin.</p>
+  <div class="note"><b>First-time setup:</b> open Firebase Console → Realtime Database → Data, hover the root, click <b>+</b>, and add:<br><br>
+   <code>admins</code> → <code id="dUid"></code> = <code>true</code><br><br>
+   Then reload this page. (After that you can promote other admins from the Users tab.)</div>
+  <div style="display:flex;gap:8px;margin-top:14px"><button class="btn" id="dCopy">Copy my ID</button><button class="btn" id="dOut">Sign out</button></div>
+ </div>
+</div>
+
+<!-- app -->
+<div class="shell hide" id="app">
+ <aside class="side">
+  <div class="logo"><img src="icon-v3-192.png" alt=""><div><b>KFM Admin</b><small>Master dashboard</small></div></div>
+  <button class="nav on" data-t="overview"><i>◧</i>Overview</button>
+  <button class="nav" data-t="payments"><i>৳</i>Payments<span class="bd hide" id="bdP"></span></button>
+  <button class="nav" data-t="users"><i>☺</i>Users</button>
+  <button class="nav" data-t="settings"><i>⚙</i>Settings</button>
+  <div class="sp"></div>
+  <a class="nav" href="index.html" style="text-decoration:none"><i>↗</i>Open the app</a>
+  <button class="nav" id="thm"><i>◐</i>Theme</button>
+  <button class="nav" id="out"><i>⇥</i>Sign out</button>
+ </aside>
+ <main class="main">
+  <div class="top"><div><h2 id="ttl">Overview</h2><p id="sub"></p></div><div class="sp"></div>
+   <button class="btn" id="thm2" aria-label="Theme">◐</button>
+   <div class="who"><span id="wa">A</span><small id="we"></small></div></div>
+  <div id="view"></div>
+ </main>
+</div>
+<nav class="tabs hide" id="tabs">
+ <button data-t="overview" class="on"><i>◧</i>Overview</button>
+ <button data-t="payments"><i>৳</i>Payments<span class="bd hide" id="bdP2"></span></button>
+ <button data-t="users"><i>☺</i>Users</button>
+ <button data-t="settings"><i>⚙</i>Settings</button>
+</nav>
+<div class="tip" id="tip"></div>
+<div class="toast hide" id="toast"></div>
+
+<script>
+const FB={apiKey:'AIzaSyAXBvdyJ1OvpUtRCPLy_xicZHunxgOhFVU',authDomain:'kangaroo-accounts.firebaseapp.com',databaseURL:'https://kangaroo-accounts-default-rtdb.firebaseio.com',projectId:'kangaroo-accounts'};
+const $=id=>document.getElementById(id),qa=(s,r)=>[...(r||document).querySelectorAll(s)];
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const DAY=864e5;
+let auth,db,me=null,isAdmin=false,tab='overview',offs=[];
+const ST={profiles:{},subs:{},payments:{},admins:{},config:{}};
+let UI={pf:'pending',uf:'all',uq:'',pq:''};
+try{const t=localStorage.getItem('kfm_admin_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}
+
+/* ---------- helpers ---------- */
+const cur=()=>ST.config.currency||'৳';
+const money=n=>cur()+Number(n||0).toLocaleString('en-US',{maximumFractionDigits:2});
+const fd=t=>t?new Date(t).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}):'—';
+const fdt=t=>t?new Date(t).toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):'—';
+const ago=t=>{if(!t)return'never';const d=Math.floor((Date.now()-t)/DAY);return d<=0?'today':d===1?'yesterday':d+' days ago'};
+function toast(m){const t=$('toast');t.textContent=m;t.classList.remove('hide');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.add('hide'),2600)}
+function csv(name,rows){const q=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';const b=new Blob(['﻿'+rows.map(r=>r.map(q).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+
+/* ---------- derived data ---------- */
+function users(){
+  return Object.keys(ST.profiles).map(uid=>{
+    const p=ST.profiles[uid]||{},s=ST.subs[uid]||{},exp=Number(s.expiresAt)||0,adm=ST.admins[uid]===true;
+    const st=adm?'admin':exp>Date.now()?'active':exp?'expired':'none';
+    return{uid,email:p.email||'',name:p.name||'',phone:p.phone||'',business:p.business||'',createdAt:p.createdAt||0,lastSeen:p.lastSeen||0,exp,st,adm}
+  });
+}
+function pays(){
+  const out=[];Object.keys(ST.payments).forEach(uid=>{const o=ST.payments[uid]||{};Object.keys(o).forEach(id=>out.push({uid,id,...o[id]}))});
+  const cnt={};out.forEach(p=>{cnt[p.trxId]=(cnt[p.trxId]||0)+1});out.forEach(p=>{p.dup=cnt[p.trxId]>1;const u=ST.profiles[p.uid];p.mail=p.email||(u&&u.email)||p.uid});
+  return out.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+}
+function monthsBack(n){const a=[],d=new Date();d.setDate(1);d.setHours(0,0,0,0);for(let i=n-1;i>=0;i--){const x=new Date(d.getFullYear(),d.getMonth()-i,1);a.push({k:x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0'),l:x.toLocaleDateString('en-GB',{month:'short'}),y:x.getFullYear()})}return a}
+const mk=t=>{const d=new Date(t);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')};
+
+/* ---------- charts ---------- */
+const tip=$('tip');
+function showTip(e,html){tip.innerHTML=html;tip.style.display='block';const w=tip.offsetWidth;tip.style.left=Math.min(innerWidth-w-8,e.clientX+12)+'px';tip.style.top=(e.clientY-38)+'px'}
+function hideTip(){tip.style.display='none'}
+function niceMax(v){if(v<=0)return 4;const p=Math.pow(10,Math.floor(Math.log10(v))),n=v/p;return(n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10)*p}
+function barChart(id,data,color,fmt,unit){
+  const W=640,H=230,L=44,R=8,T=12,B=28,max=unit==='new users'?Math.max(4,Math.ceil(Math.max(...data.map(d=>d.v),0)/4)*4):niceMax(Math.max(...data.map(d=>d.v),0)),n=data.length,cw=(W-L-R)/n,bw=Math.min(34,cw*.62);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(unit)} by month">`;
+  for(let i=0;i<=4;i++){const y=T+(H-T-B)*(1-i/4);s+=`<line class="gl" x1="${L}" x2="${W-R}" y1="${y}" y2="${y}"/><text class="ax" x="${L-8}" y="${y+4}" text-anchor="end">${fmt(max*i/4)}</text>`}
+  data.forEach((d,i)=>{const x=L+i*cw+(cw-bw)/2,h=(H-T-B)*(d.v/max),y=H-B-h;
+   s+=`<g class="col" data-tip="${esc(d.full+' · '+fmt(d.v,1)+' '+unit)}"><rect x="${L+i*cw}" y="${T}" width="${cw}" height="${H-T-B}" fill="transparent"/>${d.v>0?`<path class="bar-r" d="M${x},${H-B}V${y+4}Q${x},${y} ${x+4},${y}H${x+bw-4}Q${x+bw},${y} ${x+bw},${y+4}V${H-B}Z" fill="${color}"/>`:`<rect x="${x}" y="${H-B-2}" width="${bw}" height="2" fill="var(--line)"/>`}<text class="ax" x="${x+bw/2}" y="${H-8}" text-anchor="middle">${d.l}</text></g>`});
+  s+='</svg>';
+  const el=$(id);el.innerHTML=s+`<details class="tbl"><summary>View as table</summary><table><tr><th>Month</th><th class="num">${esc(unit)}</th></tr>${data.map(d=>`<tr><td>${esc(d.full)}</td><td class="num">${fmt(d.v,1)}</td></tr>`).join('')}</table></details>`;
+  qa('.col',el).forEach(g=>{g.addEventListener('mousemove',e=>showTip(e,g.dataset.tip));g.addEventListener('mouseleave',hideTip);g.addEventListener('touchstart',e=>{const t=e.touches[0];showTip(t,g.dataset.tip);setTimeout(hideTip,1800)},{passive:true})});
+}
+
+/* ---------- views ---------- */
+function vOverview(){
+  const U=users(),P=pays(),now=Date.now(),thisM=mk(now);
+  const act=U.filter(u=>u.st==='active').length,adm=U.filter(u=>u.adm).length,exp=U.filter(u=>u.st==='expired').length,none=U.filter(u=>u.st==='none').length;
+  const pend=P.filter(p=>p.status==='pending'),appr=P.filter(p=>p.status==='approved');
+  const rev=appr.reduce((s,p)=>s+Number(p.amount||0),0),revM=appr.filter(p=>mk(p.reviewedAt||p.createdAt)===thisM).reduce((s,p)=>s+Number(p.amount||0),0);
+  const soon=U.filter(u=>u.st==='active'&&u.exp-now<=30*DAY).sort((a,b)=>a.exp-b.exp);
+  const mb=monthsBack(12);
+  const rv=mb.map(m=>({l:m.l,full:new Date(m.k+'-01').toLocaleDateString('en-GB',{month:'long',year:'numeric'}),v:appr.filter(p=>mk(p.reviewedAt||p.createdAt)===m.k).reduce((s,p)=>s+Number(p.amount||0),0)}));
+  const su=mb.map(m=>({l:m.l,full:new Date(m.k+'-01').toLocaleDateString('en-GB',{month:'long',year:'numeric'}),v:U.filter(u=>u.createdAt&&mk(u.createdAt)===m.k).length}));
+  const meth=['bkash','nagad','bank'].map(k=>({k,n:k==='bkash'?'bKash':k==='nagad'?'Nagad':'Bank',v:appr.filter(p=>p.method===k).reduce((s,p)=>s+Number(p.amount||0),0),c:k==='bkash'?'var(--s1)':k==='nagad'?'var(--s2)':'var(--s3)'}));
+  const mm=Math.max(1,...meth.map(m=>m.v));
+  const nu=U.slice().sort((a,b)=>b.createdAt-a.createdAt).slice(0,5);
+  $('view').innerHTML=`
+  <div class="grid kpis">
+   <div class="card kpi"><small>Total users</small><b>${U.length}</b><span>${adm} admin${adm===1?'':'s'}</span></div>
+   <div class="card kpi"><small>Active subscribers</small><b>${act}</b><span>${U.length?Math.round(act/Math.max(1,U.length-adm)*100):0}% of customers</span></div>
+   <div class="card kpi"><small>Expired / unpaid</small><b>${exp+none}</b><span>${exp} expired · ${none} never paid</span></div>
+   <button class="card kpi" data-go="payments"><small>Awaiting verification</small><b style="${pend.length?'color:var(--warn)':''}">${pend.length}</b><span>${pend.length?'Tap to review':'All caught up'}</span></button>
+   <div class="card kpi"><small>Revenue · all time</small><b>${money(rev)}</b><span>${appr.length} approved payment${appr.length===1?'':'s'}</span></div>
+   <div class="card kpi"><small>Revenue · this month</small><b>${money(revM)}</b><span>${new Date().toLocaleDateString('en-GB',{month:'long'})}</span></div>
+  </div>
+  <div class="grid two">
+   <div class="card panel"><h3>Revenue by month</h3><p class="sub">Approved payments, last 12 months</p><div class="chart" id="chR"></div></div>
+   <div class="card panel"><h3>New sign-ups by month</h3><p class="sub">Accounts created, last 12 months</p><div class="chart" id="chS"></div></div>
+  </div>
+  <div class="grid two">
+   <div class="card panel"><h3>Revenue by payment method</h3><p class="sub">All approved payments</p>
+    ${meth.map(m=>`<div class="hbar"><span>${m.n}</span><div class="trk"><div class="t" style="width:${m.v/mm*100}%;background:${m.c}"></div></div><b>${money(m.v)}</b></div>`).join('')}
+    ${appr.length?'':'<div class="empty">No approved payments yet.</div>'}</div>
+   <div class="card panel"><div class="ph"><div><h3>Renewal watch</h3><p class="sub">Subscriptions ending within 30 days</p></div></div>
+    <div class="list">${soon.length?soon.slice(0,6).map(u=>`<div class="li"><div><b>${esc(u.name||u.email)}</b><small>${esc(u.email)}</small></div><span class="chip warn">${Math.max(0,Math.ceil((u.exp-now)/DAY))} days · ${fd(u.exp)}</span></div>`).join(''):'<div class="empty">Nothing expiring soon.</div>'}</div></div>
+  </div>
+  <div class="grid two">
+   <div class="card panel"><div class="ph"><div><h3>Latest payments</h3><p class="sub">Most recent submissions</p></div><button class="btn sm" data-go="payments">View all</button></div>
+    <div class="list">${P.slice(0,5).map(p=>`<div class="li"><div><b>${money(p.amount)} · ${esc((p.method||'').toUpperCase())}</b><small>${esc(p.mail)} · ${fdt(p.createdAt)}</small></div>${chip(p.status)}</div>`).join('')||'<div class="empty">No payments yet.</div>'}</div></div>
+   <div class="card panel"><div class="ph"><div><h3>Newest users</h3><p class="sub">Recently joined</p></div><button class="btn sm" data-go="users">View all</button></div>
+    <div class="list">${nu.map(u=>`<div class="li"><div><b>${esc(u.name||u.email)}</b><small>${esc(u.email)} · joined ${fd(u.createdAt)}</small></div>${uchip(u)}</div>`).join('')||'<div class="empty">No users yet.</div>'}</div></div>
+  </div>`;
+  barChart('chR',rv,'var(--s1)',(v,full)=>full?cur()+Math.round(v).toLocaleString():cur()+(v>=1000?(v/1000)+'k':Math.round(v*10)/10),'revenue');
+  barChart('chS',su,'var(--s3)',(v)=>String(Math.round(v)),'new users');
+}
+const chip=s=>`<span class="chip ${s==='approved'?'ok':s==='rejected'?'bad':'warn'}">${s==='approved'?'✓ Approved':s==='rejected'?'✕ Rejected':'● Pending'}</span>`;
+const uchip=u=>u.st==='admin'?'<span class="chip info">Admin · free</span>':u.st==='active'?'<span class="chip ok">Active</span>':u.st==='expired'?'<span class="chip bad">Expired</span>':'<span class="chip">No plan</span>';
+
+function vPayments(){
+  const P=pays(),pend=P.filter(p=>p.status==='pending').length;
+  let L=P.filter(p=>UI.pf==='all'||p.status===UI.pf);
+  const qv=UI.pq.toLowerCase();if(qv)L=L.filter(p=>(p.mail+' '+p.trxId+' '+(p.sender||'')).toLowerCase().includes(qv));
+  $('view').innerHTML=`
+  <div class="bar"><div class="seg" id="pseg">${[['pending','Pending'],['approved','Approved'],['rejected','Rejected'],['all','All']].map(a=>`<button data-f="${a[0]}" class="${UI.pf===a[0]?'on':''}">${a[1]}${a[0]==='pending'&&pend?' ('+pend+')':''}</button>`).join('')}</div>
+   <input id="pq" type="search" placeholder="Search email, TrxID, sender…" value="${esc(UI.pq)}"><button class="btn" id="pcsv">⇩ CSV</button></div>
+  <div class="tw card"><table><thead><tr><th>Date</th><th>User</th><th>Method</th><th>TrxID / sender</th><th class="num">Amount</th><th>Term</th><th>Status</th><th></th></tr></thead><tbody>
+  ${L.map(p=>`<tr><td>${fdt(p.createdAt)}</td><td>${esc(p.mail)}</td><td>${esc((p.method||'').toUpperCase())}</td>
+   <td><b>${esc(p.trxId)}</b>${p.dup?' <span class="chip bad">duplicate</span>':''}<small>${esc(p.sender||'—')}${p.note?' · '+esc(p.note):''}</small></td>
+   <td class="num"><b>${money(p.amount)}</b></td><td>${p.years} yr</td><td>${chip(p.status)}${p.adminNote?`<small>${esc(p.adminNote)}</small>`:''}</td>
+   <td>${p.status==='pending'?`<div class="acts"><button class="btn pri sm" data-ap="${p.uid}|${p.id}">Approve</button><button class="btn bad sm" data-rj="${p.uid}|${p.id}">Reject</button></div>`:`<small>${p.reviewedAt?fd(p.reviewedAt):''}</small>`}</td></tr>`).join('')||`<tr><td colspan="8" class="empty">${UI.pf==='pending'?'No payments waiting. 🎉':'Nothing here.'}</td></tr>`}
+  </tbody></table></div>
+  <p class="sub" style="color:var(--muted);margin-top:10px">Always confirm the TrxID and amount in your bKash / Nagad / bank statement before approving. Approving adds the purchased years to the user's expiry date (on top of any time they have left).</p>`;
+  qa('#pseg button').forEach(b=>b.onclick=()=>{UI.pf=b.dataset.f;render()});
+  $('pq').oninput=e=>{UI.pq=e.target.value;const p=e.target.selectionStart;render();const i=$('pq');i.focus();i.setSelectionRange(p,p)};
+  $('pcsv').onclick=()=>csv('kfm-payments.csv',[['Date','Email','UID','Method','TrxID','Sender','Amount','Years','Status','Admin note']].concat(pays().map(p=>[fdt(p.createdAt),p.mail,p.uid,p.method,p.trxId,p.sender,p.amount,p.years,p.status,p.adminNote||''])));
+}
+
+function vUsers(){
+  let L=users().sort((a,b)=>b.createdAt-a.createdAt);
+  if(UI.uf!=='all')L=L.filter(u=>u.st===UI.uf);
+  const qv=UI.uq.toLowerCase();if(qv)L=L.filter(u=>(u.email+' '+u.name+' '+u.phone+' '+u.business+' '+u.uid).toLowerCase().includes(qv));
+  $('view').innerHTML=`
+  <div class="bar"><div class="seg" id="useg">${[['all','All'],['active','Active'],['expired','Expired'],['none','No plan'],['admin','Admins']].map(a=>`<button data-f="${a[0]}" class="${UI.uf===a[0]?'on':''}">${a[1]}</button>`).join('')}</div>
+   <input id="uq" type="search" placeholder="Search name, email, phone, business…" value="${esc(UI.uq)}"><button class="btn" id="ucsv">⇩ CSV</button></div>
+  <div class="tw card"><table><thead><tr><th>User</th><th>Contact</th><th>Joined</th><th>Last seen</th><th>Plan</th><th>Valid until</th><th></th></tr></thead><tbody>
+  ${L.map(u=>`<tr><td><b>${esc(u.name||'—')}</b><small>${esc(u.email)}</small>${u.business?`<small>${esc(u.business)}</small>`:''}</td><td>${esc(u.phone||'—')}</td><td>${fd(u.createdAt)}</td><td>${ago(u.lastSeen)}</td><td>${uchip(u)}</td>
+   <td>${u.adm?'Free (admin)':u.exp?fd(u.exp)+`<small>${u.exp>Date.now()?Math.ceil((u.exp-Date.now())/DAY)+' days left':'ended '+ago(u.exp)}</small>`:'—'}</td>
+   <td><div class="acts">${u.adm?'':`<button class="btn sm" data-ex="${u.uid}|365">+1 year</button><button class="btn sm" data-ex="${u.uid}|ask">+ days…</button><button class="btn sm" data-ex="${u.uid}|set">Set date</button>${u.exp?`<button class="btn bad sm" data-ex="${u.uid}|revoke">Revoke</button>`:''}`}
+   <button class="btn sm" data-adm="${u.uid}">${u.adm?'Remove admin':'Make admin'}</button></div></td></tr>`).join('')||'<tr><td colspan="7" class="empty">No users match.</td></tr>'}
+  </tbody></table></div>`;
+  qa('#useg button').forEach(b=>b.onclick=()=>{UI.uf=b.dataset.f;render()});
+  $('uq').oninput=e=>{UI.uq=e.target.value;const p=e.target.selectionStart;render();const i=$('uq');i.focus();i.setSelectionRange(p,p)};
+  $('ucsv').onclick=()=>csv('kfm-users.csv',[['Name','Email','Phone','Business','UID','Joined','Last seen','Status','Valid until']].concat(users().map(u=>[u.name,u.email,u.phone,u.business,u.uid,fd(u.createdAt),fd(u.lastSeen),u.st,u.exp?fd(u.exp):''])));
+}
+
+function vSettings(){
+  const c=ST.config,b=c.bkash||{},n=c.nagad||{},k=c.bank||{},s=c.support||{};
+  const inp=(id,l,v,ph,type)=>`<div class="f"><label for="${id}">${l}</label><input id="${id}" type="${type||'text'}" value="${esc(v||'')}" placeholder="${esc(ph||'')}" autocomplete="off"></div>`;
+  $('view').innerHTML=`<form id="sform" novalidate>
+  <div class="sgrid">
+   <div class="card panel"><h3>Pricing</h3><p class="sub">Shown to users on the payment screen.</p>
+    ${inp('c_price','Price per year',c.price!=null?c.price:20,'20','number')}${inp('c_cur','Currency symbol',c.currency||'৳','৳')}
+    <div class="f"><label for="c_note">Notice shown on payment screen (optional)</label><textarea id="c_note" rows="3" maxlength="400" placeholder="e.g. Payments are verified daily 10am–10pm">${esc(c.notice||'')}</textarea></div></div>
+   <div class="card panel"><h3>bKash</h3><p class="sub">The number users send money to.</p>${inp('c_bk','bKash number',b.number,'01XXXXXXXXX','tel')}${inp('c_bkt','Account type',b.type,'Personal – Send Money')}
+    <h3 style="margin-top:18px">Nagad</h3><p class="sub"></p>${inp('c_ng','Nagad number',n.number,'01XXXXXXXXX','tel')}${inp('c_ngt','Account type',n.type,'Personal – Send Money')}</div>
+   <div class="card panel"><h3>Bank</h3><p class="sub">For bank / mobile-banking transfers.</p>${inp('c_bn','Bank name',k.name,'Example Bank PLC')}${inp('c_bh','Account holder',k.holder)}${inp('c_bno','Account number',k.number)}${inp('c_bb','Branch',k.branch)}${inp('c_br','Routing number',k.routing)}</div>
+   <div class="card panel"><h3>Support contact</h3><p class="sub">Shown to users who need help paying.</p>${inp('c_sp','Phone',s.phone,'','tel')}${inp('c_sw','WhatsApp',s.whatsapp,'','tel')}${inp('c_se','Email',s.email,'','email')}</div>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap"><button class="btn pri" type="submit" style="min-height:46px;padding:0 26px">Save settings</button><span class="err" id="serr" style="margin:0"></span></div></form>`;
+  $('sform').onsubmit=async e=>{e.preventDefault();const g=i=>$(i).value.trim(),nz=v=>v===''?null:v;
+    const price=Number(g('c_price'));if(!isFinite(price)||price<0){$('serr').textContent='Enter a valid price.';return}
+    try{await db.ref('config').update({price,currency:g('c_cur')||'৳',notice:nz(g('c_note')),
+      bkash:{number:nz(g('c_bk')),type:nz(g('c_bkt'))},nagad:{number:nz(g('c_ng')),type:nz(g('c_ngt'))},
+      bank:{name:nz(g('c_bn')),holder:nz(g('c_bh')),number:nz(g('c_bno')),branch:nz(g('c_bb')),routing:nz(g('c_br'))},
+      support:{phone:nz(g('c_sp')),whatsapp:nz(g('c_sw')),email:nz(g('c_se'))}});
+      $('serr').textContent='';toast('Settings saved ✓')}catch(x){$('serr').textContent='Could not save: '+x.message}};
+}
+
+const TITLES={overview:['Overview','Subscriptions, revenue and users at a glance'],payments:['Payments','Verify bKash, Nagad and bank payments'],users:['Users','Everyone who has signed up'],settings:['Settings','Price, payment accounts and support details']};
+function render(){
+  if(!isAdmin)return;
+  const t=TITLES[tab];$('ttl').textContent=t[0];$('sub').textContent=t[1];
+  qa('[data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===tab));
+  const pend=pays().filter(p=>p.status==='pending').length;
+  ['bdP','bdP2'].forEach(i=>{const e=$(i);e.textContent=pend;e.classList.toggle('hide',!pend)});
+  if(tab==='settings'&&document.activeElement&&$('sform')&&$('sform').contains(document.activeElement))return;
+  ({overview:vOverview,payments:vPayments,users:vUsers,settings:vSettings})[tab]();
+  qa('.tw table').forEach(t=>{const h=qa('th',t).map(x=>x.textContent);qa('tbody tr',t).forEach(r=>qa('td',r).forEach((c,i)=>{if(h[i])c.dataset.l=h[i]}))});
+}
+
+/* ---------- actions ---------- */
+async function setExpiry(uid,exp,note){
+  await db.ref('subs/'+uid).set({expiresAt:exp,plan:'yearly',updatedAt:Date.now(),note:note||''});
+}
+async function approve(uid,id){
+  const p=(ST.payments[uid]||{})[id];if(!p)return;
+  if(!confirm('Approve '+money(p.amount)+' ('+(p.method||'').toUpperCase()+', TrxID '+p.trxId+') and add '+p.years+' year(s)?\n\nHave you confirmed this payment in your account statement?'))return;
+  const cur_=Number((ST.subs[uid]||{}).expiresAt)||0,base=Math.max(Date.now(),cur_),exp=base+Number(p.years)*365*DAY,now=Date.now();
+  try{await db.ref().update({['subs/'+uid]:{expiresAt:exp,plan:'yearly',updatedAt:now,note:('Payment '+p.trxId).slice(0,280)},['payments/'+uid+'/'+id+'/status']:'approved',['payments/'+uid+'/'+id+'/reviewedAt']:now});toast('Approved. Valid until '+fd(exp))}catch(x){toast('Failed: '+x.message)}
+}
+async function reject(uid,id){
+  const r=prompt('Reason for rejecting (shown to the user):','Payment not found in our account. Please check the TrxID.');if(r===null)return;
+  try{await db.ref().update({['payments/'+uid+'/'+id+'/status']:'rejected',['payments/'+uid+'/'+id+'/reviewedAt']:Date.now(),['payments/'+uid+'/'+id+'/adminNote']:r.slice(0,280)});toast('Rejected')}catch(x){toast('Failed: '+x.message)}
+}
+async function extend(uid,mode){
+  const u=users().find(x=>x.uid===uid);if(!u)return;const base=Math.max(Date.now(),u.exp||0);
+  try{
+   if(mode==='revoke'){if(!confirm('End this subscription now?'))return;await setExpiry(uid,Date.now()-1000,'Revoked by admin');toast('Subscription ended');return}
+   if(mode==='set'){const v=prompt('New expiry date (YYYY-MM-DD):',u.exp?new Date(u.exp).toISOString().slice(0,10):'');if(!v)return;const t=Date.parse(v+'T23:59:59');if(!isFinite(t)){toast('Invalid date');return}await setExpiry(uid,t,'Set by admin');toast('Expiry set to '+fd(t));return}
+   let days=365;if(mode==='ask'){const v=prompt('How many days to add? (e.g. 7 for a free trial)','7');if(!v)return;days=Number(v);if(!isFinite(days)||days<=0){toast('Invalid number');return}}
+   await setExpiry(uid,base+days*DAY,'Added '+days+' days by admin');toast('Added '+days+' days')
+  }catch(x){toast('Failed: '+x.message)}
+}
+async function toggleAdmin(uid){
+  const on=ST.admins[uid]===true;
+  if(uid===me.uid&&on){toast("You can't remove yourself.");return}
+  if(!confirm(on?'Remove admin rights from this user?':'Make this user an admin? Admins use the app free and can manage payments and users.'))return;
+  try{await db.ref('admins/'+uid).set(on?null:true);toast(on?'Admin removed':'Admin added')}catch(x){toast('Failed: '+x.message)}
+}
+
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-t]');if(t){tab=t.dataset.t;render();window.scrollTo(0,0);return}
+  const g=e.target.closest('[data-go]');if(g){tab=g.dataset.go;render();window.scrollTo(0,0);return}
+  let b;
+  if(b=e.target.closest('[data-ap]')){const[a,c]=b.dataset.ap.split('|');approve(a,c)}
+  else if(b=e.target.closest('[data-rj]')){const[a,c]=b.dataset.rj.split('|');reject(a,c)}
+  else if(b=e.target.closest('[data-ex]')){const[a,c]=b.dataset.ex.split('|');extend(a,c==='365'?'year':c)}
+  else if(b=e.target.closest('[data-adm]'))toggleAdmin(b.dataset.adm);
+});
+function theme(){const d=document.documentElement,n=d.dataset.theme==='dark'?'light':'dark';d.dataset.theme=n;try{localStorage.setItem('kfm_admin_theme',n)}catch(e){}render()}
+$('thm').onclick=$('thm2').onclick=theme;
+$('out').onclick=$('dOut').onclick=()=>auth.signOut();
+$('dCopy').onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(me.uid);toast('Copied')};
+
+/* ---------- auth + data ---------- */
+function detach(){offs.forEach(f=>f());offs=[]}
+function sub(path,key,single){const r=db.ref(path);const f=r.on('value',s=>{ST[key]=s.val()||{};render()},e=>{$('view').innerHTML='<div class="card panel"><h3>Database permission error</h3><p class="sub">'+esc(e.message)+'</p><p>Publish <code>database.rules.json</code> in Firebase → Realtime Database → Rules, and make sure your account is listed under <code>admins</code>.</p></div>'});offs.push(()=>r.off('value',f))}
+function show(which){['gate','denied'].forEach(i=>$(i).classList.toggle('hide',i!==which));$('app').classList.toggle('hide',which!=='app');$('tabs').classList.toggle('hide',which!=='app')}
+function init(){
+  firebase.initializeApp(FB);auth=firebase.auth();db=firebase.database();
+  auth.onAuthStateChanged(async u=>{
+    detach();me=u;isAdmin=false;
+    if(!u){show('gate');return}
+    try{
+      const s=await db.ref('admins/'+u.uid).get();isAdmin=s.val()===true;
+    }catch(e){$('dMsg').textContent='Could not check admin status: '+e.message+' — publish the rules from database.rules.json first.';$('dEmail').textContent=u.email;$('dUid').textContent=u.uid;show('denied');return}
+    if(!isAdmin){$('dEmail').textContent=u.email||'';$('dUid').textContent=u.uid;show('denied');return}
+    $('we').textContent=u.email;$('wa').textContent=(u.email||'A')[0].toUpperCase();show('app');
+    ['profiles','subs','payments','admins','config'].forEach(k=>sub(k,k));
+    render();
+  });
+  $('authForm').addEventListener('submit',async e=>{e.preventDefault();$('gerr').textContent='';$('go').disabled=true;try{await auth.signInWithEmailAndPassword($('em').value.trim(),$('pw').value)}catch(x){$('gerr').textContent=x.code==='auth/invalid-credential'||x.code==='auth/wrong-password'?'Wrong email or password.':(x.message||'Sign-in failed')}finally{$('go').disabled=false}});
+  $('gg').onclick=async()=>{try{await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}catch(x){if(x.code!=='auth/popup-closed-by-user')$('gerr').textContent=x.message}};
+}
+if(window.firebase&&firebase.initializeApp)init();else{show('gate');$('gerr').textContent='Could not load Firebase. Check your internet connection and reload.'}
+</script>
+</body>
+</html>

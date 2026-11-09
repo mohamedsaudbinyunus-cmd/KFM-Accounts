@@ -1,0 +1,93 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "admins": {
+      ".read": "auth != null && root.child('admins').child(auth.uid).val() === true",
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && root.child('admins').child(auth.uid).val() === true",
+        ".validate": "newData.isBoolean()"
+      }
+    },
+
+    "config": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('admins').child(auth.uid).val() === true",
+      "price":    { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000" },
+      "currency": { ".validate": "newData.isString() && newData.val().length <= 8" },
+      "bkash":    { "$k": { ".validate": "newData.isString() && newData.val().length <= 120" } },
+      "nagad":    { "$k": { ".validate": "newData.isString() && newData.val().length <= 120" } },
+      "bank":     { "$k": { ".validate": "newData.isString() && newData.val().length <= 160" } },
+      "support":  { "$k": { ".validate": "newData.isString() && newData.val().length <= 200" } },
+      "notice":   { ".validate": "newData.isString() && newData.val().length <= 400" },
+      "$other":   { ".validate": true }
+    },
+
+    "profiles": {
+      ".read": "auth != null && root.child('admins').child(auth.uid).val() === true",
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['createdAt', 'email'])",
+        "createdAt": { ".validate": "(!data.exists() && newData.val() === now) || (data.exists() && newData.val() === data.val())" },
+        "email":     { ".validate": "newData.isString() && newData.val().length <= 200 && newData.val() === auth.token.email" },
+        "name":      { ".validate": "newData.isString() && newData.val().length <= 120" },
+        "phone":     { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "business":  { ".validate": "newData.isString() && newData.val().length <= 160" },
+        "lastSeen":  { ".validate": "newData.isNumber()" },
+        "$other":    { ".validate": false }
+      }
+    },
+
+    "subs": {
+      ".read": "auth != null && root.child('admins').child(auth.uid).val() === true",
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admins').child(auth.uid).val() === true)",
+        ".write": "auth != null && root.child('admins').child(auth.uid).val() === true",
+        ".validate": "newData.hasChildren(['expiresAt'])",
+        "expiresAt": { ".validate": "newData.isNumber()" },
+        "plan":      { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "updatedAt": { ".validate": "newData.isNumber()" },
+        "note":      { ".validate": "newData.isString() && newData.val().length <= 300" },
+        "$other":    { ".validate": false }
+      }
+    },
+
+    "payments": {
+      ".read": "auth != null && root.child('admins').child(auth.uid).val() === true",
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admins').child(auth.uid).val() === true)",
+        "$pid": {
+          ".write": "auth != null && ((auth.uid === $uid && !data.exists()) || root.child('admins').child(auth.uid).val() === true)",
+          ".validate": "newData.hasChildren(['method', 'amount', 'years', 'trxId', 'status', 'createdAt'])",
+          "method":    { ".validate": "newData.val() === 'bkash' || newData.val() === 'nagad' || newData.val() === 'bank'" },
+          "amount":    { ".validate": "newData.isNumber() && newData.val() > 0" },
+          "years":     { ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 10" },
+          "trxId":     { ".validate": "newData.isString() && newData.val().length >= 4 && newData.val().length <= 40" },
+          "sender":    { ".validate": "newData.isString() && newData.val().length <= 60" },
+          "note":      { ".validate": "newData.isString() && newData.val().length <= 300" },
+          "email":     { ".validate": "newData.isString() && newData.val().length <= 200" },
+          "createdAt": { ".validate": "(!data.exists() && newData.val() === now) || (data.exists() && newData.val() === data.val())" },
+          "status":    { ".validate": "(!data.exists() && newData.val() === 'pending') || (data.exists() && (newData.val() === 'pending' || newData.val() === 'approved' || newData.val() === 'rejected'))" },
+          "reviewedAt":{ ".validate": "newData.isNumber()" },
+          "adminNote": { ".validate": "newData.isString() && newData.val().length <= 300" },
+          "$other":    { ".validate": false }
+        }
+      }
+    },
+
+    "kfm": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid && (root.child('admins').child(auth.uid).val() === true || root.child('subs').child($uid).child('expiresAt').val() > now)",
+        "entries":   { ".validate": "newData.isString() && newData.val().length < 8000000" },
+        "extra":     { ".validate": "newData.isString() && newData.val().length < 8000000" },
+        "updatedAt": { ".validate": "newData.isNumber()" },
+        "deleted":   { ".validate": true },
+        "$other":    { ".validate": false }
+      }
+    }
+  }
+}
