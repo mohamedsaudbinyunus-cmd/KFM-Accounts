@@ -2124,6 +2124,7 @@ function tbPalOpen(){let o=$('kcmd');if(!o){document.body.insertAdjacentHTML('be
   $('kcmdIn').addEventListener('input',()=>{TB.pi=0;tbPalList()});
   $('kcmdIn').addEventListener('keydown',e=>{const n=(TB.pitems||[]).length;if(e.key==='ArrowDown'){e.preventDefault();TB.pi=(TB.pi+1)%Math.max(n,1);tbPalList()}else if(e.key==='ArrowUp'){e.preventDefault();TB.pi=(TB.pi-1+n)%Math.max(n,1);tbPalList()}else if(e.key==='Enter'){e.preventDefault();tbPalRun(TB.pi)}else if(e.key==='Escape')tbPalClose()})}
  o.classList.remove('hide');$('kcmdIn').value='';$('kcmdIn').placeholder=tL('Search pages, actions, entries…','পেজ, কাজ, দাখিলা খুঁজুন…');TB.pi=0;tbPalList();setTimeout(()=>$('kcmdIn').focus(),20)}
+document.addEventListener('click',e=>{const b=e.target&&e.target.closest&&e.target.closest('#kcmdBtn');if(b){e.preventDefault();tbPalOpen()}},true);
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();tbPalOpen();return}const tg=(e.target.tagName||'').toLowerCase();if(e.key==='/'&&!['input','textarea','select'].includes(tg)&&!e.ctrlKey&&!e.metaKey){e.preventDefault();tbPalOpen()}else if(e.key==='Escape')tbPalClose()});
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-tb-fstab]');if(b){TB.fs.tab=b.dataset.tbFstab;tbRenderFS()}});
 /* ===== App-like layer: splash, tour, undo, save status, FAB, install, shortcuts ===== */
@@ -3630,6 +3631,9 @@ function drawLang(){
 
 /* ------------------------------------------------------------ chrome: top bar */
 function initial(){const u=S.user;return((S.profile&&S.profile.name)||(u&&(u.displayName||u.email))||'U').trim().charAt(0).toUpperCase()}
+function profilePhoto(){const p=extra&&extra.profile&&extra.profile.photo||'';return /^data:image\/(?:png|jpe?g|webp|gif);base64,/i.test(p)?p:''}
+function avatarContent(){const p=profilePhoto();return p?`<img src="${esc(p)}" alt="">`:esc(initial())}
+function shrinkProfileImage(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onerror=()=>reject(new Error('Could not read image'));reader.onload=()=>{const img=new Image();img.onerror=()=>reject(new Error('Could not open image'));img.onload=()=>{const scale=Math.min(1,256/Math.max(img.naturalWidth,img.naturalHeight)),canvas=D.createElement('canvas');canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));const ctx=canvas.getContext('2d');if(!ctx){reject(new Error('Image processing unavailable'));return}ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);resolve(canvas.toDataURL('image/jpeg',.82))};img.src=String(reader.result)};reader.readAsDataURL(file)})}
 function dispName(){const u=S.user;return(S.profile&&S.profile.name)||(u&&u.displayName)||(u&&u.email&&u.email.split('@')[0])||L('Account','অ্যাকাউন্ট')}
 function buildTop(){
   const ta=q('.top-actions');if(!ta)return;
@@ -3638,7 +3642,7 @@ function buildTop(){
     b.innerHTML='<span class="gl">🌐</span><span class="lc"></span>';ta.appendChild(b);
   }
   if(!q('#kfmProfBtn')){
-    const p=D.createElement('button');p.id='kfmProfBtn';p.type='button';p.className='kprof-btn';p.setAttribute('aria-haspopup','menu');
+    const p=D.createElement('button');p.id='kfmProfBtn';p.type='button';p.className='kprof-btn';p.setAttribute('aria-haspopup','menu');p.setAttribute('aria-label','Profile');p.title='Profile';
     p.innerHTML='<span class="kprof-av"></span><span class="kprof-nm"></span><span class="kprof-plan"></span>';ta.appendChild(p);
   }
   if(!q('#kfmProfMenu')){const m=D.createElement('div');m.id='kfmProfMenu';m.className='kmenu';m.setAttribute('role','menu');D.body.appendChild(m)}
@@ -3647,12 +3651,12 @@ function paintTop(){
   buildTop();
   const lb=q('#kfmLangBtn .lc');if(lb)lb.textContent=langLabel();
   const pb=q('#kfmProfBtn');if(!pb)return;
-  q('.kprof-av',pb).textContent=initial();q('.kprof-nm',pb).textContent=dispName();
+  q('.kprof-av',pb).innerHTML=avatarContent();q('.kprof-nm',pb).textContent=dispName();
   const c=planChip(),pl=q('.kprof-plan',pb);pl.textContent=c[2];pl.className='kprof-plan '+c[3];
 }
 function menuHTML(){
   const c=planChip(),a=access();
-  return `<div class="kmenu-head"><span class="kprof-av">${h(initial())}</span><div><b>${h(dispName())}</b><small>${h(S.user&&S.user.email||'')}</small><span class="kchip ${c[0]}">${h(c[1])}</span></div></div>
+  return `<div class="kmenu-head"><span class="kprof-av">${avatarContent()}</span><div><b>${h(dispName())}</b><small>${h(S.user&&S.user.email||'')}</small><span class="kchip ${c[0]}">${h(c[1])}</span></div></div>
   <button class="kmi" data-act="profile" role="menuitem"><i>👤</i>${L('My profile','আমার প্রোফাইল')}</button>
   <button class="kmi" data-act="sub" role="menuitem"><i>💳</i>${L('Subscription & payment','সাবস্ক্রিপশন ও পেমেন্ট')}<small>${a==='admin'?L('Free','ফ্রি'):''}</small></button>
   <button class="kmi" data-act="settings" role="menuitem"><i>⚙</i>${L('Settings','সেটিংস')}</button>
@@ -3733,8 +3737,9 @@ function renderAccount(){
   const c=planChip();
   el.innerHTML=`<div class="pagehead"><div><h2>${L('My profile & subscription','আমার প্রোফাইল ও সাবস্ক্রিপশন')}</h2><p>${L('Your details, plan and payments','আপনার তথ্য, প্ল্যান ও পেমেন্ট')}</p></div></div>
   <div class="kacc-grid">
-   <div class="panel" id="accProfile"><div class="kacc-id"><span class="kprof-av">${h(initial())}</span><div><h3>${h(dispName())}</h3><p>${h(u.email||'')}</p><span class="kchip ${c[0]}">${h(c[1])}</span></div></div>
+   <div class="panel" id="accProfile"><div class="kacc-id"><span class="kprof-av">${avatarContent()}</span><div><h3>${h(dispName())}</h3><p>${h(u.email||'')}</p><span class="kchip ${c[0]}">${h(c[1])}</span></div></div>
     <form id="kfmProfForm" novalidate>
+     <div class="kfield kphoto-field"><label>${L('Profile picture','প্রোফাইল ছবি')}</label><div class="kphoto-row"><span class="kprof-av">${avatarContent()}</span><div><input id="kfmProfilePhoto" type="file" accept="image/*" class="kphoto-input"><button class="btn" type="button" data-photo-choose>${L('Choose photo','ছবি বাছুন')}</button>${profilePhoto()?` <button class="btn" type="button" data-photo-clear>${L('Remove','সরান')}</button>`:''}<small>${L('Images are resized and saved with your account data.','ছবি ছোট করে আপনার অ্যাকাউন্টের তথ্যের সঙ্গে সংরক্ষণ করা হবে।')}</small></div></div></div>
      <div class="kfield"><label>${L('Full name','পূর্ণ নাম')}</label><input name="name" maxlength="120" value="${h(pf.name||u.displayName||'')}"></div>
      <div class="kfield"><label>${L('Phone','ফোন')}</label><input name="phone" maxlength="40" inputmode="tel" value="${h(pf.phone||'')}"></div>
      <div class="kfield"><label>${L('Business name','ব্যবসার নাম')}</label><input name="business" maxlength="160" value="${h(pf.business||'')}"></div>
@@ -3746,9 +3751,9 @@ function renderAccount(){
    <div class="panel" id="accSub"><h3 style="margin-top:0">${L('Subscription','সাবস্ক্রিপশন')}</h3>${subHTML()}
     ${access()==='admin'?'':`<h4 style="margin:18px 0 8px">${L('Payment history','পেমেন্টের ইতিহাস')}</h4>${histHTML()}`}</div>
   </div>`;
+  const photoInput=q('#kfmProfilePhoto',el);if(photoInput)photoInput.onchange=async()=>{const file=photoInput.files&&photoInput.files[0];if(!file)return;if(!file.type.startsWith('image/')){say(L('Choose an image file.','ছবির ফাইল নির্বাচন করুন।'));photoInput.value='';return}if(file.size>8*1024*1024){say(L('Choose an image under 8 MB.','৮ এমবির কম ছবি বাছুন।'));photoInput.value='';return}try{const photo=await shrinkProfileImage(file);extra.profile={...(extra.profile||{}),photo};save();say(L('Profile picture updated.','প্রোফাইল ছবি হালনাগাদ হয়েছে।'))}catch(e){say(L('Could not load this picture.','ছবিটি খোলা যায়নি।'))}};
 }
-
-/* -------------------------------------------------------------- paywall */
+/* --------------------------------------------------------- paywall */
 function renderPaywall(){
   let pw=q('#kfmPaywall');
   if(!pw){pw=D.createElement('div');pw.id='kfmPaywall';D.body.appendChild(pw)}
@@ -3835,16 +3840,16 @@ function sheetHTML(){
     const t=(q('.nav-label span',g)||{}).textContent||'';
     const items=qa('.nav-btn[data-page]',g).map(b=>{const ic=(q('.ico',b)||{}).textContent||'•',label=q('[data-en],[data-bn]',b),lb=(label||b).textContent.trim(),search=[lb,t,label?.dataset.en,label?.dataset.bn,b.dataset.page].filter(Boolean).join(' ');return `<button type="button" data-page="${h(b.dataset.page)}" data-search="${h(search)}" class="${currentPage===b.dataset.page?'on':''}"><i>${h(ic)}</i><span>${h(lb)}</span></button>`}).join('');
     return `<div class="ksh-g">${h(t)}</div><div class="ksh-grid">${items}</div>`}).join('');
-  return `<div class="grab"></div><div class="ksh-top"><span class="kprof-av">${h(initial())}</span><div><b>${h(dispName())}</b><span class="kchip ${c[0]}" style="margin:0">${h(c[1])}</span></div><button class="btn" data-act="close">${L('Close','বন্ধ')}</button></div>
+  return `<div class="grab"></div><div class="ksh-top"><span class="kprof-av">${avatarContent()}</span><div><b>${h(dispName())}</b><span class="kchip ${c[0]}" style="margin:0">${h(c[1])}</span></div><button class="btn" data-act="close">${L('Close','বন্ধ')}</button></div>
   <div class="ksh-quick"><button data-act="profile"><i>👤</i>${L('Profile','প্রোফাইল')}</button><button data-act="sub"><i>💳</i>${L('Plan','প্ল্যান')}</button><button data-act="lang"><i>🌐</i>${L('Language','ভাষা')}</button><button data-act="theme"><i>◐</i>${L('Theme','থিম')}</button><button data-act="settings"><i>⚙</i>${L('Settings','সেটিংস')}</button></div>
-  <div class="ksh-search"><input type="search" id="kfmShQ" placeholder="${L('Search pages…','পেজ খুঁজুন…')}" autocomplete="off"></div><div class="ksh-body">${grps}</div>`;
+  <div class="ksh-search"><input type="search" id="kfmShQ" placeholder="${L('Search pages…','পেজ খুঁজুন…')}" autocomplete="off"></div><div class="ksh-body">${grps}<div class="ksh-no-results" hidden>${L('No matching pages.','মিল থাকা কোনো পেজ নেই।')}</div></div>`;
 }
 function openSheet(){
   let sh=q('#kfmSheet'),bd=q('#kfmSheetShade');
   if(!sh){bd=D.createElement('div');bd.id='kfmSheetShade';sh=D.createElement('div');sh.id='kfmSheet';sh.setAttribute('role','dialog');D.body.appendChild(bd);D.body.appendChild(sh);bd.addEventListener('click',closeSheet);
     sh.addEventListener('input',e=>{if(e.target.id!=='kfmShQ')return;const v=e.target.value.trim().toLowerCase();qa('.ksh-grid button',sh).forEach(b=>{b.style.display=!v||(b.dataset.search+' '+b.textContent).toLowerCase().includes(v)?'':'none'});qa('.ksh-g',sh).forEach(g=>{const grid=g.nextElementSibling;g.style.display=qa('button',grid).some(b=>b.style.display!=='none')?'':'none'})});
   }
-  sh.innerHTML=sheetHTML();sh.classList.add('open');bd.classList.add('open');
+  sh.innerHTML=sheetHTML();qa('button[data-page]',sh).forEach(b=>b.onclick=e=>{e.preventDefault();const p=b.dataset.page;closeSheet();if(typeof window.showPage==='function')window.showPage(p);else go(p)});const sq=q('#kfmShQ',sh);if(sq){sq.oninput=()=>{const v=sq.value.trim().toLowerCase();let count=0;qa('.ksh-grid button',sh).forEach(b=>{const hit=!v||(b.dataset.search+' '+b.textContent).toLowerCase().includes(v);b.style.display=hit?'':'none';if(hit)count++});qa('.ksh-g',sh).forEach(g=>{const grid=g.nextElementSibling;g.style.display=qa('button',grid).some(b=>b.style.display!=='none')?'':'none'});const none=q('.ksh-no-results',sh);if(none)none.hidden=count>0};sq.oninput();sq.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();const first=qa('.ksh-grid button',sh).find(b=>b.style.display!=='none');if(first)first.click()}}}sh.classList.add('open');bd.classList.add('open');
 }
 function closeSheet(){const sh=q('#kfmSheet'),bd=q('#kfmSheetShade');if(sh)sh.classList.remove('open');if(bd)bd.classList.remove('open')}
 
@@ -3872,6 +3877,8 @@ window.renderAll=function(){_ra.apply(this,arguments);try{reorderNav();buildBott
 /* ---------------------------------------------------------------- events */
 D.addEventListener('click',e=>{
   const t=e.target;
+  const choosePhoto=t.closest('[data-photo-choose]');if(choosePhoto){const i=q('#kfmProfilePhoto');if(i)i.click();return}
+  const clearPhoto=t.closest('[data-photo-clear]');if(clearPhoto){extra.profile={...(extra.profile||{}),photo:''};save();say(L('Profile picture removed.','প্রোফাইল ছবি সরানো হয়েছে।'));return}
   const sheetPage=t.closest('#kfmSheet button[data-page]');if(sheetPage){e.preventDefault();go(sheetPage.dataset.page);closeSheet();return}
   const pb=t.closest('#kfmProfBtn');if(pb){e.stopPropagation();openMenu();return}
   const lb=t.closest('#kfmLangBtn');if(lb){openLang();return}
@@ -3944,4 +3951,33 @@ refresh();
 :root{--bg:#f4f1e8;--surface:#fffdf7;--surface2:#f6f2e7;--text:#202a35;--muted:#777364;--line:#ded5c2;--brand:#1e3a5f;--brand2:#e6edf4;--kacc:#129e91;--kacc2:#0c776f;--shadow:0 10px 30px #1d2b3b12;color-scheme:light}
 [data-theme="dark"]{--bg:#111a27;--surface:#1a2737;--surface2:#202f42;--text:#eff3f4;--muted:#aab6c0;--line:#344457;--brand:#e0bd65;--brand2:#2a3d52;--kacc:#29b8a9;--kacc2:#62d1c4;--shadow:0 12px 36px #0006;color-scheme:dark}
 body{background:var(--bg);color:var(--text)}.topbar{background:#1e3a5f!important;border-bottom:1px solid #c7a64a!important}.btn.primary{background:var(--kacc)!important;border-color:var(--kacc)!important;color:#fff!important}.nav-btn.active{background:var(--brand2)!important;color:var(--brand)!important}.panel,.metric-card{border-color:var(--line)}.ksh-grid button.on{background:var(--brand)!important;border-color:var(--brand)!important;color:#fff!important}.ksh-quick button:hover,.ksh-grid button:hover{border-color:var(--kacc);background:var(--brand2)}.bottomnav button.kfab{background:var(--kacc)!important}
+@media(max-width:860px){.topbar{display:grid!important;grid-template-columns:minmax(0,1fr) auto;gap:8px!important;padding:10px 12px!important}.topbar .brand{min-width:0;max-width:100%}.topbar .brand h1{font-size:clamp(12px,3.8vw,16px)!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.topbar .top-actions{width:auto!important;min-width:0;gap:5px!important;margin-left:0!important}.topbar .top-actions #kfmProfBtn{position:relative;right:auto;top:auto;z-index:auto;width:40px;height:40px;max-width:none;padding:3px;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:rgba(255,255,255,.12);justify-content:center}.topbar .top-actions #kfmProfBtn .kprof-av{width:32px;height:32px}.topbar .top-actions #kfmProfBtn .kprof-nm,.topbar .top-actions #kfmProfBtn .kprof-plan{display:none}}body .bottomnav{background:rgba(250,248,241,.62)!important;border:1px solid rgba(255,255,255,.72)!important;backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:0 12px 36px rgba(17,31,48,.2),inset 0 1px 0 rgba(255,255,255,.8)!important}body .bottomnav button{transition:background .2s ease,color .2s ease,transform .2s ease}body .bottomnav button.active{background:rgba(255,255,255,.62)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 3px 12px rgba(31,51,73,.08)}body .bottomnav button.kfab{background:linear-gradient(145deg,#20b7a8,#078c84)!important;border:4px solid rgba(255,255,255,.82)!important;box-shadow:0 8px 28px rgba(14,158,145,.44),inset 0 1px 0 rgba(255,255,255,.35)!important}[data-theme="dark"] body .bottomnav{background:rgba(25,34,47,.58)!important;border-color:rgba(255,255,255,.16)!important;box-shadow:0 12px 40px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.12)!important}[data-theme="dark"] body .bottomnav button.active{background:rgba(255,255,255,.1)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.16)}[data-theme="dark"] body .bottomnav button.kfab{background:linear-gradient(145deg,#31c9ba,#078d86)!important;border-color:rgba(25,34,47,.85)!important}
+.kprof-av img{width:100%;height:100%;display:block;object-fit:cover;border-radius:inherit}.kphoto-row{display:flex;align-items:center;gap:14px}.kphoto-row>.kprof-av{width:64px;height:64px;flex:0 0 64px;font-size:24px}.kphoto-row>div{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.kphoto-row small{display:block;flex-basis:100%;color:var(--muted)}.kphoto-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}.ksh-no-results{padding:14px;text-align:center;color:var(--muted)}</style><style id="kfm-liquid-glass">
+:root{--glass-surface:rgba(255,253,247,.68);--glass-soft:rgba(255,255,255,.48);--glass-edge:rgba(255,255,255,.72);--glass-shadow:0 12px 36px rgba(29,48,70,.13),inset 0 1px 0 rgba(255,255,255,.72)}
+[data-theme="dark"]{--glass-surface:rgba(26,39,55,.68);--glass-soft:rgba(35,49,66,.52);--glass-edge:rgba(255,255,255,.14);--glass-shadow:0 14px 40px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.1)}
+html{scroll-behavior:smooth}body{background:radial-gradient(ellipse at 8% 0%,rgba(18,158,145,.12),transparent 38%),radial-gradient(ellipse at 94% 18%,rgba(214,181,104,.12),transparent 34%),var(--bg)!important;background-attachment:fixed!important}
+.topbar{background:rgba(30,58,95,.82)!important;border-color:rgba(255,255,255,.3)!important;backdrop-filter:blur(24px) saturate(170%);-webkit-backdrop-filter:blur(24px) saturate(170%);box-shadow:0 8px 28px rgba(12,28,49,.2),inset 0 1px 0 rgba(255,255,255,.2)!important}
+[data-theme="dark"] .topbar{background:rgba(18,34,52,.78)!important}
+.sidebar,#sidebar{background:var(--glass-surface)!important;border-color:var(--glass-edge)!important;backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);box-shadow:var(--glass-shadow)!important}
+:is(.panel,.metric-card,.command-tile,.pro-stat,.mini-card,.card,.harmony-insight,.lg-card,.tbk-sheet,.kflow,.kmenu,.kmodal,.kfm-launcher,.kcmd-box,.pm-box,.ksh-quick button,.ksh-grid button,.quick-action,.setup-item,.empty-dashboard,.li,.guide-topic,.kflow-nav){background:var(--glass-surface)!important;border:1px solid var(--glass-edge)!important;backdrop-filter:blur(20px) saturate(155%);-webkit-backdrop-filter:blur(20px) saturate(155%);box-shadow:var(--glass-shadow)!important}
+:is(.panel,.metric-card,.command-tile,.pro-stat,.mini-card,.card,.harmony-insight,.lg-card,.tbk-sheet,.kflow,.kmenu,.kmodal,.kfm-launcher,.kcmd-box,.pm-box){border-radius:20px!important}
+:is(.panel,.metric-card,.command-tile,.pro-stat,.mini-card,.quick-action,.setup-item,.ksh-grid button,.ksh-quick button,.tb-tile){transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease}
+:is(.panel,.metric-card,.command-tile,.pro-stat,.quick-action):hover{border-color:rgba(18,158,145,.55)!important;box-shadow:0 16px 42px rgba(29,48,70,.16),inset 0 1px 0 rgba(255,255,255,.7)!important}
+.btn,.nav-btn,.tb-tile,.kfm-launcher-option,.kfm-launcher-star{border:1px solid var(--glass-edge)!important;backdrop-filter:blur(12px) saturate(145%);-webkit-backdrop-filter:blur(12px) saturate(145%);transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
+.btn:not(.primary):not(.danger){background:var(--glass-soft)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
+.btn.primary{background:linear-gradient(135deg,#16a99b,#087d78)!important;border-color:rgba(255,255,255,.38)!important;color:#fff!important;box-shadow:0 8px 22px rgba(14,145,135,.24),inset 0 1px 0 rgba(255,255,255,.28)!important}
+.nav-btn.active,.ksh-grid button.on{background:color-mix(in srgb,var(--brand2) 78%,transparent)!important;border-color:var(--glass-edge)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.42),0 6px 20px rgba(30,58,95,.08)!important}
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),select,textarea,.search,.bar input,.bar select{background:rgba(255,255,255,.58)!important;border-color:var(--glass-edge)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:inset 0 1px 2px rgba(31,48,68,.05)}
+[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),[data-theme="dark"] select,[data-theme="dark"] textarea,[data-theme="dark"] .search,[data-theme="dark"] .bar input,[data-theme="dark"] .bar select{background:rgba(12,20,31,.48)!important}
+input:focus,select:focus,textarea:focus,.search:focus{outline:0!important;border-color:rgba(18,158,145,.72)!important;box-shadow:0 0 0 3px rgba(18,158,145,.16),inset 0 1px 2px rgba(31,48,68,.05)!important}
+.table-wrap,.tw,.tbpage,.ksh-body,.guide-index{border-color:var(--glass-edge)!important}th{background:rgba(30,58,95,.08)!important;backdrop-filter:blur(10px)}[data-theme="dark"] th{background:rgba(255,255,255,.07)!important}tr:hover td{background:rgba(18,158,145,.06)!important}
+#kcmd{background:rgba(8,16,28,.42)!important;backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%)}#kcmd .kcmd-box{border-color:var(--glass-edge)!important;background:var(--glass-surface)!important;backdrop-filter:blur(28px) saturate(170%);-webkit-backdrop-filter:blur(28px) saturate(170%)}#kcmd .kcmd-it.on{background:var(--brand2)!important;border-radius:12px}
+.kfm-launcher-shade{background:rgba(12,22,36,.38)!important;backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%)}.kfm-launcher-head,.kfm-launcher-foot,.kmodal-h,.kmodal-f{background:var(--glass-soft)!important;backdrop-filter:blur(16px)}.kfm-launcher-option:hover,.kfm-launcher-option.selected{background:var(--brand2)!important}.kmenu{background:var(--glass-surface)!important;backdrop-filter:blur(28px) saturate(175%);-webkit-backdrop-filter:blur(28px) saturate(175%)}
+#kfmSheet{background:var(--glass-surface)!important;backdrop-filter:blur(28px) saturate(175%);-webkit-backdrop-filter:blur(28px) saturate(175%);border:1px solid var(--glass-edge);box-shadow:0 -16px 48px rgba(14,26,40,.2),inset 0 1px 0 rgba(255,255,255,.4)}
+body .bottomnav{background:rgba(250,248,241,.56)!important;border-color:rgba(255,255,255,.78)!important;backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);box-shadow:0 14px 42px rgba(17,31,48,.18),inset 0 1px 0 rgba(255,255,255,.86)!important}[data-theme="dark"] body .bottomnav{background:rgba(25,34,47,.52)!important;border-color:rgba(255,255,255,.18)!important}body .bottomnav button.kfab{box-shadow:0 9px 30px rgba(14,158,145,.48),inset 0 1px 0 rgba(255,255,255,.42)!important}
+:focus-visible{outline:3px solid rgba(18,158,145,.62)!important;outline-offset:2px}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){:is(.panel,.metric-card,.command-tile,.pro-stat,.mini-card,.card,.kmenu,.kmodal,.kfm-launcher,.kcmd-box,#kfmSheet){background:var(--surface)!important}.topbar{background:#1e3a5f!important}}
+@media(max-width:600px){:is(.panel,.metric-card,.command-tile,.pro-stat,.mini-card,.card,.kfm-launcher,.kcmd-box){border-radius:18px!important}.kfm-launcher{max-height:82dvh}.kfm-launcher-list{max-height:58dvh}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media print{body{background:#fff!important}.topbar,.sidebar,:is(.panel,.metric-card,.command-tile,.pro-stat,.card,.kmenu,.kmodal,.kfm-launcher,#kfmSheet,.bottomnav){backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important;background:#fff!important;border-color:#ddd!important}}
 </style></body></html>
