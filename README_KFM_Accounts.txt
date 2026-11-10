@@ -9,6 +9,9 @@ FILES (upload ALL to the ROOT of your GitHub Pages repo)
   manifest.webmanifest, sw.js, favicon.png, icon-*.png
 
 WHAT'S NEW
+  * Subsidiary ledger page (Ledgers menu): debtors and creditors ledgers, each party's account with running
+    balance, and a check against the general-ledger control account.
+  * Black and gold theme matching the app icon.
   * Profile button at the top-right: My profile, Subscription, Settings, Language, Theme,
     Master dashboard (admins only).
   * Sign out, Excel export, JSON backup and Import/Restore moved to Settings -> "Account & data".
