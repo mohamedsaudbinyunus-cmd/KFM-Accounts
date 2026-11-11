@@ -1,3 +1,16 @@
+WHAT'S NEW IN v9 (APPLE-STYLE SIGN-IN)
+  * New sign-in screen: Apple, Google, Microsoft, Facebook and email/password, light + dark, English + Bangla.
+  * Profile pictures are always circular (uploads are centre-cropped square; Google/Apple/Microsoft photos are used
+    automatically when you have not uploaded your own).
+  * Removed the unused accent themes (violet/ocean/sunset/rose) and the old login styles. Light and Dark remain.
+  * TURN ON EACH PROVIDER: Firebase Console -> Authentication -> Sign-in method.
+      Google    : enable (already working).
+      Apple     : needs an Apple Developer account (Services ID, key). Firebase shows the steps.
+      Microsoft : needs an Azure app (client ID + secret).
+      Facebook  : needs a Meta app (App ID + secret).
+    Also add your GitHub Pages domain under Authentication -> Settings -> Authorized domains.
+    A provider that is not enabled just shows "not turned on yet" - it cannot break the other sign-in options.
+
 KFM ACCOUNTS — v8 (SUBSCRIPTION + MASTER DASHBOARD)
 ====================================================
 
