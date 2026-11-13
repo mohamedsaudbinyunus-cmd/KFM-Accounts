@@ -3076,7 +3076,7 @@ function kfmHubData(){
  const assets=sum(r=>AS.has(r.id)),liab=sum(r=>LI.has(r.id)),liquid=sum(r=>['ca','ba','bk','ng','sv'].includes(r.id));
  const now=new Date(),months=[];for(let i=5;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push({k:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'),l:d.toLocaleDateString('en-GB',{month:'short'}),v:0})}
  E.forEach(e=>{const m=months.find(x=>(e.date||'').startsWith(x.k));if(m)m.v+=['ca','ba','bk','ng','sv'].reduce((s,k)=>s+Number((e.v||{})[k]||0),0)});
- const recent=E.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')).slice(0,10);
+ const recent=E.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||''));
  return{E,rows:rows.filter(r=>Math.abs(r.v)>=0.005),AS,LI,assets,liab,net:assets-liab,liquid,recv:bal('db'),pay:bal('cd'),months,recent}
 }
 function kfmHubSummary(n){
@@ -3084,7 +3084,7 @@ function kfmHubSummary(n){
  t.push('My accounting data ('+d.E.length+' journal entries)');t.push('Total assets: '+f(d.assets)+' | Liabilities: '+f(d.liab)+' | Net worth: '+f(d.net)+' | Liquid (cash, bank, bKash, Nagad, savings): '+f(d.liquid));
  t.push('');t.push('Account balances:');d.rows.forEach(r=>t.push('- '+r.name+': '+f(r.v)));
  t.push('');t.push('Monthly change in liquid money:');d.months.forEach(m=>t.push('- '+m.k+': '+f(m.v)));
- t.push('');t.push('Latest entries:');d.recent.slice(0,n||10).forEach(e=>t.push('- '+e.date+' | '+(e.desc||'')));
+ t.push('');t.push('Latest entries:');const nm={};(typeof ALL!=='undefined'?ALL:[]).forEach(a=>nm[a[0]]=a[1]);const L=n>0?d.recent.slice(0,n):d.recent;t[t.length-1]=(n>0?'Latest '+L.length+' of '+d.E.length:'All '+d.E.length)+' entries:';L.forEach(e=>{const mv=Object.keys(e.v||{}).filter(k=>Number(e.v[k])).map(k=>(nm[k]||k)+' '+f(e.v[k])).join(', ');t.push('- '+e.date+' | '+(e.desc||'')+(mv?' | '+mv:''))});
  return t.join('\n');
 }
 function renderKFMHub(){
@@ -3105,12 +3105,14 @@ function renderKFMHub(){
  <div class="dh-two"><div class="panel"><h3>🤖 ${T('Ask an assistant about my data','আমার ডেটা নিয়ে সহকারীকে প্রশ্ন')}</h3>
   <div class="dh-q" id="dhQ">${KFM_HUB_Q.map((q,i)=>`<button type="button" data-q="${i}">${q[0]} ${T(q[1],q[1])}</button>`).join('')}</div>
   <textarea id="dhAsk" rows="3" placeholder="${T('Type your own question…','নিজের প্রশ্ন লিখুন…')}"></textarea>
-  <div class="dh-act"><label class="muted small">${T('Entries to include','কতগুলো এন্ট্রি দেবেন')} <select id="dhN" style="width:auto;display:inline-block"><option>5</option><option selected>10</option></select></label>
+  <div class="dh-act"><label class="muted small">${T('Entries to include','কতগুলো এন্ট্রি দেবেন')} <select id="dhN" style="width:auto;display:inline-block"><option value="5">5</option><option value="10">10</option><option value="50">50</option><option value="0" selected>${T('All','সব')}</option></select></label>
   <select id="dhSite" style="width:auto;flex:1;min-width:140px">${st.list.map((s,i)=>`<option value="${i}" ${i===st.a?'selected':''}>${esc(s.n)}</option>`).join('')||`<option value="-1">${T('No saved website','কোনো ওয়েবসাইট নেই')}</option>`}</select></div>
   <div class="dh-act"><button class="btn primary" id="dhCopy" type="button">⧉ ${T('Copy question + my data','প্রশ্ন + ডেটা কপি')}</button><button class="btn" id="dhOpen" type="button">◧ ${T('Copy & open side window','কপি করে সাইড উইন্ডো খুলুন')}</button><button class="btn" id="dhWeb" type="button">🌐 ${T('Web page','ওয়েব পেজ')}</button></div>
   <p class="muted small" id="dhMsg" style="margin:8px 0 0">${T('Paste into the assistant after it opens. Nothing is sent by this app.','সহকারী খুললে সেখানে পেস্ট করুন। এই অ্যাপ নিজে কিছু পাঠায় না।')}</p></div>
- <div class="panel"><h3>${T('Latest entries','সাম্প্রতিক এন্ট্রি')}</h3>${d.recent.map(e=>`<div class="dh-row"><span>${esc(e.desc||'')}<br><small class="muted">${esc(e.date||'')}</small></span></div>`).join('')||'<p class="muted">—</p>'}</div></div>`;
+ <div class="panel"><h3 id="dhLT"></h3><div id="dhList" style="max-height:340px;overflow:auto"></div></div></div>`;
  const $=id=>document.getElementById(id),msg=t=>{$('dhMsg').textContent=t};
+ const drawList=()=>{const n=+$('dhN').value,L=n>0?d.recent.slice(0,n):d.recent;$('dhLT').textContent=(n>0?T('Latest entries','সাম্প্রতিক এন্ট্রি'):T('All entries','সব এন্ট্রি'))+' ('+L.length+(n>0&&L.length<d.E.length?' / '+d.E.length:'')+')';$('dhList').innerHTML=L.map(e=>`<div class="dh-row"><span>${esc(e.desc||'')}<br><small class="muted">${esc(e.date||'')}</small></span></div>`).join('')||'<p class="muted">—</p>'};
+ $('dhN').onchange=drawList;drawList();
  $('dhFind').oninput=e=>{const q=e.target.value.trim().toLowerCase();page.querySelectorAll('#dhRows [data-n]').forEach(r=>r.style.display=!q||r.dataset.n.includes(q)?'':'none')};
  page.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{page.querySelectorAll('[data-q]').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('dhAsk').value=KFM_HUB_Q[+b.dataset.q][2]});
  const build=()=>{const q=$('dhAsk').value.trim()||KFM_HUB_Q[0][2];return q+'\n\n'+kfmHubSummary(+$('dhN').value)};
