@@ -86,7 +86,7 @@ details.tbl{margin-top:10px;font-size:12.5px;color:var(--muted)}details.tbl tabl
  .tw td small{text-align:right}.tw td .acts{justify-content:flex-end}.tw td[colspan]:before{content:none}}
 @media(max-width:860px){
  .shell{grid-template-columns:1fr}.side{display:none}
- .tabs{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));background:var(--side);border-radius:20px;padding:6px;z-index:40;box-shadow:0 14px 34px #0007}
+ .tabs{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));background:var(--side);border-radius:20px;padding:6px;z-index:40;box-shadow:0 14px 34px #0007}
  .tabs button{border:0;background:none;color:var(--side-text);padding:8px 2px;border-radius:14px;font-size:11px;font-weight:700;display:grid;gap:2px;justify-items:center;min-height:52px;position:relative}
  .tabs button i{font-style:normal;font-size:19px}.tabs button.on{background:var(--acc);color:var(--acc-ink)}
  .tabs .bd{position:absolute;top:2px;right:16px;background:#e5484d;color:#fff;border-radius:99px;font-size:10px;padding:0 6px}
@@ -131,6 +131,7 @@ details.tbl{margin-top:10px;font-size:12.5px;color:var(--muted)}details.tbl tabl
   <button class="nav on" data-t="overview"><i>◧</i>Overview</button>
   <button class="nav" data-t="payments"><i>৳</i>Payments<span class="bd hide" id="bdP"></span></button>
   <button class="nav" data-t="users"><i>☺</i>Users</button>
+  <button class="nav" data-t="assistant"><i>✦</i>AI assistant</button>
   <button class="nav" data-t="settings"><i>⚙</i>Settings</button>
   <div class="sp"></div>
   <a class="nav" href="index.html" style="text-decoration:none"><i>↗</i>Open the app</a>
@@ -148,6 +149,7 @@ details.tbl{margin-top:10px;font-size:12.5px;color:var(--muted)}details.tbl tabl
  <button data-t="overview" class="on"><i>◧</i>Overview</button>
  <button data-t="payments"><i>৳</i>Payments<span class="bd hide" id="bdP2"></span></button>
  <button data-t="users"><i>☺</i>Users</button>
+ <button data-t="assistant"><i>✦</i>AI</button>
  <button data-t="settings"><i>⚙</i>Settings</button>
 </nav>
 <div class="tip" id="tip"></div>
@@ -160,7 +162,7 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 const DAY=864e5;
 let auth,db,me=null,isAdmin=false,tab='overview',offs=[];
 const ST={profiles:{},subs:{},payments:{},admins:{},config:{}};
-let UI={pf:'pending',uf:'all',uq:'',pq:''};
+let UI={pf:'pending',uf:'all',uq:'',pq:'',aq:'',an:0,ap:0,ac:false,as:0};
 try{const t=localStorage.getItem('kfm_admin_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}
 
 /* ---------- helpers ---------- */
@@ -309,7 +311,44 @@ function vSettings(){
       $('serr').textContent='';toast('Settings saved ✓')}catch(x){$('serr').textContent='Could not save: '+x.message}};
 }
 
-const TITLES={overview:['Overview','Subscriptions, revenue and users at a glance'],payments:['Payments','Verify bKash, Nagad and bank payments'],users:['Users','Everyone who has signed up'],settings:['Settings','Price, payment accounts and support details']};
+const AI_SITES=[['ChatGPT','https://chatgpt.com/'],['Claude','https://claude.ai/new'],['Gemini','https://gemini.google.com/app'],['Copilot','https://copilot.microsoft.com/']];
+const AI_Q=[['📈','Business summary','Summarise my subscription business: users, revenue, trends, and 3 things to do this week.'],['⏳','Renewals','Who is about to expire or already expired? Suggest a short renewal message and who to contact first.'],['🔎','Check payments','Review the payments for anything suspicious: duplicate TrxIDs, odd amounts, long-pending items.'],['💰','Revenue insight','Explain my revenue by month and by payment method, and how I could grow it.'],['📣','Growth ideas','Suggest practical ways to get more sign-ups and convert never-paid users.']];
+function aiSummary(){
+  const U=users(),P=pays(),now=Date.now(),inc=UI.ac,n=UI.an,nl=L=>n>0?L.slice(0,n):L;
+  const appr=P.filter(p=>p.status==='approved'),t=[];
+  t.push('KFM subscription business data ('+new Date().toISOString().slice(0,10)+')');
+  t.push('Users: '+U.length+' | Active: '+U.filter(u=>u.st==='active').length+' | Expired: '+U.filter(u=>u.st==='expired').length+' | Never paid: '+U.filter(u=>u.st==='none').length+' | Admins: '+U.filter(u=>u.adm).length);
+  t.push('Payments: '+P.length+' | Pending: '+P.filter(p=>p.status==='pending').length+' | Approved: '+appr.length+' | Rejected: '+P.filter(p=>p.status==='rejected').length+' | Approved revenue: '+money(appr.reduce((s,p)=>s+Number(p.amount||0),0)));
+  const uu=nl(U.slice().sort((a,b)=>b.createdAt-a.createdAt));
+  t.push('');t.push((n>0?'Latest '+uu.length+' of '+U.length:'All '+U.length)+' users:');
+  uu.forEach(u=>t.push('- '+(u.name||'(no name)')+' | '+u.email+(inc&&u.phone?' | '+u.phone:'')+(inc&&u.business?' | '+u.business:'')+' | joined '+fd(u.createdAt)+' | last seen '+ago(u.lastSeen)+' | '+u.st+(u.exp?' until '+fd(u.exp):'')));
+  const pp=nl(P);
+  t.push('');t.push((n>0?'Latest '+pp.length+' of '+P.length:'All '+P.length)+' payments:');
+  pp.forEach(p=>t.push('- '+fdt(p.createdAt)+' | '+p.mail+' | '+(p.method||'').toUpperCase()+' | '+money(p.amount)+' | '+p.years+' yr | TrxID '+p.trxId+(p.dup?' (DUPLICATE)':'')+' | '+p.status));
+  return t.join('\n');
+}
+function vAssistant(){
+  const U=users(),P=pays();
+  $('view').innerHTML=`
+  <div class="grid two">
+   <div class="card panel"><h3>✦ Ask an AI about my business</h3><p class="sub">Builds a question with your live users and payments data. Nothing is sent by this page: you copy it and paste it into the AI.</p>
+    <div class="bar" id="aq">${AI_Q.map((q,i)=>`<button class="btn sm" data-q="${i}">${q[0]} ${q[1]}</button>`).join('')}</div>
+    <div class="f"><label for="aask">Your question</label><textarea id="aask" rows="4" placeholder="Type your own question…">${esc(UI.aq)}</textarea></div>
+    <div class="bar"><label class="sub" style="margin:0">Rows to include <select id="an"><option value="10"${UI.an===10?' selected':''}>10</option><option value="50"${UI.an===50?' selected':''}>50</option><option value="0"${!UI.an?' selected':''}>All</option></select></label>
+     <label class="sub" style="margin:0"><input type="checkbox" id="ac"${UI.ac?' checked':''} style="min-height:0;vertical-align:-2px"> Include phone &amp; business</label>
+     <select id="as">${AI_SITES.map((a,i)=>`<option value="${i}"${i===UI.as?' selected':''}>${a[0]}</option>`).join('')}</select></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" id="acopy">⧉ Copy question + data</button><button class="btn" id="aopen">↗ Copy &amp; open AI</button></div>
+    <p class="sub" id="amsg" style="margin:10px 0 0">${U.length} users · ${P.length} payments available. Names and emails are included; phone and business only if ticked.</p></div>
+   <div class="card panel"><h3>Preview of what will be copied</h3><p class="sub">Exactly the text that goes to the clipboard.</p><textarea id="aprev" rows="16" readonly style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--surface2);font:12px/1.5 ui-monospace,monospace"></textarea></div>
+  </div>`;
+  const build=()=>(UI.aq.trim()||AI_Q[0][2])+'\n\n'+aiSummary(),prev=()=>{$('aprev').value=build()};prev();
+  $('aask').oninput=e=>{UI.aq=e.target.value;prev()};
+  $('an').onchange=e=>{UI.an=+e.target.value;prev()};$('ac').onchange=e=>{UI.ac=e.target.checked;prev()};$('as').onchange=e=>{UI.as=+e.target.value};
+  qa('#aq [data-q]').forEach(b=>b.onclick=()=>{UI.aq=AI_Q[+b.dataset.q][2];$('aask').value=UI.aq;prev()});
+  const copy=async()=>{const x=build();try{await navigator.clipboard.writeText(x);toast('Copied. Paste it into the AI.');return true}catch(e){$('aprev').select();toast('Press Ctrl+C to copy');return false}};
+  $('acopy').onclick=copy;$('aopen').onclick=async()=>{await copy();window.open(AI_SITES[UI.as][1],'_blank','noopener')};
+}
+const TITLES={assistant:['AI assistant','Ask an AI about your users, payments and revenue'],overview:['Overview','Subscriptions, revenue and users at a glance'],payments:['Payments','Verify bKash, Nagad and bank payments'],users:['Users','Everyone who has signed up'],settings:['Settings','Price, payment accounts and support details']};
 function render(){
   if(!isAdmin)return;
   const t=TITLES[tab];$('ttl').textContent=t[0];$('sub').textContent=t[1];
@@ -317,7 +356,8 @@ function render(){
   const pend=pays().filter(p=>p.status==='pending').length;
   ['bdP','bdP2'].forEach(i=>{const e=$(i);e.textContent=pend;e.classList.toggle('hide',!pend)});
   if(tab==='settings'&&document.activeElement&&$('sform')&&$('sform').contains(document.activeElement))return;
-  ({overview:vOverview,payments:vPayments,users:vUsers,settings:vSettings})[tab]();
+  if(tab==='assistant'&&document.activeElement&&$('view').contains(document.activeElement)&&['aask','an','ac','as'].includes(document.activeElement.id))return;
+  ({overview:vOverview,payments:vPayments,users:vUsers,assistant:vAssistant,settings:vSettings})[tab]();
   qa('.tw table').forEach(t=>{const h=qa('th',t).map(x=>x.textContent);qa('tbody tr',t).forEach(r=>qa('td',r).forEach((c,i)=>{if(h[i])c.dataset.l=h[i]}))});
 }
 
