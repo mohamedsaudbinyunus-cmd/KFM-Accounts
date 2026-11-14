@@ -93,6 +93,7 @@ details.tbl{margin-top:10px;font-size:12.5px;color:var(--muted)}details.tbl tabl
  .main{padding-bottom:110px}.who{display:none}
  input,select,textarea{font-size:16px}
 }
+.mdl{position:fixed;inset:0;background:#0009;display:grid;place-items:center;z-index:80;padding:16px}.mdl-b{width:min(440px,100%);padding:22px}.mdl-b h3{margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -131,6 +132,7 @@ details.tbl{margin-top:10px;font-size:12.5px;color:var(--muted)}details.tbl tabl
   <button class="nav on" data-t="overview"><i>◧</i>Overview</button>
   <button class="nav" data-t="payments"><i>৳</i>Payments<span class="bd hide" id="bdP"></span></button>
   <button class="nav" data-t="users"><i>☺</i>Users</button>
+  <button class="nav" data-t="data"><i>▤</i>User data</button>
   <button class="nav" data-t="assistant"><i>✦</i>AI assistant</button>
   <button class="nav" data-t="settings"><i>⚙</i>Settings</button>
   <div class="sp"></div>
@@ -161,7 +163,7 @@ const $=id=>document.getElementById(id),qa=(s,r)=>[...(r||document).querySelecto
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const DAY=864e5;
 let auth,db,me=null,isAdmin=false,tab='overview',offs=[];
-const ST={profiles:{},subs:{},payments:{},admins:{},config:{}};
+const ST={profiles:{},subs:{},payments:{},admins:{},config:{},adminAccess:{}};
 let UI={pf:'pending',uf:'all',uq:'',pq:'',aq:'',an:0,ap:0,ac:false,as:0};
 try{const t=localStorage.getItem('kfm_admin_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}
 
@@ -281,7 +283,7 @@ function vUsers(){
   ${L.map(u=>`<tr><td><b>${esc(u.name||'—')}</b><small>${esc(u.email)}</small>${u.business?`<small>${esc(u.business)}</small>`:''}</td><td>${esc(u.phone||'—')}</td><td>${fd(u.createdAt)}</td><td>${ago(u.lastSeen)}</td><td>${uchip(u)}</td>
    <td>${u.adm?'Free (admin)':u.exp?fd(u.exp)+`<small>${u.exp>Date.now()?Math.ceil((u.exp-Date.now())/DAY)+' days left':'ended '+ago(u.exp)}</small>`:'—'}</td>
    <td><div class="acts">${u.adm?'':`<button class="btn sm" data-ex="${u.uid}|365">+1 year</button><button class="btn sm" data-ex="${u.uid}|ask">+ days…</button><button class="btn sm" data-ex="${u.uid}|set">Set date</button>${u.exp?`<button class="btn bad sm" data-ex="${u.uid}|revoke">Revoke</button>`:''}`}
-   <button class="btn sm" data-adm="${u.uid}">${u.adm?'Remove admin':'Make admin'}</button></div></td></tr>`).join('')||'<tr><td colspan="7" class="empty">No users match.</td></tr>'}
+   <button class="btn sm" data-vd="${u.uid}">View data</button><button class="btn sm" data-adm="${u.uid}">${u.adm?'Remove admin':'Make admin'}</button></div></td></tr>`).join('')||'<tr><td colspan="7" class="empty">No users match.</td></tr>'}
   </tbody></table></div>`;
   qa('#useg button').forEach(b=>b.onclick=()=>{UI.uf=b.dataset.f;render()});
   $('uq').oninput=e=>{UI.uq=e.target.value;const p=e.target.selectionStart;render();const i=$('uq');i.focus();i.setSelectionRange(p,p)};
@@ -348,7 +350,7 @@ function vAssistant(){
   const copy=async()=>{const x=build();try{await navigator.clipboard.writeText(x);toast('Copied. Paste it into the AI.');return true}catch(e){$('aprev').select();toast('Press Ctrl+C to copy');return false}};
   $('acopy').onclick=copy;$('aopen').onclick=async()=>{await copy();window.open(AI_SITES[UI.as][1],'_blank','noopener')};
 }
-const TITLES={assistant:['AI assistant','Ask an AI about your users, payments and revenue'],overview:['Overview','Subscriptions, revenue and users at a glance'],payments:['Payments','Verify bKash, Nagad and bank payments'],users:['Users','Everyone who has signed up'],settings:['Settings','Price, payment accounts and support details']};
+const TITLES={assistant:['AI assistant','Ask an AI about your users, payments and revenue'],overview:['Overview','Subscriptions, revenue and users at a glance'],payments:['Payments','Verify bKash, Nagad and bank payments'],users:['Users','Everyone who has signed up'],settings:['Settings','Price, payment accounts and support details'],data:['User data','Transactions of each user (the user controls edit access)']};
 function render(){
   if(!isAdmin)return;
   const t=TITLES[tab];$('ttl').textContent=t[0];$('sub').textContent=t[1];
@@ -357,7 +359,7 @@ function render(){
   ['bdP','bdP2'].forEach(i=>{const e=$(i);e.textContent=pend;e.classList.toggle('hide',!pend)});
   if(tab==='settings'&&document.activeElement&&$('sform')&&$('sform').contains(document.activeElement))return;
   if(tab==='assistant'&&document.activeElement&&$('view').contains(document.activeElement)&&['aask','an','ac','as'].includes(document.activeElement.id))return;
-  ({overview:vOverview,payments:vPayments,users:vUsers,assistant:vAssistant,settings:vSettings})[tab]();
+  ({overview:vOverview,payments:vPayments,users:vUsers,assistant:vAssistant,settings:vSettings,data:vData})[tab]();
   qa('.tw table').forEach(t=>{const h=qa('th',t).map(x=>x.textContent);qa('tbody tr',t).forEach(r=>qa('td',r).forEach((c,i)=>{if(h[i])c.dataset.l=h[i]}))});
 }
 
@@ -419,12 +421,63 @@ function init(){
     }catch(e){$('dMsg').textContent='Could not check admin status: '+e.message+' — publish the rules from database.rules.json first.';$('dEmail').textContent=u.email;$('dUid').textContent=u.uid;show('denied');return}
     if(!isAdmin){$('dEmail').textContent=u.email||'';$('dUid').textContent=u.uid;show('denied');return}
     $('we').textContent=u.email;$('wa').textContent=(u.email||'A')[0].toUpperCase();show('app');
-    ['profiles','subs','payments','admins','config'].forEach(k=>sub(k,k));
+    ['profiles','subs','payments','admins','config','adminAccess'].forEach(k=>sub(k,k));
     render();
   });
   $('authForm').addEventListener('submit',async e=>{e.preventDefault();$('gerr').textContent='';$('go').disabled=true;try{await auth.signInWithEmailAndPassword($('em').value.trim(),$('pw').value)}catch(x){$('gerr').textContent=x.code==='auth/invalid-credential'||x.code==='auth/wrong-password'?'Wrong email or password.':(x.message||'Sign-in failed')}finally{$('go').disabled=false}});
   $('gg').onclick=async()=>{try{await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}catch(x){if(x.code!=='auth/popup-closed-by-user')$('gerr').textContent=x.message}};
 }
+/* ---------- user data (transactions) ---------- */
+const NAMES={ca:'Cash',ba:'Bank Account',bk:'bKash',ng:'Nagad',db:'Debtors',in:'Inventory',pe:'Prepaid Expenses',eqp:'Equipment',fur:'Furniture',sv:'Savings',ot:'Other Assets',cd:'Creditors',ln:'Bank Loan',rl:'Recharge Loan',tp:'Tax Payable',upay:'Utilities Payable',ip:'Interest Payable',ur:'Unearned Revenue',o2:'Other Liabilities',eq:'Owner’s Equity',drw:'Drawings'};
+let UD={uid:null,st:'idle',data:null,q:'',lq:'',err:''};
+const accOf=uid=>ST.adminAccess[uid]||'edit';
+const amtE=e=>Math.round(Object.values(e.v||{}).reduce((s,x)=>s+Math.abs(Number(x)||0),0)/2*100)/100;
+const accChip=a=>a==='off'?'<span class="chip bad">🚫 No access</span>':a==='view'?'<span class="chip warn">🔒 View only</span>':'<span class="chip ok">✎ View &amp; edit</span>';
+async function alog(uid,a,d){try{await db.ref('adminLog/'+uid).push({t:Date.now(),by:(me.email||me.uid).slice(0,120),a:a,d:String(d||'').slice(0,120)})}catch(e){}}
+async function openUD(uid){UD={uid,st:'load',data:null,q:'',lq:'',err:''};tab='data';render();window.scrollTo(0,0);if(accOf(uid)==='off'){UD.st='off';render();return}await loadUD();if(UD.st==='ok')alog(uid,'view','')}
+async function loadUD(){try{const r=(await db.ref('kfm/'+UD.uid).get()).val();let en=[],ex={};if(r){try{en=JSON.parse(r.entries||'[]')}catch(e){}try{ex=JSON.parse(r.extra||'{}')}catch(e){}}UD.data={entries:en,updatedAt:r&&r.updatedAt||0};UD.st='ok'}catch(x){UD.st='err';UD.err=x.message}render()}
+function mdl(html){const m=document.createElement('div');m.className='mdl';m.innerHTML='<div class="card mdl-b">'+html+'</div>';document.body.appendChild(m);m.addEventListener('click',e=>{if(e.target===m||e.target.dataset.mc)m.remove()});return m}
+async function saveUD(fn,act,d,m){
+ if(accOf(UD.uid)!=='edit'){toast('This user turned editing off.');return false}
+ try{const ref=db.ref('kfm/'+UD.uid),r=(await ref.get()).val()||{};let en=[],ex={};try{en=JSON.parse(r.entries||'[]')}catch(e){}try{ex=JSON.parse(r.extra||'{}')}catch(e){}const del=new Set(r.deleted||[]);
+  fn(en,del);(ex.log=ex.log||[]).push({t:Date.now(),op:'Admin · '+(me.email||me.uid),a:act,d:d,m:m});
+  await ref.update({entries:JSON.stringify(en),deleted:[...del],extra:JSON.stringify(ex),updatedAt:Date.now()});alog(UD.uid,act==='Deleted'?'delete':'edit',d);toast('Saved ✓');await loadUD();return true}
+ catch(x){toast('Failed: '+x.message);return false}}
+function editE(id){
+ const e=(UD.data.entries||[]).find(x=>x.id===id);if(!e)return;const simple=Object.keys(e.v||{}).length===2,old=amtE(e);
+ const m=mdl(`<h3>Edit transaction</h3><p class="sub">The change is logged for the user.</p><div class="f"><label>Date</label><input id="ed" type="date" value="${esc(e.date)}"></div><div class="f"><label>Description</label><input id="eds" maxlength="180" value="${esc(e.desc)}"></div><div class="f"><label>Amount${simple?'':' (locked: this entry spans 3+ accounts)'}</label><input id="ea" type="number" min="0.01" step="0.01" value="${old}"${simple?'':' disabled'}></div><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn" data-mc="1">Cancel</button><button class="btn pri" id="esv">Save</button></div>`);
+ m.querySelector('#esv').onclick=async()=>{const d=m.querySelector('#ed').value,ds=m.querySelector('#eds').value.trim(),a=Number(m.querySelector('#ea').value);if(!d||!ds||!(a>0)){toast('Fill in every field.');return}
+  const ok=await saveUD(en=>{const x=en.find(y=>y.id===id);if(!x)return;x.date=d;x.desc=ds;if(simple&&old>0&&a!==old){const f=a/old;Object.keys(x.v).forEach(k=>{x.v[k]=Math.round(x.v[k]*f*100)/100})}},'Edited',ds,a);if(ok)m.remove()}}
+async function delE(id){const e=(UD.data.entries||[]).find(x=>x.id===id);if(!e||!confirm('Delete "'+e.desc+'" ('+money(amtE(e))+')? The user will see it in their activity log.'))return;await saveUD((en,del)=>{const i=en.findIndex(x=>x.id===id);if(i>=0)en.splice(i,1);del.add(id)},'Deleted',e.desc,amtE(e))}
+function vData(){
+ const v=$('view'),act=document.activeElement;
+ if(!UD.uid){
+  if(act&&act.id==='dls'&&v.contains(act))return;
+  const q=UD.lq.toLowerCase();let L=users().filter(u=>!q||(u.email+' '+u.name+' '+u.business).toLowerCase().includes(q)).sort((a,b)=>b.lastSeen-a.lastSeen);
+  v.innerHTML=`<div class="bar"><input id="dls" type="search" placeholder="Search a user to open their transactions…" value="${esc(UD.lq)}"></div><div class="tw card"><table><thead><tr><th>User</th><th>Plan</th><th>Admin access</th><th>Last seen</th><th></th></tr></thead><tbody>${L.map(u=>`<tr><td><b>${esc(u.name||'—')}</b><small>${esc(u.email)}</small></td><td>${uchip(u)}</td><td>${accChip(accOf(u.uid))}</td><td>${ago(u.lastSeen)}</td><td><button class="btn sm pri" data-vd="${u.uid}"${accOf(u.uid)==='off'?' disabled':''}>Open transactions</button></td></tr>`).join('')||'<tr><td colspan="5" class="empty">No users.</td></tr>'}</tbody></table></div><p class="sub" style="color:var(--muted);margin-top:10px">Each user decides whether you can edit, only view, or not open their data. Every visit and change is logged where they can see it.</p>`;
+  const i=$('dls');i.oninput=e=>{UD.lq=e.target.value;const p=e.target.selectionStart;render();const n=$('dls');n.focus();n.setSelectionRange(p,p)};return}
+ if(act&&act.id==='dq'&&v.contains(act))return;
+ const u=users().find(x=>x.uid===UD.uid)||{name:'',email:UD.uid},a=accOf(UD.uid),can=a==='edit';
+ let h=`<div class="bar"><button class="btn" data-ub="1">← All users</button><b>${esc(u.name||u.email)}</b><small style="color:var(--muted)">${esc(u.email)}</small><span style="flex:1"></span>${accChip(a)}</div>`;
+ if(UD.st==='load')h+='<div class="card panel empty">Loading transactions…</div>';
+ else if(UD.st==='off'||a==='off')h+='<div class="card panel empty">🚫 This user has turned admin access off. Their transactions are hidden from you.</div>';
+ else if(UD.st==='err')h+=`<div class="card panel"><h3>Could not load</h3><p class="sub">${esc(UD.err)}</p></div>`;
+ else{
+  const all=(UD.data.entries||[]).slice().sort((x,y)=>String(y.date).localeCompare(String(x.date))),q=UD.q.toLowerCase(),L=all.filter(e=>!q||(e.desc+' '+e.date+' '+(e.note||'')).toLowerCase().includes(q)),tot=all.reduce((s,e)=>s+amtE(e),0);
+  h+=`<div class="grid kpis"><div class="card kpi"><small>Transactions</small><b>${all.length}</b><span>${can?'You can edit':'Read only'}</span></div><div class="card kpi"><small>Total volume</small><b>${money(tot)}</b><span>sum of all amounts</span></div><div class="card kpi"><small>Latest entry</small><b style="font-size:20px">${all[0]?esc(all[0].date):'—'}</b><span>by date</span></div><div class="card kpi"><small>Last synced</small><b style="font-size:20px">${fdt(UD.data.updatedAt)}</b><span>user's cloud copy</span></div></div>
+  ${can?'':'<div class="note" style="margin-bottom:12px">🔒 The user turned editing off, so this list is view-only. The database rules enforce this as well.</div>'}
+  <div class="bar"><input id="dq" type="search" placeholder="Search description, date, type…" value="${esc(UD.q)}"><button class="btn" data-ur="1">↻ Refresh</button><button class="btn" data-ucsv="1">⇩ CSV</button></div>
+  <div class="tw card"><table><thead><tr><th>Date</th><th>Description</th><th>Type</th><th>Accounts</th><th class="num">Amount</th><th>By</th>${can?'<th></th>':''}</tr></thead><tbody>${L.map(e=>`<tr><td>${esc(e.date)}</td><td><b>${esc(e.desc)}</b></td><td>${esc(e.note||'—')}</td><td><small>${Object.keys(e.v||{}).map(k=>esc(NAMES[k]||k)).join(' · ')}</small></td><td class="num"><b>${money(amtE(e))}</b></td><td><small>${esc(e.by||'—')}</small></td>${can?`<td><div class="acts"><button class="btn sm" data-de="${esc(e.id)}">Edit</button><button class="btn bad sm" data-dx="${esc(e.id)}">Delete</button></div></td>`:''}</tr>`).join('')||`<tr><td colspan="${can?7:6}" class="empty">No transactions.</td></tr>`}</tbody></table></div>`}
+ v.innerHTML=h;const q=$('dq');if(q)q.oninput=e=>{UD.q=e.target.value;const p=e.target.selectionStart;render();const n=$('dq');n.focus();n.setSelectionRange(p,p)}}
+document.addEventListener('click',e=>{let b;
+ if(b=e.target.closest('[data-vd]'))openUD(b.dataset.vd);
+ else if(e.target.closest('[data-ub]')){UD.uid=null;render()}
+ else if(e.target.closest('[data-ur]'))loadUD();
+ else if(b=e.target.closest('[data-de]'))editE(b.dataset.de);
+ else if(b=e.target.closest('[data-dx]'))delE(b.dataset.dx);
+ else if(e.target.closest('[data-ucsv]'))csv('kfm-transactions.csv',[['Date','Description','Type','Accounts','Amount','By']].concat((UD.data.entries||[]).map(x=>[x.date,x.desc,x.note||'',Object.keys(x.v||{}).map(k=>NAMES[k]||k).join(' / '),amtE(x),x.by||''])));
+ else if(e.target.closest('[data-t="data"]')){UD.uid=null;render()}});
+
 if(window.firebase&&firebase.initializeApp)init();else{show('gate');$('gerr').textContent='Could not load Firebase. Check your internet connection and reload.'}
 </script>
 </body>

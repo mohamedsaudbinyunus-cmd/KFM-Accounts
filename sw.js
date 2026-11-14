@@ -1,4 +1,4 @@
-const V='kfm-v17-hub-20261113';
+const V='kfm-v19-live-20261114';
 const FILES=['./','index.html','admin.html','manifest.webmanifest','favicon.png','icon-v3-48.png','icon-v3-96.png','icon-v3-180.png','icon-v3-192.png','icon-v3-512.png','icon-v3-maskable-192.png','icon-v3-maskable-512.png'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(V).then(c=>c.addAll(FILES).catch(()=>{})))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});

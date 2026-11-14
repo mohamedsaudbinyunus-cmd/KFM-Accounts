@@ -1,3 +1,29 @@
+WHAT'S NEW IN v11 (MORE COLOURS, LIVE MOTION, PIE PALETTES, ADMIN DATA ACCESS)
+  * 23 colour themes (16 new) plus a Custom colour picker that builds light and dark versions for you.
+  * Motion style (Settings -> Appearance): Off / Subtle / Lively. Lively = moving aurora backgrounds on the
+    dashboard hero and Settings, orbiting light borders on KPI cards, floating icons, shining progress bars,
+    counting numbers, 3D card tilt, and donuts with a light that circles them all the time.
+  * Chart & pie colours (Settings): 11 colour sets, ring thickness, gradient fill, orbit glow. Hover a slice to pop it.
+  * Admin can open each user's transactions (admin.html -> User data, or Users -> View data).
+    The USER chooses in Settings -> Administrator access: View & edit / View only / No access.
+    Enforced by the database rules, not just the screen. Every admin visit and change is logged where the user sees it.
+  * database.rules.json IS REBUILT in this release (it was not in the upload). Compare it with your live rules,
+    then publish it and test in the Rules Playground before inviting users.
+  * Upload ALL files: index.html, KFM_Accounts_Enterprise_2026.html, admin.html, sw.js, database.rules.json. Hard-refresh once.
+
+WHAT'S NEW IN v10 (THEMES, MOTION, APPLE-STYLE SETTINGS)
+  * 7 colour themes (Gold, Emerald, Ocean, Royal, Rose, Sunset, Graphite), each with a light and a dark version.
+  * Light / Dark / Auto (follows the device). Switching plays a circular reveal animation from the button you tapped.
+    Pages, cards and table rows also animate in. Turn animations off in Settings (also respects "reduce motion").
+  * New Apple-style Settings page: live preview, mode, colour theme, animations, striped / compact tables,
+    app name, currency, number format, language, capital accounts, Excel download.
+  * Capital entry: choose "Capital / money added" and split it across Cash, Bank, bKash, Nagad, Savings and more
+    in ONE balanced entry. All other transaction types still use exactly 2 accounts (debit + credit).
+    Settings -> "Capital & accounts" chooses which accounts appear as quick buttons, or turns the split off.
+  * Excel export redesigned: title banner, coloured header, striped rows, real dates, number formats, total rows,
+    frozen header, filters, print setup. The colours follow your selected theme.
+  * Upload ALL files again: index.html, KFM_Accounts_Enterprise_2026.html (identical copy), sw.js. Hard-refresh once.
+
 WHAT'S NEW IN v9 (APPLE-STYLE SIGN-IN)
   * New sign-in screen: Apple, Google, Microsoft, Facebook and email/password, light + dark, English + Bangla.
   * Profile pictures are always circular (uploads are centre-cropped square; Google/Apple/Microsoft photos are used
